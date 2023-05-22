@@ -7,10 +7,10 @@ import Image from 'react-bootstrap/Image';
 import Row from 'react-bootstrap/Row';
 
 
-import motocicleta from '../images/icons/motocicleta64.png';
-import coche from '../images/icons/coche64.png';
-import camion from '../images/icons/camion64.png';
-import camioneta from '../images/icons/camioneta64.png';
+import motocicleta from '../assets/images/icons/motocicleta64.png';
+import coche from '../assets/images/icons/coche64.png';
+import camion from '../assets/images/icons/camion64.png';
+import camioneta from '../assets/images/icons/camioneta64.png';
 
 import '../css/bloques.css';
 

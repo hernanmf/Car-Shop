@@ -6,15 +6,15 @@ import Container from 'react-bootstrap/Container';
 import Image from 'react-bootstrap/Image';
 import Row from 'react-bootstrap/Row';
 
-import chevrolet from '../images/brands/chevrolet.jpg';
-import fiat from '../images/brands/fiat.jpg';
-import ford from '../images/brands/ford.jpg';
-import honda from '../images/brands/honda.jpg';
-import peugeot from '../images/brands/peugeot.jpg';
-import renault from '../images/brands/renault.jpg';
-import vw from '../images/brands/vw.jpg';
-import citroen from '../images/brands/citroen.jpg';
-import jeep from '../images/brands/jeep.jpg';
+import chevrolet from '../assets/images/brands/chevrolet.jpg';
+import fiat from '../assets/images/brands/fiat.jpg';
+import ford from '../assets/images/brands/ford.jpg';
+import honda from '../assets/images/brands/honda.jpg';
+import peugeot from '../assets/images/brands/peugeot.jpg';
+import renault from '../assets/images/brands/renault.jpg';
+import vw from '../assets/images/brands/vw.jpg';
+import citroen from '../assets/images/brands/citroen.jpg';
+import jeep from '../assets/images/brands/jeep.jpg';
 
 import '../css/bloques.css';
 

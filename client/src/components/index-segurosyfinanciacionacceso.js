@@ -5,8 +5,8 @@ import Row from 'react-bootstrap/esm/Row';
 import Col from 'react-bootstrap/Col';
 
 import '../css/bloques.css';
-import creditoimg from '../images/creditoimg.jpg';
-import seguroimg from '../images/seguroimg.jpg';
+import creditoimg from '../assets/images/creditoimg.jpg';
+import seguroimg from '../assets/images/seguroimg.jpg';
 
 const Segurosyfinanciacion = () => {
   return (
