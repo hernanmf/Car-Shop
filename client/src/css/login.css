@@ -1,0 +1,13 @@
+.input-button{
+  width: 100%;
+  margin-top: 1vw;
+  margin-bottom: 1vw;
+}
+
+/* No me funciona el centrado */
+.centrado{
+  display: flex;
+  justify-content: center; 
+  align-content: center; 
+  align-self: center;
+}
