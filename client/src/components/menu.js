@@ -7,57 +7,61 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Offcanvas from 'react-bootstrap/Offcanvas';
+import InputGroup from 'react-bootstrap/InputGroup';
+
+
+import LogoChico from '../assets/images/logochico.png';
 
 const Menu = () => {
   return (
     <>
-    {[false, 'sm'].map((expand) => (
-        <Navbar key={expand} bg="light" expand={expand} className="mb-3">
+      <Navbar key={'sm'} bg="light" expand={'sm'} className="mb-3">
           <Container fluid>
-            <Navbar.Brand href="#">Navbar Offcanvas</Navbar.Brand>
-            <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
+          <Navbar.Brand href="#">
+            <img
+              alt=""
+              src={LogoChico}
+              width="120"
+              height="60"
+              className="d-inline-block align-top"
+            /></Navbar.Brand>
+          
+          <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-sm`} />
+          
             <Navbar.Offcanvas
-              id={`offcanvasNavbar-expand-${expand}`}
-              aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
-              placement="end"
-            >
+              id={`offcanvasNavbar-expand-sm`}
+              aria-labelledby={`offcanvasNavbarLabel-expand-sm`}
+            placement="end"
+            responsive="sm"
+          >
+            
               <Offcanvas.Header closeButton>
-                <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
-                  Offcanvas
-                </Offcanvas.Title>
-              </Offcanvas.Header>
+                 <img href="#" alt="" src={LogoChico} width="120" height="60" className="d-inline-block align-top"/>  
+            </Offcanvas.Header>
+            
               <Offcanvas.Body>
+                <Form className="d-flex">
+                  <InputGroup className="mb-3">
+                    <Form.Control placeholder="Buscá marcas, modelos y mas.."/>
+                  <Button variant="outline-danger" id="button-addon2">Buscar</Button>
+                </InputGroup>
+                </Form>
+              
                 <Nav className="justify-content-end flex-grow-1 pe-3">
                   <Nav.Link href="#action1">Home</Nav.Link>
                   <Nav.Link href="#action2">Link</Nav.Link>
-                  <NavDropdown
-                    title="Dropdown"
-                    id={`offcanvasNavbarDropdown-expand-${expand}`}
-                  >
-                    <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
-                    <NavDropdown.Item href="#action4">
-                      Another action
-                    </NavDropdown.Item>
+                  
+                  <NavDropdown title="Mi perfil" id={`offcanvasNavbarDropdown-expand-sm`}>
+                    <NavDropdown.Item href="#action3">Mis datos</NavDropdown.Item>
+                    <NavDropdown.Item href="#action4">Mis publicaciones</NavDropdown.Item>
                     <NavDropdown.Divider />
-                    <NavDropdown.Item href="#action5">
-                      Something else here
-                    </NavDropdown.Item>
+                    <NavDropdown.Item href="#action5">Cerrar sesión</NavDropdown.Item>
                   </NavDropdown>
                 </Nav>
-                <Form className="d-flex">
-                  <Form.Control
-                    type="search"
-                    placeholder="Search"
-                    className="me-2"
-                    aria-label="Search"
-                  />
-                  <Button variant="outline-success">Search</Button>
-                </Form>
               </Offcanvas.Body>
             </Navbar.Offcanvas>
           </Container>
         </Navbar>
-      ))}
     </>
   );
 }
