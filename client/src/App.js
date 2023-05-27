@@ -1,12 +1,12 @@
 import './App.css';
 import Index from './pages/index';
 import LogIn from './pages/login';
-import Menu from './components/menu';
+import Header from './components/header';
 
 function App() {
   return (
     <div className='App'>  
-    <Menu />
+    <Header />
     <LogIn />
       {/* <Index /> */}
     </div>

@@ -9,13 +9,14 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import InputGroup from 'react-bootstrap/InputGroup';
 
+import '../css/nav.css';
 
 import LogoChico from '../assets/images/logochico.png';
 
-const Menu = () => {
+const Header = () => {
   return (
-    <>
-      <Navbar key={'sm'} bg="light" expand={'sm'} className="mb-3">
+    <><div className='colorapp'>
+      <Navbar key={'false'} /* bg="light" */ expand={'sm'} className="mb-3">
           <Container fluid>
           <Navbar.Brand href="#">
             <img
@@ -35,15 +36,15 @@ const Menu = () => {
             responsive="sm"
           >
             
-              <Offcanvas.Header closeButton>
+              <Offcanvas.Header closeButton className='colorapp'>
                  <img href="#" alt="" src={LogoChico} width="120" height="60" className="d-inline-block align-top"/>  
             </Offcanvas.Header>
             
               <Offcanvas.Body>
                 <Form className="d-flex">
-                  <InputGroup className="mb-3">
-                    <Form.Control placeholder="Buscá marcas, modelos y mas.."/>
-                  <Button variant="outline-danger" id="button-addon2">Buscar</Button>
+                  <InputGroup className="mb-1">
+                    <Form.Control placeholder="Buscá marcas, modelos y mas.." />
+                  <Button variant="light" id="button-addon2">Buscar</Button>
                 </InputGroup>
                 </Form>
               
@@ -61,9 +62,10 @@ const Menu = () => {
               </Offcanvas.Body>
             </Navbar.Offcanvas>
           </Container>
-        </Navbar>
+      </Navbar>
+      </div>
     </>
   );
 }
 
-export default Menu;
+export default Header;
