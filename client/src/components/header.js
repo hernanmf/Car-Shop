@@ -15,7 +15,8 @@ import LogoChico from '../assets/images/logochico.png';
 
 const Header = () => {
   return (
-    <><div className='colorapp'>
+    <>
+      <div className='colorapp'>
       <Navbar key={'false'} /* bg="light" */ expand={'sm'} className="mb-3">
           <Container fluid>
           <Navbar.Brand href="#">
