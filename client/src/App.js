@@ -1,15 +1,25 @@
+import { BrowserRouter, Route, BrowserRouter as Router, Routes } from 'react-router-dom'; 
+
 import './App.css';
-import Index from './pages/index';
 import LogIn from './pages/login';
-import Header from './components/header';
+import Home from './pages/home';
+import Header  from "./components/header";
 
 function App() {
   return (
+    <>
     <div className='App'>  
-    <Header />
-    <LogIn />
-      {/* <Index /> */}
+      <Header />
+      <LogIn />
+      <Home />
+        
+        {/* <Routes>
+            <Route path="*" element={<> NOT FOUND </>} />
+            <Route path="/" element={<LogIn />} />
+            <Route path="/home" element={<Home />} />
+          </Routes> */}
     </div>
+    </>
   );
 }
 
