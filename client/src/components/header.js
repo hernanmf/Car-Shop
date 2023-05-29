@@ -8,6 +8,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import InputGroup from 'react-bootstrap/InputGroup';
+import Col from 'react-bootstrap/Col';
 
 import '../css/nav.css';
 
@@ -27,7 +28,7 @@ const Header = () => {
               height="60"
               className="d-inline-block align-top"
             /></Navbar.Brand>
-          
+
           <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-sm`} />
           
             <Navbar.Offcanvas
@@ -42,12 +43,15 @@ const Header = () => {
             </Offcanvas.Header>
             
               <Offcanvas.Body>
+                <Col xs={12} md={12}>
                 <Form className="d-flex">
                   <InputGroup className="mb-1">
                     <Form.Control placeholder="Buscá marcas, modelos y mas.." />
-                  <Button variant="light" id="button-addon2">Buscar</Button>
-                </InputGroup>
+                    <Button variant="light" id="button-addon2">Buscar</Button>
+                  </InputGroup>
                 </Form>
+                </Col>
+                
               
                 <Nav className="justify-content-end flex-grow-1 pe-3">
                   <Nav.Link href="#action1">Home</Nav.Link>
