@@ -1,8 +1,9 @@
-import { BrowserRouter, Route, BrowserRouter as Router, Routes } from 'react-router-dom'; 
+import { Route, BrowserRouter } from 'react-router-dom'; 
 
 import './App.css';
 import LogIn from './pages/login';
 import Home from './pages/home';
+import Misdatos from './pages/misdatos';
 import Header  from "./components/header";
 
 function App() {
@@ -10,14 +11,16 @@ function App() {
     <>
     <div className='App'>  
       <Header />
+      <Misdatos />
       <LogIn />
       <Home />
         
-        {/* <Routes>
+        {/* <Header />
+        <BrowserRouter>
             <Route path="*" element={<> NOT FOUND </>} />
-            <Route path="/" element={<LogIn />} />
+            <Route path="" element={<LogIn />} />
             <Route path="/home" element={<Home />} />
-          </Routes> */}
+        </BrowserRouter> */}
     </div>
     </>
   );
