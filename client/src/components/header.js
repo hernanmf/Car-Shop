@@ -30,7 +30,7 @@ const Header = () => {
             /></Navbar.Brand>
 
           <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-sm`} />
-          
+        
             <Navbar.Offcanvas
               id={`offcanvasNavbar-expand-sm`}
               aria-labelledby={`offcanvasNavbarLabel-expand-sm`}
