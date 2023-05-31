@@ -1,9 +1,10 @@
 import React from 'react';
 
 import ListGroup from 'react-bootstrap/ListGroup';
+import Container from 'react-bootstrap/esm/Container';
+import Button from 'react-bootstrap/Button';
 
 import '../css/bloques.css';
-import Container from 'react-bootstrap/esm/Container';
 
 const Misdatos = () => {
   return (
@@ -18,7 +19,8 @@ const Misdatos = () => {
             <ListGroup.Item as="li"><h6>Provincia</h6> <p>Buenos Aires</p></ListGroup.Item>
             <ListGroup.Item as="li"><h6>Localidad</h6> <p>Mar del Plata</p></ListGroup.Item>  
           </ListGroup>
-          <p>id user: ññañañañañalsldasd</p>  
+          <p>id user: ññañañañañalsldasd</p> 
+          <Button variant="success" type="submit" size="lg" className="button" id='btnModificar' >Modificar datos</Button>
         </div>
       </Container>
     </>

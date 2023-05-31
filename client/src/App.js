@@ -5,12 +5,14 @@ import LogIn from './pages/login';
 import Home from './pages/home';
 import Misdatos from './pages/misdatos';
 import Header  from "./components/header";
+import Editardatos from './pages/editardatos';
 
 function App() {
   return (
     <>
     <div className='App'>  
       <Header />
+      <Editardatos />
       <Misdatos />
       <LogIn />
       <Home />
