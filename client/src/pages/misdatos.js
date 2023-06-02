@@ -25,6 +25,6 @@ const Misdatos = () => {
       </Container>
     </>
   );
-}
+} 
 
 export default Misdatos;
