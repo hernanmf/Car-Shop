@@ -17,8 +17,7 @@ import LogoChico from '../assets/images/logochico.png';
 const Header = () => {
   return (
     <>
-      <div className='colorapp'>
-      <Navbar key={'false'} expand={'sm'} className="mb-3">
+      <Navbar key={'false'} expand={'sm'} className='colorapp'>
           <Container >
           <Navbar.Brand href="#">
             <img
@@ -43,7 +42,7 @@ const Header = () => {
             </Offcanvas.Header>
             
               <Offcanvas.Body>
-                <Col xs={12} md={12}>
+                <Col xs={12} md={8}>
                 <Form className="d-flex">
                   <InputGroup className="mb-1">
                     <Form.Control placeholder="Buscá marcas, modelos y mas.." />
@@ -68,7 +67,6 @@ const Header = () => {
             </Navbar.Offcanvas>
           </Container>
       </Navbar>
-      </div>
     </>
   );
 }
