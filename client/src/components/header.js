@@ -18,7 +18,7 @@ const Header = () => {
   return (
     <>
       <div className='colorapp'>
-      <Navbar key={'false'} /* bg="light" */ expand={'sm'} className="mb-3">
+      <Navbar key={'false'} expand={'sm'} className="mb-3">
           <Container >
           <Navbar.Brand href="#">
             <img

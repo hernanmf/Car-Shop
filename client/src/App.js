@@ -5,6 +5,7 @@ import LogIn from './pages/login';
 import Home from './pages/home';
 import Misdatos from './pages/misdatos';
 import Header  from "./components/header";
+import Footer  from "./components/footer";
 import Editardatos from './pages/editardatos';
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
       <Misdatos />
       <LogIn />
       <Home />
+      <Footer />
         
         {/* <Header />
         <BrowserRouter>
