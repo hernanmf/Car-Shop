@@ -7,12 +7,14 @@ import Misdatos from './pages/misdatos';
 import Header  from "./components/header";
 import Footer  from "./components/footer";
 import Editardatos from './pages/editardatos';
+import ListaAutos from './pages/listaAutos';
 
 function App() {
   return (
     <>
     <div className='App'>  
       <Header />
+      <ListaAutos />
       <Editardatos />
       <Misdatos />
       <LogIn />
