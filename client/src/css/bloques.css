@@ -22,3 +22,8 @@
 .button{
   width: 100%;
 }
+
+.cards-container{
+  display: flex;
+  justify-content: center;
+}
