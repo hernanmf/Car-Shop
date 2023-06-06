@@ -8,12 +8,14 @@ import Header  from "./components/header";
 import Footer  from "./components/footer";
 import Editardatos from './pages/editardatos';
 import ListaAutos from './pages/listaAutos';
+import MisPublicaciones from './pages/misPublicaciones';
 
 function App() {
   return (
     <>
     <div className='App'>  
       <Header />
+      <MisPublicaciones />
       <ListaAutos />
       <Editardatos />
       <Misdatos />
