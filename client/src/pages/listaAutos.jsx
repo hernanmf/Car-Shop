@@ -17,9 +17,9 @@ const ListaAutos = () => {
           <h5>AUTOS</h5>
           <br />
 
-          <Row xs={1} md={4}>
+          <Row xs={1} md={4} className='justify-content-center'>
           
-            <Col /* key={} */className='mb-5' >
+            <Col /*key={}*/ className='mb-5' >
             <Card style={{ width: '18rem', height: '24rem'}} >
             <Image
               alt=""

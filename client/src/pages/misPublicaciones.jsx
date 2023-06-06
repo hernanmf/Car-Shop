@@ -18,7 +18,7 @@ const MisPublicaciones = () => {
           <h5>MIS PUBLICACIONES</h5>
           <br />
 
-          <Row xs={1} md={4}>
+          <Row xs={1} md={4} className='justify-content-center'>
           
             <Col /* key={} */className='mb-5' >
               <Card style={{ width: '18rem', height: '24rem'}} >
@@ -35,7 +35,7 @@ const MisPublicaciones = () => {
                 </Card.Body>
               </Card>
             </Col>
-            
+
             <Col /* key={} */className='mb-5' >
               <Card style={{ width: '18rem', height: '24rem'}} >
                 <Image alt="" src="http://www.motoresapleno.com.ar/wp-content/uploads/2014/04/Ford-Fiesta-Kinetic-Design-Trend-Plus-1.6-Sedan-1.jpg" fluid/>
