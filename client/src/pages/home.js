@@ -5,7 +5,6 @@ import '../css/home.css';
 
 import Banner from '../components/banner';
 import ComponentesIndex from '../components/componentesIndex';
-import Header from '../components/header';
 
 
 

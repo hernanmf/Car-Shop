@@ -9,12 +9,14 @@ import Footer  from "./components/footer";
 import Editardatos from './pages/editardatos';
 import ListaAutos from './pages/listaAutos';
 import MisPublicaciones from './pages/misPublicaciones';
+import VistaVehiculo from './pages/vistaVehiculo';
 
 function App() {
   return (
     <>
     <div className='App'>  
       <Header />
+      <VistaVehiculo />
       <MisPublicaciones />
       <ListaAutos />
       <Editardatos />
