@@ -21,7 +21,7 @@ const MisPublicaciones = () => {
           <Row xs={1} md={4} className='justify-content-center'>
           
             <Col /* key={} */className='mb-5' >
-              <Card style={{ width: '18rem', height: '24rem'}} >
+              <Card style={{ maxWidth: '100%', maxHeight:'52vh'}} >
                 <Image alt="" src="http://www.motoresapleno.com.ar/wp-content/uploads/2014/04/Ford-Fiesta-Kinetic-Design-Trend-Plus-1.6-Sedan-1.jpg" fluid/>
                 <Card.Body>
                   <h6>Ford Fiesta Kinetic Design Titanium</h6>
@@ -37,7 +37,7 @@ const MisPublicaciones = () => {
             </Col>
 
             <Col /* key={} */className='mb-5' >
-              <Card style={{ width: '18rem', height: '24rem'}} >
+              <Card style={{ maxWidth: '100%', maxHeight:'52vh'/* height: '24rem' */}/* { width: '18rem', maxWidth: '100%', height: '24rem'} */} >
                 <Image alt="" src="http://www.motoresapleno.com.ar/wp-content/uploads/2014/04/Ford-Fiesta-Kinetic-Design-Trend-Plus-1.6-Sedan-1.jpg" fluid/>
                 <Card.Body>
                   <h6>Ford Fiesta Kinetic Design Titanium</h6>
