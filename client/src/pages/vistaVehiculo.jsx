@@ -3,6 +3,8 @@ import React from 'react'
 import Container from 'react-bootstrap/esm/Container';
 import Carousel from 'react-bootstrap/Carousel';
 import Table from 'react-bootstrap/Table';
+import Accordion from 'react-bootstrap/Accordion';
+import ListGroup from 'react-bootstrap/ListGroup';
 
 import '../css/bloques.css';
 
@@ -44,64 +46,103 @@ const VistaVehiculo = () => {
         <h1>$ 4.400.000</h1>
         <br />
 
+        <Accordion defaultActiveKey={['0','1']} alwaysOpen>
+          
+          <Accordion.Item eventKey="0">
+          <Accordion.Header>Características</Accordion.Header>
+            <Accordion.Body>
+              
+              <Table responsive hover striped borderless>
+                <tbody >
+                  <tr>
+                    <td>Marca</td>
+                    <td>Ford</td>
+                  </tr>
+                  <tr>
+                    <td>Modelo</td>
+                    <td>Fiesta KD</td>
+                  </tr>
+                  <tr>
+                    <td>Version</td>
+                    <td>Titanium</td>
+                  </tr>
+                  <tr>
+                    <td>Año</td>
+                    <td>2017</td>
+                  </tr>
+                  <tr>
+                    <td>Kilometros</td>
+                    <td>70000</td>
+                  </tr>
+                  <tr>
+                    <td>Tipo Vehiculo</td>
+                    <td>Auto</td>
+                  </tr>
+                  <tr>
+                    <td>Transmision</td>
+                    <td>Manual</td>
+                  </tr>
+                  <tr>
+                    <td>Rodado</td>
+                    <td>17</td>
+                  </tr>
+                  <tr>
+                    <td>Potencia(cv)</td>
+                    <td>96</td>
+                  </tr>
+                  <tr>
+                    <td>Cap. carga(KG)</td>
+                    <td>400</td>
+                  </tr>
+                  <tr>
+                    <td>Traccion</td>
+                    <td>Delantera</td>
+                  </tr>
+                  <tr>
+                    <td>Color</td>
+                    <td>Gris</td>
+                  </tr>
+                </tbody>
+              </Table>
+            </Accordion.Body>
+          </Accordion.Item>
 
-        <h5>Características y detalles del auto</h5>
+          
+          <Accordion.Item eventKey="1">
+            <Accordion.Header>Descripcion</Accordion.Header>
+            <Accordion.Body>
+            
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+              minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+              aliquip ex ea commodo consequat. Duis aute irure dolor in
+              reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+              pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+              culpa qui officia deserunt mollit anim id est laborum.
+            
+            </Accordion.Body>
+          </Accordion.Item>
 
-
+        </Accordion>
+            
+        <br />
+        
         <p className="text-muted">¿Tuviste algun problema con la publicación? <a href='#'>Avisanos</a></p>
 
-        <Table responsive striped hover bordered>
-          <tbody >
-            <tr>
-              <th>Marca</th>
-              <th>Ford</th>
-            </tr>
-            <tr>
-              <th>Modelo</th>
-              <th>Fiesta KD</th>
-            </tr>
-            <tr>
-              <th>Version</th>
-              <th>Titanium</th>
-            </tr>
-            <tr>
-              <th>Año</th>
-              <th>2017</th>
-            </tr>
-            <tr>
-              <th>Kilometros</th>
-              <th>70000</th>
-            </tr>
-            <tr>
-              <th>Tipo Vehiculo</th>
-              <th>Auto</th>
-            </tr>
-            <tr>
-              <th>Transmision</th>
-              <th>Manual</th>
-            </tr>
-            <tr>
-              <th>Rodado</th>
-              <th>17</th>
-            </tr>
-            <tr>
-              <th>Potencia(cv)</th>
-              <th>96</th>
-            </tr>
-            <tr>
-              <th>Cap. carga(KG)</th>
-              <th>400</th>
-            </tr>
-            <tr>
-              <th>Traccion</th>
-              <th>Delantera</th>
-            </tr>
-            <tr>
-              <th>Color</th>
-              <th>Gris</th>
-            </tr>
-          </tbody>
-        </Table>
+        <br />
+
+        <h5>Consejos de seguridad</h5>
+        <ListGroup>
+          <ListGroup.Item>
+            <h6>Consejos de seguridad</h6>
+            Cras justo odio
+          </ListGroup.Item>
+          
+          <ListGroup.Item>
+            Dapibus ac facilisis in
+          </ListGroup.Item>
+        </ListGroup>
+
       </Container>
     </div>
   );
