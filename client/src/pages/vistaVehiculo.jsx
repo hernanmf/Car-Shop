@@ -4,7 +4,9 @@ import Container from 'react-bootstrap/esm/Container';
 import Carousel from 'react-bootstrap/Carousel';
 import Table from 'react-bootstrap/Table';
 import Accordion from 'react-bootstrap/Accordion';
-import ListGroup from 'react-bootstrap/ListGroup';
+import Card from 'react-bootstrap/Card';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
 
 import '../css/bloques.css';
 
@@ -126,23 +128,53 @@ const VistaVehiculo = () => {
         </Accordion>
             
         <br />
-        
-        <p className="text-muted">¿Tuviste algun problema con la publicación? <a href='#'>Avisanos</a></p>
+      
 
         <br />
 
         <h5>Consejos de seguridad</h5>
-        <ListGroup>
-          <ListGroup.Item>
-            <h6>Consejos de seguridad</h6>
-            Cras justo odio
-          </ListGroup.Item>
+        <Row xs={1} md={2} className='justify-content-center'>
           
-          <ListGroup.Item>
-            Dapibus ac facilisis in
-          </ListGroup.Item>
-        </ListGroup>
-
+          <Col /*key={}*/ className='mb-3' >
+            <Card style={{ maxWidth: '100%' }}>
+              <Card.Body>
+                <Card.Subtitle className="mb-2 text-muted">Seguí estos consejos cuando contactes al vendedor:</Card.Subtitle>
+                <Card.Text>
+                  Desconfiá si el vendedor dice que vive en el exterior o quiere venderlo muy rápido porque se muda.
+                  <br/>
+                  Si aseguran que Car Shop tiene el vehículo en un depósito, están mintiendo, no tenemos vehículos. No te contactes más con el vendedor y denunciá su publicación.
+                  <br/>
+                  Si acordás una visita, verificá la seguridad del lugar.
+                  <br/>
+                  No confíes en el vendedor si te presiona para que envíes un pago.
+                  <br/>
+                  Nunca te pediremos contraseñas, PIN o códigos de verificación por teléfono, e-mail o WhatsApp. No compartas estos datos con nadie.
+                </Card.Text>
+              </Card.Body>
+            </Card>
+          </Col>
+          
+          <Col /*key={}*/ className='mb-3' >
+            <Card style={{ maxWidth: '100%' }}>
+              <Card.Body>
+                <Card.Subtitle className="mb-2 text-muted">Tené en cuenta esto antes de pagar:</Card.Subtitle>
+                <Card.Text>
+                  Dudá de ofertas debajo del precio de mercado. Asesorate sobre cual puede ser el rango de precios.
+                  <br />
+                  No pagues sin verificar personalmente la documentación y el estado del vehículo.
+                  <br/>
+                  Revisá que no haya impuestos sin pagar y que no tenga multas.
+                  <br/>
+                  Dudá si la cuenta que te brindan para hacer una transferencia es de un banco desconocido.
+                  <br />
+                  El precio puede incluir costos adicionales como acarreo, patentamiento y otros costos gubernamentales. Confirma el precio final con el vendedor del vehículo.
+                </Card.Text>
+              </Card.Body>
+            </Card>
+          </Col>
+        </Row>
+        <p className="text-muted">¿Tuviste algun problema con la publicación? <a href='#'>Avisanos</a></p>
+        <p className="text-muted">id de publicacion: 93834783</p>
       </Container>
     </div>
   );
