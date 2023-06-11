@@ -7,6 +7,7 @@ import Accordion from 'react-bootstrap/Accordion';
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
+import Button from 'react-bootstrap/Button';
 
 import '../css/bloques.css';
 
@@ -128,6 +129,17 @@ const VistaVehiculo = () => {
         </Accordion>
             
         <br />
+        <Card style={{ width: '100%' }}>
+          <Card.Body>
+            <Card.Title>Información del vendedor</Card.Title>
+            <Card.Subtitle className="mb-2 text-muted">Fulano de tal</Card.Subtitle>
+            <Card.Text>
+              Some quick example text to build on the card title and make up the
+              bulk of the card's content.
+            </Card.Text>
+            <Button variant="danger">Contactar</Button>
+          </Card.Body>
+        </Card>
       
 
         <br />
