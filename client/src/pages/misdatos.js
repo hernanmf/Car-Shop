@@ -4,11 +4,13 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import Container from 'react-bootstrap/esm/Container';
 import Button from 'react-bootstrap/Button';
 
+import MisPublicaciones from './misPublicaciones';
 import '../css/bloques.css';
 
 const Misdatos = () => {
   return (
     <>
+      <br />
       <Container>
       <h5>MIS DATOS</h5>
         <div className='bloques-cerrado'>
@@ -22,6 +24,8 @@ const Misdatos = () => {
           <p>id user: ññañañañañalsldasd</p> 
           <Button variant="success" type="submit" size="lg" className="button" id='btnModificar' >Modificar datos</Button>
         </div>
+        <br />
+        <MisPublicaciones />
       </Container>
     </>
   );
