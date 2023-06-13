@@ -129,15 +129,21 @@ const VistaVehiculo = () => {
         </Accordion>
             
         <br />
+        <h5>Información del vendedor</h5>
         <Card style={{ width: '100%' }}>
           <Card.Body>
-            <Card.Title>Información del vendedor</Card.Title>
-            <Card.Subtitle className="mb-2 text-muted">Fulano de tal</Card.Subtitle>
-            <Card.Text>
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </Card.Text>
-            <Button variant="danger">Contactar</Button>
+            <Card.Title>Fulano de tal</Card.Title>
+            <Row xs={1} md={2} className='justify-content-center'>
+              <Col /*key={}*/ >
+                <Card.Subtitle>Ubicacion</Card.Subtitle>
+                <Card.Text className="mb-2 text-muted">Mar del Plata</Card.Text>
+              </Col>
+              <Col /*key={}*/ >
+                <Card.Subtitle>Horario de atencion</Card.Subtitle>
+                <Card.Text className="mb-2 text-muted">de 8 a 16</Card.Text>
+              </Col>
+            </Row>
+            <Button variant="danger">Contactar</Button> {/* Aca se mostraria email y celular del vendedor */}
           </Card.Body>
         </Card>
       
