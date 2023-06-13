@@ -113,7 +113,7 @@ const NuevoAuto = () => {
           <br />
           <Row>
             <Col>
-              <Button variant="success" type="submit" size="lg" className="button" id='btnConfirmar' >Confirmar</Button>
+              <Button variant="success" type="submit" size="lg" className="button" id='btnConfirmar'>Publicar</Button>
             </Col>
             <Col>
               <Button variant="danger" type="submit" size="lg" className="button" id='btnCancelar'>Cancelar</Button>
