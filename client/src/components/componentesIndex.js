@@ -15,7 +15,7 @@ import '../css/bloques.css';
 
 const ComponentesIndex = () => {
   return (
-    <div class='bloques'>
+    <div className='bloques'>
       <div className="d-grid gap-2">
       <Button variant="outline-danger" size="lg">
         VENDÉ TU AUTO
