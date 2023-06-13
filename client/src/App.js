@@ -11,12 +11,14 @@ import ListaAutos from './pages/listaAutos';
 import MisPublicaciones from './pages/misPublicaciones';
 import VistaVehiculo from './pages/vistaVehiculo';
 import EditarAuto from './pages/editarAuto';
+import NuevoAuto from './pages/nuevoAuto';
 
 function App() {
   return (
     <>
     <div className='App'>  
       <Header />
+      <NuevoAuto />
       <EditarAuto />
       <VistaVehiculo />
       <MisPublicaciones />
