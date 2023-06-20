@@ -146,7 +146,7 @@ const VistaVehiculo = () => {
             <Button variant="danger">Contactar</Button> {/* Aca se mostraria email y celular del vendedor */}
           </Card.Body>
         </Card>
-      
+        
 
         <br />
 
