@@ -31,7 +31,7 @@ const ListaAutos = () => {
               <h6>Ford Fiesta Kinetic Design Titanium</h6>
               <h5>$ 1.100.000</h5>
               <p className="text-muted">2017 - 70000 km</p>
-              <Button variant="danger">Ver mas</Button>
+              <Button variant="danger" href='/vistavehiculo'>Ver mas</Button>
             </Card.Body>
             </Card>
             </Col>
@@ -47,7 +47,7 @@ const ListaAutos = () => {
               <h6>Ford Fiesta Kinetic Design Titanium</h6>
               <h5>$ 2.200.000</h5>
               <p className="text-muted">2017 - 70000 km</p>
-              <Button variant="danger">Ver mas</Button>
+              <Button variant="danger" href='/vistavehiculo'>Ver mas</Button>
             </Card.Body>
             </Card>
               </Col>
@@ -63,7 +63,7 @@ const ListaAutos = () => {
               <h6>Citroen C4 Cactus</h6>
               <h5>$ 3.300.000</h5>
               <p className="text-muted">2017 - 70000 km</p>
-              <Button variant="danger">Ver mas</Button>
+              <Button variant="danger" href='/vistavehiculo'>Ver mas</Button>
             </Card.Body>
             </Card>
             </Col>
@@ -79,7 +79,7 @@ const ListaAutos = () => {
               <h6>Ford Fiesta Kinetic Design Titanium</h6>
               <h5>$ 4.400.000</h5>
               <p className="text-muted">2017 - 70000 km</p>
-              <Button variant="danger">Ver mas</Button>
+              <Button variant="danger" href='/vistavehiculo'>Ver mas</Button>
             </Card.Body>
             </Card>
             </Col>
@@ -95,7 +95,7 @@ const ListaAutos = () => {
               <h6>Ford Fiesta Kinetic Design Titanium</h6>
               <h5>$ 5.500.000</h5>
               <p className="text-muted">2017 - 70000 km</p>
-              <Button variant="danger">Ver mas</Button>
+              <Button variant="danger" href='/vistavehiculo'>Ver mas</Button>
             </Card.Body>
             </Card>
             </Col>
@@ -111,7 +111,7 @@ const ListaAutos = () => {
               <h6>Ford Fiesta Kinetic Design Titanium</h6>
               <h5>$ 6.600.000</h5>
               <p className="text-muted">2017 - 70000 km</p>
-              <Button variant="danger">Ver mas</Button>
+              <Button variant="danger" href='/vistavehiculo'>Ver mas</Button>
             </Card.Body>
             </Card>
             </Col>

@@ -28,8 +28,8 @@ const MisPublicaciones = () => {
                   <h5>$ 3.400.000</h5>
                   <p className="text-muted">2017 - 70000 km</p>
                   <ButtonGroup size="sm">
-                    <Button variant="danger">Ver</Button>
-                    <Button variant="danger">Editar</Button>
+                    <Button variant="danger" href='vistaVehiculo'>Ver</Button>
+                    <Button variant="danger" href='editarauto'>Editar</Button>
                     <Button variant="danger">Eliminar</Button>
                   </ButtonGroup>
                 </Card.Body>
@@ -44,8 +44,8 @@ const MisPublicaciones = () => {
                   <h5>$ 3.400.000</h5>
                   <p className="text-muted">2017 - 70000 km</p>
                   <ButtonGroup size="sm">
-                    <Button variant="danger">Ver</Button>
-                    <Button variant="danger">Editar</Button>
+                    <Button variant="danger" href='vistaVehiculo'>Ver</Button>
+                    <Button variant="danger" href='editarauto'>Editar</Button>
                     <Button variant="danger">Eliminar</Button>
                   </ButtonGroup>
                 </Card.Body>

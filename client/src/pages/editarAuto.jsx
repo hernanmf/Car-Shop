@@ -116,7 +116,7 @@ const EditarAuto = () => {
               <Button variant="success" type="submit" size="lg" className="button" id='btnConfirmar' >Confirmar</Button>
             </Col>
             <Col>
-              <Button variant="danger" type="submit" size="lg" className="button" id='btnCancelar'>Cancelar</Button>
+              <Button variant="danger" type="submit" size="lg" className="button" id='btnCancelar' href='/misdatos'>Cancelar</Button>
             </Col>
           </Row>
         </div>

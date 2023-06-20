@@ -22,7 +22,7 @@ const Misdatos = () => {
             <ListGroup.Item as="li"><h6>Localidad</h6> <p>Mar del Plata</p></ListGroup.Item>  
           </ListGroup>
           <p>id user: ññañañañañalsldasd</p> 
-          <Button variant="success" type="submit" size="lg" className="button" id='btnModificar' >Modificar datos</Button>
+          <Button variant="success" type="submit" size="lg" className="button" id='btnModificar' href='/editardatos'>Modificar datos</Button>
         </div>
         <br />
         <MisPublicaciones />

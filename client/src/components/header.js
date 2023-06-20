@@ -19,7 +19,7 @@ const Header = () => {
     <>
       <Navbar key={'false'} expand={'sm'} className='colorapp'>
           <Container >
-          <Navbar.Brand href="#">
+          <Navbar.Brand href="/">
             <img
               alt=""
               src={LogoChico}
@@ -46,21 +46,21 @@ const Header = () => {
                 <Form className="d-flex">
                   <InputGroup className="mb-1">
                     <Form.Control placeholder="Buscá marcas, modelos y mas.." />
-                    <Button variant="light" id="button-addon2">Buscar</Button>
+                    <Button variant="light" id="button-addon2" href='/listaautos'>Buscar</Button>
                   </InputGroup>
                 </Form>
                 </Col>
                 
               
                 <Nav className="justify-content-end flex-grow-1 pe-3">
-                  <Nav.Link href="#action1">Home</Nav.Link>
-                  <Nav.Link href="#action2">Link</Nav.Link>
+                  <Nav.Link href="/">Home</Nav.Link>
                   
                   <NavDropdown title="Mi perfil" id={`offcanvasNavbarDropdown-expand-sm`}>
-                    <NavDropdown.Item href="#action3">Mis datos</NavDropdown.Item>
-                    <NavDropdown.Item href="#action4">Mis publicaciones</NavDropdown.Item>
+                    <NavDropdown.Item href="/misdatos">Mis datos</NavDropdown.Item>
+                    <NavDropdown.Item href="/editardatos">Editar mis datos</NavDropdown.Item>
+                    <NavDropdown.Item href="/mispublicaciones">Mis publicaciones</NavDropdown.Item>
                     <NavDropdown.Divider />
-                    <NavDropdown.Item href="#action5">Cerrar sesión</NavDropdown.Item>
+                    <NavDropdown.Item href="/">Cerrar sesión</NavDropdown.Item>
                   </NavDropdown>
                 </Nav>
               </Offcanvas.Body>

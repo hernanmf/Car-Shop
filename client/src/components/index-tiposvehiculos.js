@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import Badge from 'react-bootstrap/Badge';
 import Col from 'react-bootstrap/Col';
@@ -26,16 +27,16 @@ const Tiposvehiculos = () => {
       <Row>
         
         <Col xs={3} md={3}>
-          <Image src={coche} className='icon-button'/>
+          <Link to="/listaautos"><Image src={coche} className='icon-button'/></Link>
         </Col>
         <Col xs={3} md={3}>
-          <Image src={motocicleta} className='icon-button'/>
+          <Link to="/listaautos"><Image src={motocicleta} className='icon-button'/></Link>
         </Col>
         <Col xs={3} md={3}>
-          <Image src={camioneta} className='icon-button'/>
+          <Link to="/listaautos"><Image src={camioneta} className='icon-button'/></Link>
         </Col>
         <Col xs={3} md={3}>
-          <Image src={camion} className='icon-button'/>
+          <Link to="/listaautos"><Image src={camion} className='icon-button'/></Link>
         </Col>
         
       </Row>
@@ -45,5 +46,3 @@ const Tiposvehiculos = () => {
 }
 
 export default Tiposvehiculos
-
-    

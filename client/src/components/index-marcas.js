@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 import Badge from 'react-bootstrap/Badge';
 import Col from 'react-bootstrap/Col';
@@ -30,31 +31,40 @@ const Marcas = () => {
       <Row xs={3} md={5} className="justify-content-md-center" >
         
         <Col>
-          <Image src={chevrolet} className='icon-button' roundedCircle />
+            <Link to="/listaautos"><Image src={chevrolet} className='icon-button' roundedCircle />
+            </Link>
         </Col>
         <Col>
-          <Image src={fiat} className='icon-button' roundedCircle />
+            <Link to="/listaautos"><Image src={fiat} className='icon-button' roundedCircle />
+            </Link>
         </Col>
         <Col>
-          <Image src={ford} className='icon-button' roundedCircle />
+          <Link to="/listaautos"><Image src={ford} className='icon-button' roundedCircle />
+          </Link>
         </Col>
         <Col>
-          <Image src={honda} className='icon-button' roundedCircle />
+          <Link to="/listaautos"><Image src={honda} className='icon-button' roundedCircle />
+          </Link>
         </Col>
         <Col>
-          <Image src={peugeot} className='icon-button' roundedCircle />
+          <Link to="/listaautos"><Image src={peugeot} className='icon-button' roundedCircle />
+          </Link>
         </Col>
         <Col>
-          <Image src={renault} className='icon-button' roundedCircle />
+          <Link to="/listaautos"><Image src={renault} className='icon-button' roundedCircle />
+          </Link>
         </Col>
         <Col>
-          <Image src={vw} className='icon-button' roundedCircle />
+          <Link to="/listaautos"><Image src={vw} className='icon-button' roundedCircle />
+          </Link>
         </Col>
         <Col>
-          <Image src={citroen} className='icon-button' roundedCircle />
+          <Link to="/listaautos"><Image src={citroen} className='icon-button' roundedCircle />
+          </Link>
         </Col>
         <Col>
-          <Image src={jeep} className='icon-button' roundedCircle />
+          <Link to="/listaautos"><Image src={jeep} className='icon-button' roundedCircle />
+          </Link>
         </Col>
         
       </Row>

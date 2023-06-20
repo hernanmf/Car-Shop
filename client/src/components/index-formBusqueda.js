@@ -43,7 +43,7 @@ const FormBusqueda = () => {
               </Form.Group>
             
               <Form.Group className="mb-3" as={Col} id="formGridButton">
-                <Button type="button" className="button" variant="danger">BUSCAR</Button>
+                <Button type="button" className="button" variant="danger" href='/listaautos'>BUSCAR</Button>
               </Form.Group>
             
             </Row>
