@@ -191,7 +191,7 @@ const VistaVehiculo = () => {
             </Card>
           </Col>
         </Row>
-        <p className="text-muted">¿Tuviste algun problema con la publicación? <a href='#'>Avisanos</a></p>
+        <p className="text-muted">¿Tuviste algun problema con la publicación? <a href='/contacto'>Avisanos</a></p>
         <p className="text-muted">id de publicacion: 93834783</p>
       </Container>
     </div>

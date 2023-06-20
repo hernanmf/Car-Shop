@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'; 
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; 
 import React from "react";
 
 import './App.css';
@@ -13,6 +13,7 @@ import VistaVehiculo from './pages/vistaVehiculo';
 import EditarAuto from './pages/editarAuto';
 import NuevoAuto from './pages/nuevoAuto';
 import MisPublicaciones from './pages/misPublicaciones';
+import Contacto from './pages/contacto';
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
             <Route path="/vistavehiculo" element={<VistaVehiculo />} />
             <Route path="/editardatos" element={<Editardatos />} />
             <Route path="/mispublicaciones" element={<MisPublicaciones />} />
+            <Route path="/contacto" element={<Contacto />} />
             </Routes>
           </Router>
         

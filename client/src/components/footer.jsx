@@ -1,13 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 
-
 import '../css/nav.css';
-
 import LogoChico from '../assets/images/logochico.png';
 
 const Footer = () => {
@@ -15,7 +12,6 @@ const Footer = () => {
      <Navbar variant="dark" className='colorapp' >
         <Container>
         <Navbar.Brand href="/" >
-          {/* <Link to="/miperfil"> */}
           <img
               alt=""
               src={LogoChico}
@@ -23,11 +19,10 @@ const Footer = () => {
               height="80"
               className="d-inline-block"
             />
-            {/* </Link> */}
           </Navbar.Brand>
           <Nav>
             <Nav.Link href="/">Inicio</Nav.Link>
-            <Nav.Link href="#features">Contacto</Nav.Link>
+            <Nav.Link href="/contacto">Contacto</Nav.Link>
             <Nav.Link href="#pricing">FAQ</Nav.Link>
           </Nav>
         </Container>
