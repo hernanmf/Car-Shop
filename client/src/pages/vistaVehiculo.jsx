@@ -13,9 +13,9 @@ import '../css/bloques.css';
 
 const VistaVehiculo = () => {
   return (
-    <div className='bloques-cerrado'>
-      <Container>
-
+    <Container>
+        <div className='bloques-cerrado'>
+        <br />
         <p className="text-muted">2017 - 70000 km - Publicado: 20/03/2023</p>
         <h4>Ford Fiesta Kinetic Design Titanium</h4>
       
@@ -166,7 +166,9 @@ const VistaVehiculo = () => {
                   <br/>
                   No confíes en el vendedor si te presiona para que envíes un pago.
                   <br/>
-                  Nunca te pediremos contraseñas, PIN o códigos de verificación por teléfono, e-mail o WhatsApp. No compartas estos datos con nadie.
+                  Nunca te pediremos contraseñas, PIN o códigos de verificación por teléfono, e-mail o WhatsApp.
+                  <br />
+                  No compartas estos datos con nadie.
                 </Card.Text>
               </Card.Body>
             </Card>
@@ -193,8 +195,9 @@ const VistaVehiculo = () => {
         </Row>
         <p className="text-muted">¿Tuviste algun problema con la publicación? <a href='/contacto'>Avisanos</a></p>
         <p className="text-muted">id de publicacion: 93834783</p>
-      </Container>
-    </div>
+        <br />
+      </div>
+    </Container>
   );
 }
 

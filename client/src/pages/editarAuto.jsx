@@ -14,8 +14,10 @@ const EditarAuto = () => {
     <>
       <Container>
       <br />
-      <h5>Editar auto</h5>
-        <div className='bloques-cerrado'>
+      <div className='bloques-cerrado'>
+        <br />
+          <h5>EDTIAR AUTO</h5>
+        <br />
           <ListGroup as="ul">
 
             <ListGroup.Item as="li">
@@ -119,6 +121,7 @@ const EditarAuto = () => {
               <Button variant="danger" type="submit" size="lg" className="button" id='btnCancelar' href='/misdatos'>Cancelar</Button>
             </Col>
           </Row>
+          <br />
         </div>
       </Container>
     </>

@@ -12,8 +12,8 @@ import '../css/bloques.css';
 const ListaAutos = () => {
   return (
     <>
-      <div className='bloques-cerrado'>
-        <Container>
+      <Container>
+        <div className='bloques-cerrado'>
           <br />
           <h5>AUTOS</h5>
           <br />
@@ -117,8 +117,8 @@ const ListaAutos = () => {
             </Col>
           
             </Row>
-        </Container>
-      </div>
+        </div>
+      </Container>
     </>
   );
 }

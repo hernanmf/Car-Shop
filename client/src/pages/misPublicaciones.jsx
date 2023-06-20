@@ -13,8 +13,10 @@ import '../css/bloques.css';
 const MisPublicaciones = () => {
   return (
     <>
-      <div className='bloques-cerrado'>
-        <Container>
+      <Container style={{height: "100vh",maxHeight: "80vh"}}>
+        <br />
+        <div className='bloques-cerrado'>
+          <br />
           <h5>MIS PUBLICACIONES</h5>
           <br />
 
@@ -53,8 +55,9 @@ const MisPublicaciones = () => {
             </Col>
 
           </Row>
-        </Container>
-      </div>
+        </div>
+        <br />
+      </Container>
     </>
   );
 }

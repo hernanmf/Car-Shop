@@ -12,8 +12,9 @@ const Misdatos = () => {
     <>
       <br />
       <Container >
-      <h5>MIS DATOS</h5>
-        <div className='bloques-cerrado'>
+      <div className='bloques-cerrado'>
+        <br />
+        <h5>MIS DATOS</h5>
           <ListGroup as="ul">
             <ListGroup.Item as="li"><h6>Nombre Completo</h6> <p>Hernan Martinez</p></ListGroup.Item>
             <ListGroup.Item as="li"><h6>Correo electrónico</h6> <p>email@example.com</p></ListGroup.Item>
@@ -23,8 +24,9 @@ const Misdatos = () => {
           </ListGroup>
           <p>id user: ññañañañañalsldasd</p> 
           <Button variant="success" type="submit" size="lg" className="button" id='btnModificar' href='/editardatos'>Modificar datos</Button>
-        </div>
         <br />
+        <br />
+        </div>
         <MisPublicaciones />
       </Container>
     </>

@@ -13,10 +13,10 @@ const Editardatos = () => {
   return (
     <>
       <Container style={{ minHeight: '80vh', }}>
-       <br />
-       <br />
+      <br />
+      <div className='bloques-cerrado'>
+      <br />
       <h5>MIS DATOS</h5>
-        <div className='bloques-cerrado'>
           <ListGroup as="ul">
             <ListGroup.Item as="li">
               <h6>Nombre Completo</h6>
@@ -48,6 +48,7 @@ const Editardatos = () => {
               <Button variant="danger" type="submit" size="lg" className="button" id='btnCancelar' href='misdatos'>Cancelar</Button>
             </Col>
           </Row>
+          <br />
         </div>
       </Container>
     </>

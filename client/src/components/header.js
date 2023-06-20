@@ -53,7 +53,7 @@ const Header = () => {
                 
               
                 <Nav className="justify-content-end flex-grow-1 pe-3">
-                  <Nav.Link href="/">Home</Nav.Link>
+                  <Nav.Link href="/">Inicio</Nav.Link>
                   <Nav.Link href="/contacto">Contacto</Nav.Link>
                   
                   <NavDropdown title="Mi perfil" id={`offcanvasNavbarDropdown-expand-sm`}>
