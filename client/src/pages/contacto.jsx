@@ -12,7 +12,8 @@ import '../css/bloques.css';
 const contacto = () => {
   return (
     <>
-    <Container>
+      <Container style={{ minHeight: '80vh', }}>
+      <br />
       <h5>Contactanos</h5>
       <div className='bloques-cerrado'>
         <ListGroup as="ul">
@@ -47,7 +48,8 @@ const contacto = () => {
           </ListGroup.Item>
 
         </ListGroup>
-        <Row>
+        <br />
+        <Row>    
           <Col>
             <Button variant="success" type="submit" size="lg" className="button" id='btnConfirmar' >Enviar</Button>
           </Col>

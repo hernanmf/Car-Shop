@@ -1,5 +1,4 @@
 import { React, useState } from 'react';
-/* import { BrowserRouter as Router, Route } from "react-router-dom"; */
 import '../css/login.css';
 import LogoGrande from '../assets/images/logogrande.png';
 
@@ -10,7 +9,6 @@ import Container from 'react-bootstrap/esm/Container';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
-import Home from './home';
 
 let Usuarios = [{
   "email": "hernanmartinezf@gmail.com",

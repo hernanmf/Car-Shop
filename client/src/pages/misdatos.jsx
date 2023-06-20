@@ -11,7 +11,7 @@ const Misdatos = () => {
   return (
     <>
       <br />
-      <Container>
+      <Container >
       <h5>MIS DATOS</h5>
         <div className='bloques-cerrado'>
           <ListGroup as="ul">

@@ -12,7 +12,9 @@ import '../css/bloques.css';
 const Editardatos = () => {
   return (
     <>
-      <Container>
+      <Container style={{ minHeight: '80vh', }}>
+       <br />
+       <br />
       <h5>MIS DATOS</h5>
         <div className='bloques-cerrado'>
           <ListGroup as="ul">

@@ -10,7 +10,7 @@ import ComponentesIndex from '../components/componentesIndex';
 
 const Home = () => {
   return (
-    <div className='index' >
+    <div className='index'>
       <Banner />
       <ComponentesIndex />
     </div>
