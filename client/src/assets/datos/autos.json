@@ -1,4 +1,4 @@
-"autos": [
+{"autos": [
     {
       "tipo": "Sedán",
       "marca": "Toyota",
@@ -41,4 +41,5 @@
         "https://ejemplo.com/foto6.jpg"
       ]
     }
-  ];
+  ]
+}
