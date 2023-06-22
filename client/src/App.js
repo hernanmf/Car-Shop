@@ -46,8 +46,8 @@ function App() {
         
         <Footer />
         </div>
-        </AutosProvider>
-        </UsuariosProvider>
+      </AutosProvider>
+      </UsuariosProvider>
     </>
   );
 }

@@ -13,10 +13,9 @@ import { UsuariosContext } from '../Context/UserContext';
 
 const LogIn = () => {
 
-  const usuarios = useContext(UsuariosContext);
-  
-  const [activeUser, setUser] = useState( false );
-  const [validated, setValidated] = useState( false );
+  const { usuarios ,activeUser, setactiveUser } = useContext(UsuariosContext);
+
+  const [validated, setValidated] = useState( true );
 
   const handleSubmit = (e) => {
     const form = e.currentTarget;
@@ -26,18 +25,19 @@ const LogIn = () => {
     } else {
       //si el form valida bien, hay q ver si el user existe
       let usuarioEncontrado = usuarios.find(usuario => usuario.correo_electronico === e.target.email.value && usuario.password === e.target.clave.value);
-      console.log(usuarioEncontrado);
-
-      if (usuarioEncontrado){
-        setUser(usuarioEncontrado);
-        alert('Bienvenido' + JSON.stringify(activeUser) );
+      console.log('Usuario encontrado:',usuarioEncontrado);
+      if (usuarioEncontrado) {
+        setactiveUser(usuarioEncontrado);
+        console.log('Bienvenido', activeUser );
+        alert('BIENVENIDO A CAR SHOP');
       } else {
-        setUser(null);
-        alert('El usuario no existe');
+        alert('EL USUARIO NO EXISTE, REVISE LOS DATOS Y REINTENTE');
         setValidated(true);      
       }
+      e.preventDefault();
+      e.stopPropagation();
     }
-    };
+  };
 
   return (
      <>
@@ -48,27 +48,24 @@ const LogIn = () => {
                 <Card.Body>
                   <Card.Title>INICIA SESIÓN</Card.Title>
                 
-                  <Form validated={validated} onSubmit={handleSubmit} style={{ margin: '1vw' }}>
+              <Form validated={validated} onSubmit={handleSubmit} style={{ margin: '1vw' }}>
                     
                     <Form.Group>  
                       <FloatingLabel label="Correo electrónico" className='input-button'>
                         <Form.Control type="email" placeholder="tuusuario@email.com" id='email' required />
                       </FloatingLabel>
-                      <Form.Control.Feedback type="invalid">
-                        Ingresa una dirección email válida
-                      </Form.Control.Feedback>
                     </Form.Group>
         
                     <Form.Group>  
                       <FloatingLabel label="Contraseña" className='input-button'>
                         <Form.Control type="password" placeholder="Clave" id='clave' required/>
                       </FloatingLabel>
-                      <Form.Control.Feedback type="invalid">
-                        Ingresa una contraseña válida
-                      </Form.Control.Feedback>
                     </Form.Group>
+                    <Form.Control.Feedback type="invalid">
+                      Ingresa una contraseña válida
+                    </Form.Control.Feedback>
                     
-                  <Button variant="danger" type="submit" size="lg" className='input-button' id='btnIngresar'>Ingresar</Button>
+                <Button variant="danger" type="submit" size="lg" className='input-button' id='btnIngresar' href={}> Ingresar</Button>
                 
                   </Form>
                 </Card.Body>
