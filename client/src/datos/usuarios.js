@@ -1,4 +1,5 @@
-{"usuarios": [
+
+let usuarios = [
     {
       "id": "001",
       "password": "contraseña1",
@@ -26,5 +27,4 @@
       "provincia": "Mendoza",
       "localidad": "Mendoza"
     }
-  ]
-}
+  ];

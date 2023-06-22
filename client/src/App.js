@@ -1,7 +1,9 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; 
 import React from "react";
+import { AutosProvider } from './Context/AutosContext';
 
 import './App.css';
+
 import LogIn from './pages/login';
 import Home from './pages/home';
 import Header  from "./components/header";
@@ -15,9 +17,11 @@ import NuevoAuto from './pages/nuevoAuto';
 import MisPublicaciones from './pages/misPublicaciones';
 import Contacto from './pages/contacto';
 
+
 function App() {
   return (
     <>
+      <AutosProvider>
       <div className='App'>  
         <Header />
 
@@ -38,7 +42,8 @@ function App() {
           </Router>
         
         <Footer />
-      </div>
+        </div>
+        </AutosProvider>
     </>
   );
 }
