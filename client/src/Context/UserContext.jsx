@@ -1,5 +1,4 @@
 import { createContext } from "react";
-/* import '../datos/usuarios'; */
 
 let usuarios = require('../datos/usuarios'); //importacion de los datos desde otro script
 

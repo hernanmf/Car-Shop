@@ -1,4 +1,4 @@
-import { React, useState } from 'react';
+import { React, useContext, useState } from 'react';
 import '../css/login.css';
 import LogoGrande from '../assets/images/logogrande.png';
 
@@ -9,32 +9,34 @@ import Container from 'react-bootstrap/esm/Container';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
-
-let Usuarios = [{
-  "email": "hernanmartinezf@gmail.com",
-  "clave": "123456789"
-  },
-  {
-    "email": "admin",
-    "clave": "admin"
-  },
-  {
-  "email": "a",
-  "clave": "0"
-  }
-];
+import { UsuariosContext } from '../Context/UserContext';
 
 const LogIn = () => {
-  const [validated, setValidated] = useState(false);
 
-  const handleSubmit = (event) => {
-    const form = event.currentTarget;
+  const usuarios = useContext(UsuariosContext);
+  
+  const [activeUser, setUser] = useState( false );
+  const [validated, setValidated] = useState( false );
+
+  const handleSubmit = (e) => {
+    const form = e.currentTarget;
     if (form.checkValidity() === false) {
-      event.preventDefault();
-      event.stopPropagation();
+      e.preventDefault();
+      e.stopPropagation();
+    } else {
+      //si el form valida bien, hay q ver si el user existe
+      let usuarioEncontrado = usuarios.find(usuario => usuario.correo_electronico === e.target.email.value && usuario.password === e.target.clave.value);
+      console.log(usuarioEncontrado);
+
+      if (usuarioEncontrado){
+        setUser(usuarioEncontrado);
+        alert('Bienvenido', activeUser);
+      } else {
+        alert('El usuario no existe');
+        setValidated(true);      
+      }
     }
-    setValidated(true);
-  };
+    };
 
   return (
      <>
@@ -44,15 +46,15 @@ const LogIn = () => {
               <Card.Img variant="top" src={LogoGrande} />
                 <Card.Body>
                   <Card.Title>INICIA SESIÓN</Card.Title>
-                  <Form validated={validated} /* onSubmit={handleSubmit} */ style={{ margin: '1vw' }}>
+                  <Form validated={validated} onSubmit={handleSubmit} style={{ margin: '1vw' }}>
                     <Form.Group>  
-                    <FloatingLabel controlId="floatingInput" label="Correo electrónico" className='input-button'>
+                    <FloatingLabel label="Correo electrónico" className='input-button'>
                     <Form.Control type="email" placeholder="tuusuario@email.com" id='email' required />
                     </FloatingLabel>
                     </Form.Group>
         
                     <Form.Group>  
-                    <FloatingLabel controlId="floatingPassword" label="Contraseña" className='input-button'>
+                    <FloatingLabel label="Contraseña" className='input-button'>
                       <Form.Control type="password" placeholder="Clave" id='clave' required/>
                     </FloatingLabel>
                     </Form.Group>
@@ -66,11 +68,6 @@ const LogIn = () => {
       </>
   );
 }
-
-let email = document.getElementById("email");
-let clave = document.getElementById("clave");
-let btnIngresar = document.getElementById("btnIngresar");
-
 
   
 export default LogIn;

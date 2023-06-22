@@ -26,5 +26,16 @@ let usuarios = [
       "telefono": "5555555555",
       "provincia": "Mendoza",
       "localidad": "Mendoza"
+    },
+    {
+      "id": "004",
+      "password": "aa",
+      "nombre_completo": "Pedro Rodríguez",
+      "correo_electronico": "aa@aa",
+      "telefono": "5555555555",
+      "provincia": "Mendoza",
+      "localidad": "Mendoza"
     }
-  ];
+];
+  
+module.exports = usuarios;

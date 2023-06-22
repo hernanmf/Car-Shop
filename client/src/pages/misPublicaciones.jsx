@@ -14,7 +14,6 @@ import '../css/bloques.css';
 const MisPublicaciones = () => {
 
   const autos = useContext( AutosContext );
-  
 
   return (
     <>
