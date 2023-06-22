@@ -30,8 +30,9 @@ const LogIn = () => {
 
       if (usuarioEncontrado){
         setUser(usuarioEncontrado);
-        alert('Bienvenido', activeUser);
+        alert('Bienvenido' + JSON.stringify(activeUser) );
       } else {
+        setUser(null);
         alert('El usuario no existe');
         setValidated(true);      
       }
@@ -46,20 +47,29 @@ const LogIn = () => {
               <Card.Img variant="top" src={LogoGrande} />
                 <Card.Body>
                   <Card.Title>INICIA SESIÓN</Card.Title>
+                
                   <Form validated={validated} onSubmit={handleSubmit} style={{ margin: '1vw' }}>
+                    
                     <Form.Group>  
-                    <FloatingLabel label="Correo electrónico" className='input-button'>
-                    <Form.Control type="email" placeholder="tuusuario@email.com" id='email' required />
-                    </FloatingLabel>
+                      <FloatingLabel label="Correo electrónico" className='input-button'>
+                        <Form.Control type="email" placeholder="tuusuario@email.com" id='email' required />
+                      </FloatingLabel>
+                      <Form.Control.Feedback type="invalid">
+                        Ingresa una dirección email válida
+                      </Form.Control.Feedback>
                     </Form.Group>
         
                     <Form.Group>  
-                    <FloatingLabel label="Contraseña" className='input-button'>
-                      <Form.Control type="password" placeholder="Clave" id='clave' required/>
-                    </FloatingLabel>
+                      <FloatingLabel label="Contraseña" className='input-button'>
+                        <Form.Control type="password" placeholder="Clave" id='clave' required/>
+                      </FloatingLabel>
+                      <Form.Control.Feedback type="invalid">
+                        Ingresa una contraseña válida
+                      </Form.Control.Feedback>
                     </Form.Group>
                     
-                    <Button variant="danger" type="submit" size="lg" className='input-button' id='btnIngresar'>Ingresar</Button>
+                  <Button variant="danger" type="submit" size="lg" className='input-button' id='btnIngresar'>Ingresar</Button>
+                
                   </Form>
                 </Card.Body>
             </Card>

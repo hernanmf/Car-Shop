@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; 
 import React from "react";
 import { AutosProvider } from './Context/AutosContext';
+import { UsuariosProvider } from './Context/UserContext';
 
 import './App.css';
 
@@ -18,9 +19,11 @@ import MisPublicaciones from './pages/misPublicaciones';
 import Contacto from './pages/contacto';
 
 
+
 function App() {
   return (
     <>
+      <UsuariosProvider>
       <AutosProvider>
       <div className='App'>  
         <Header />
@@ -44,6 +47,7 @@ function App() {
         <Footer />
         </div>
         </AutosProvider>
+        </UsuariosProvider>
     </>
   );
 }
