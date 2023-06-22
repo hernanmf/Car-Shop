@@ -1,5 +1,4 @@
 import { createContext } from "react";
-import '../datos/autos';
 
 let autos = require('../datos/autos'); //importacion de los datos desde otro script
 

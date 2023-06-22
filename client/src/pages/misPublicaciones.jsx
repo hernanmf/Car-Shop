@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { AutosContext } from '../Context/AutosContext';
 
 import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/esm/Container';
@@ -11,9 +12,13 @@ import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import '../css/bloques.css';
 
 const MisPublicaciones = () => {
+
+  const autos = useContext( AutosContext );
+  
+
   return (
     <>
-      <Container style={{height: "100vh",maxHeight: "80vh"}}>
+      <Container style={{/* height: "100vh" ,*/minHeight: "75vh"}}>
         <br />
         <div className='bloques-cerrado'>
           <br />
@@ -21,14 +26,15 @@ const MisPublicaciones = () => {
           <br />
 
           <Row xs={1} md={4} className='justify-content-center'>
-          
-            <Col /* key={} */className='mb-5' >
+
+            {autos.map((auto) => (
+              <Col className='mb-5' >
               <Card style={{ maxWidth: '100%', maxHeight:'52vh'}} >
-                <Image alt="" src="http://www.motoresapleno.com.ar/wp-content/uploads/2014/04/Ford-Fiesta-Kinetic-Design-Trend-Plus-1.6-Sedan-1.jpg" fluid/>
+                <Image alt="" src={auto.fotos[0]} fluid/>
                 <Card.Body>
-                  <h6>Ford Fiesta Kinetic Design Titanium</h6>
-                  <h5>$ 3.400.000</h5>
-                  <p className="text-muted">2017 - 70000 km</p>
+                  <h6>{auto.marca} {auto.modelo} {auto.version}</h6>
+                    <h5>$ {auto.precio}</h5>
+                  <p className="text-muted">{auto.anio} - {auto.kilometros}km</p>
                   <ButtonGroup size="sm">
                     <Button variant="danger" href='vistaVehiculo'>Ver</Button>
                     <Button variant="danger" href='editarauto'>Editar</Button>
@@ -36,24 +42,9 @@ const MisPublicaciones = () => {
                   </ButtonGroup>
                 </Card.Body>
               </Card>
-            </Col>
-
-            <Col /* key={} */className='mb-5' >
-              <Card style={{ maxWidth: '100%', maxHeight:'52vh'/* height: '24rem' */}/* { width: '18rem', maxWidth: '100%', height: '24rem'} */} >
-                <Image alt="" src="http://www.motoresapleno.com.ar/wp-content/uploads/2014/04/Ford-Fiesta-Kinetic-Design-Trend-Plus-1.6-Sedan-1.jpg" fluid/>
-                <Card.Body>
-                  <h6>Ford Fiesta Kinetic Design Titanium</h6>
-                  <h5>$ 3.400.000</h5>
-                  <p className="text-muted">2017 - 70000 km</p>
-                  <ButtonGroup size="sm">
-                    <Button variant="danger" href='vistaVehiculo'>Ver</Button>
-                    <Button variant="danger" href='editarauto'>Editar</Button>
-                    <Button variant="danger">Eliminar</Button>
-                  </ButtonGroup>
-                </Card.Body>
-              </Card>
-            </Col>
-
+            </Col>))
+            }
+ 
           </Row>
         </div>
         <br />
