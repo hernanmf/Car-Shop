@@ -9,7 +9,7 @@ import Col from 'react-bootstrap/Col';
 
 import '../css/bloques.css';
 
-const contacto = () => {
+const Contacto = () => {
   return (
     <>
       <Container>
@@ -66,4 +66,4 @@ const contacto = () => {
   )
 };
 
-export default contacto;
+export default Contacto;

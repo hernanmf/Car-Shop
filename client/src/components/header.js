@@ -71,15 +71,18 @@ const Header = () => {
                 <Nav className="justify-content-end flex-grow-1 pe-3">
                   <Nav.Link href="/">Inicio</Nav.Link>
                   <Nav.Link href="/contacto">Contacto</Nav.Link>
-                  <Nav.Link href="/login">Iniciar Sesion</Nav.Link>
+                  {activeUser ? <></> :
+                  <Nav.Link href="/login">Loguearme</Nav.Link> }
                   
-                  <NavDropdown title="Mi perfil" id={`offcanvasNavbarDropdown-expand-sm`}>
+                  {activeUser ?
+                  <NavDropdown title={`¡Hola! ${activeUser.nombre_completo}`} id={`offcanvasNavbarDropdown-expand-sm`}>
                     <NavDropdown.Item href="/misdatos">Mis datos</NavDropdown.Item>
                     <NavDropdown.Item href="/editardatos">Editar mis datos</NavDropdown.Item>
                     <NavDropdown.Item href="/mispublicaciones">Mis publicaciones</NavDropdown.Item>
                     <NavDropdown.Divider />
                     <NavDropdown.Item onClick={onLogOut}>Cerrar sesión</NavDropdown.Item>
                   </NavDropdown>
+                  : <></>}
                 </Nav>
               </Offcanvas.Body>
             </Navbar.Offcanvas>
@@ -90,3 +93,7 @@ const Header = () => {
 }
 
 export default Header;
+
+/* import { useNavigate } from 'react-router-dom';
+const navigate = useNavigate();
+onClick={navigate('/misdatos', {})} */
