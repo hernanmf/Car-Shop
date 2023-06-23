@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
@@ -11,10 +12,25 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import Col from 'react-bootstrap/Col';
 
 import '../css/nav.css';
-
 import LogoChico from '../assets/images/logochico.png';
+import { UsuariosContext } from '../Context/UserContext';
 
 const Header = () => {
+
+  const { usuarios, activeUser, setactiveUser } = useContext(UsuariosContext);
+  const navigate = useNavigate();
+
+  const onLogOut = () => {
+    let LogOut = window.confirm("Desea cerrar sesión realmente?");
+    if (LogOut) {
+      setactiveUser(false);
+      navigate('/', {
+        replace: true //replace hace que cuando el user vuelva para atras no siga logueado
+      });
+    }
+  }
+
+
   return (
     <>
       <Navbar key={'false'} expand={'sm'} className='colorapp'>
@@ -62,7 +78,7 @@ const Header = () => {
                     <NavDropdown.Item href="/editardatos">Editar mis datos</NavDropdown.Item>
                     <NavDropdown.Item href="/mispublicaciones">Mis publicaciones</NavDropdown.Item>
                     <NavDropdown.Divider />
-                    <NavDropdown.Item href="/">Cerrar sesión</NavDropdown.Item>
+                    <NavDropdown.Item onClick={onLogOut}>Cerrar sesión</NavDropdown.Item>
                   </NavDropdown>
                 </Nav>
               </Offcanvas.Body>

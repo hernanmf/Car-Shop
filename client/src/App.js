@@ -26,9 +26,8 @@ function App() {
       <UsuariosProvider>
       <AutosProvider>
       <div className='App'>  
-        <Header />
-
-          <Router>
+        <Router>
+          <Header />
             <Routes>
             <Route path="*" element={ <Home /> } />
             <Route path="/login" element={ <LogIn /> } />
@@ -42,10 +41,9 @@ function App() {
             <Route path="/mispublicaciones" element={<MisPublicaciones />} />
             <Route path="/contacto" element={<Contacto />} />
             </Routes>
-          </Router>
-        
-        <Footer />
-        </div>
+          <Footer />  
+        </Router>
+      </div>
       </AutosProvider>
       </UsuariosProvider>
     </>

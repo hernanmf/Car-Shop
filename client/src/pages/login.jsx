@@ -1,7 +1,9 @@
 import { React, useContext, useState } from 'react';
+import { UsuariosContext } from '../Context/UserContext';
+import { useNavigate } from 'react-router-dom';
+
 import '../css/login.css';
 import LogoGrande from '../assets/images/logogrande.png';
-
 
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -9,11 +11,11 @@ import Container from 'react-bootstrap/esm/Container';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
-import { UsuariosContext } from '../Context/UserContext';
 
 const LogIn = () => {
 
-  const { usuarios ,activeUser, setactiveUser } = useContext(UsuariosContext);
+  const { usuarios, activeUser, setactiveUser } = useContext(UsuariosContext);
+  const navigate = useNavigate();
 
   const [validated, setValidated] = useState( true );
 
@@ -28,8 +30,11 @@ const LogIn = () => {
       console.log('Usuario encontrado:',usuarioEncontrado);
       if (usuarioEncontrado) {
         setactiveUser(usuarioEncontrado);
-        console.log('Bienvenido', activeUser );
+        /* console.log('Bienvenido', activeUser ); */
         alert('BIENVENIDO A CAR SHOP');
+        navigate('/', {
+          replace: true //replace hace que cuando el user vuelva para atras no siga logueado
+        });
       } else {
         alert('EL USUARIO NO EXISTE, REVISE LOS DATOS Y REINTENTE');
         setValidated(true);      
@@ -38,6 +43,7 @@ const LogIn = () => {
       e.stopPropagation();
     }
   };
+
 
   return (
      <>
