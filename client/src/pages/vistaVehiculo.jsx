@@ -1,4 +1,5 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
 
 import Container from 'react-bootstrap/esm/Container';
 import Carousel from 'react-bootstrap/Carousel';
@@ -12,6 +13,8 @@ import Button from 'react-bootstrap/Button';
 import '../css/bloques.css';
 
 const VistaVehiculo = () => {
+  const navigate = useNavigate();
+
   return (
     <Container>
         <div className='bloques-cerrado'>
@@ -193,7 +196,7 @@ const VistaVehiculo = () => {
             </Card>
           </Col>
         </Row>
-        <p className="text-muted">¿Tuviste algun problema con la publicación? <a href='/contacto'>Avisanos</a></p>
+        <p className="text-muted">¿Tuviste algun problema con la publicación? <a onClick={navigate('/contacto', {})}>Avisanos</a></p>
         <p className="text-muted">id de publicacion: 93834783</p>
         <br />
       </div>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
@@ -9,6 +10,8 @@ import Card from 'react-bootstrap/Card';
 import '../css/bloques.css';
 
 const FormBusqueda = () => {
+  const navigate = useNavigate();
+
   return (
     <>
       <Card className='bloques-cerrado'>
@@ -43,7 +46,7 @@ const FormBusqueda = () => {
               </Form.Group>
             
               <Form.Group className="mb-3" as={Col} id="formGridButton">
-                <Button type="button" className="button" variant="danger" href='/listaautos'>BUSCAR</Button>
+                <Button type="button" className="button" variant="danger" onClick={navigate('/listaautos', {})}>BUSCAR</Button>
               </Form.Group>
             
             </Row>

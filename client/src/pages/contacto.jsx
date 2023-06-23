@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import ListGroup from 'react-bootstrap/ListGroup';
 import Container from 'react-bootstrap/esm/Container';
@@ -9,7 +10,10 @@ import Col from 'react-bootstrap/Col';
 
 import '../css/bloques.css';
 
-const contacto = () => {
+const Contacto = () => {
+  const navigate = useNavigate();
+
+
   return (
     <>
       <Container>
@@ -55,7 +59,7 @@ const contacto = () => {
             <Button variant="success" type="submit" size="lg" className="button" id='btnConfirmar' >Enviar</Button>
           </Col>
           <Col>
-            <Button variant="danger" type="submit" size="lg" className="button" id='btnCancelar' href='misdatos'>Cancelar</Button>
+            <Button variant="danger" type="submit" size="lg" className="button" id='btnCancelar' onClick={navigate('/', {})}>Cancelar</Button>
           </Col>
           </Row>
           <br />
@@ -66,4 +70,4 @@ const contacto = () => {
   )
 };
 
-export default contacto;
+export default Contacto;

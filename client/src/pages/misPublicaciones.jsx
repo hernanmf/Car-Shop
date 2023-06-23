@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { AutosContext } from '../Context/AutosContext';
+import { useNavigate } from 'react-router-dom';
 
 import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/esm/Container';
@@ -12,8 +13,9 @@ import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import '../css/bloques.css';
 
 const MisPublicaciones = () => {
-
+  
   const autos = useContext( AutosContext );
+  const navigate = useNavigate();
 
   return (
     <>
@@ -35,8 +37,8 @@ const MisPublicaciones = () => {
                     <h5>$ {auto.precio}</h5>
                   <p className="text-muted">{auto.anio} - {auto.kilometros}km</p>
                   <ButtonGroup size="sm">
-                    <Button variant="danger" href='vistaVehiculo'>Ver</Button>
-                    <Button variant="danger" href='editarauto'>Editar</Button>
+                    <Button variant="danger" onClick={navigate('/vistaVehiculo', {})}>Ver</Button>
+                    <Button variant="danger" onClick={navigate('/editarauto', {})}>Editar</Button>
                     <Button variant="danger">Eliminar</Button>
                   </ButtonGroup>
                 </Card.Body>

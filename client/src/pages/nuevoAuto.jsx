@@ -1,4 +1,5 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
 
 import ListGroup from 'react-bootstrap/ListGroup';
 import Container from 'react-bootstrap/esm/Container';
@@ -10,6 +11,8 @@ import Col from 'react-bootstrap/Col';
 import '../css/bloques.css';
 
 const NuevoAuto = () => {
+  const navigate = useNavigate();
+
   return (
     <>
       <Container>
@@ -116,7 +119,7 @@ const NuevoAuto = () => {
               <Button variant="success" type="submit" size="lg" className="button" id='btnConfirmar'>Publicar</Button>
             </Col>
             <Col>
-              <Button variant="danger" size="lg" className="button" id='btnCancelar' href='/misdatos'>Cancelar</Button>
+              <Button variant="danger" size="lg" className="button" id='btnCancelar' onClick={navigate('/misdatos', {})}>Cancelar</Button>
             </Col>
           </Row>
         </div>

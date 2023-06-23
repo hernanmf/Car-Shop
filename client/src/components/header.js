@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { UsuariosContext } from '../Context/UserContext';
 
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
@@ -13,7 +14,6 @@ import Col from 'react-bootstrap/Col';
 
 import '../css/nav.css';
 import LogoChico from '../assets/images/logochico.png';
-import { UsuariosContext } from '../Context/UserContext';
 
 const Header = () => {
 
@@ -21,8 +21,8 @@ const Header = () => {
   const navigate = useNavigate();
 
   const onLogOut = () => {
-    let LogOut = window.confirm("Desea cerrar sesión realmente?");
-    if (LogOut) {
+    let confirmLogOut = window.confirm("Desea cerrar sesión realmente?");
+    if (confirmLogOut) {
       setactiveUser(false);
       navigate('/', {
         replace: true //replace hace que cuando el user vuelva para atras no siga logueado
@@ -30,12 +30,11 @@ const Header = () => {
     }
   }
 
-
   return (
     <>
       <Navbar key={'false'} expand={'sm'} className='colorapp'>
           <Container >
-          <Navbar.Brand href="/">
+          <Navbar.Brand onClick={ navigate('/', {}) }>
             <img
               alt=""
               src={LogoChico}
@@ -54,7 +53,7 @@ const Header = () => {
           >
             
               <Offcanvas.Header closeButton className='colorapp'>
-                 <img href="#" alt="" src={LogoChico} width="120" height="60" className="d-inline-block align-top"/>  
+                 <img onClick={ navigate('/', {}) } alt="" src={LogoChico} width="120" height="60" className="d-inline-block align-top"/>  
             </Offcanvas.Header>
             
               <Offcanvas.Body>
@@ -62,24 +61,25 @@ const Header = () => {
                 <Form className="d-flex">
                   <InputGroup className="mb-1">
                     <Form.Control placeholder="Buscá marcas, modelos y mas.." />
-                    <Button variant="light" id="button-addon2" href='/listaautos'>Buscar</Button>
+                    <Button variant="light" id="button-addon2" onClick={ navigate('/listaautos', {}) } >Buscar</Button>
                   </InputGroup>
                 </Form>
                 </Col>
                 
               
                 <Nav className="justify-content-end flex-grow-1 pe-3">
-                  <Nav.Link href="/">Inicio</Nav.Link>
-                  <Nav.Link href="/contacto">Contacto</Nav.Link>
-                  <Nav.Link href="/login">Iniciar Sesion</Nav.Link>
-                  
-                  <NavDropdown title="Mi perfil" id={`offcanvasNavbarDropdown-expand-sm`}>
-                    <NavDropdown.Item href="/misdatos">Mis datos</NavDropdown.Item>
-                    <NavDropdown.Item href="/editardatos">Editar mis datos</NavDropdown.Item>
-                    <NavDropdown.Item href="/mispublicaciones">Mis publicaciones</NavDropdown.Item>
+                  {/* <Nav.Link onClick={ navigate('/', {}) }>Inicio</Nav.Link> */}
+                  <Nav.Link onClick={ navigate('/contacto', {}) }>Contacto</Nav.Link>
+                  { !activeUser ? <Nav.Link onClick={navigate('/login', {})}>Loguearme</Nav.Link> : <></>}
+                  { activeUser ?
+                  <NavDropdown title={activeUser? `¡Hola! ${activeUser.nombre_completo}`: `¡Hola!`} id={`offcanvasNavbarDropdown-expand-sm`}>
+                    <NavDropdown.Item onClick={ navigate('/misdatos', {}) } >Mis datos</NavDropdown.Item>
+                    <NavDropdown.Item onClick={ navigate('/editardatos', {}) }>Editar mis datos</NavDropdown.Item>
+                    <NavDropdown.Item onClick={ navigate('/mispublicaciones', {}) }>Mis publicaciones</NavDropdown.Item>
                     <NavDropdown.Divider />
                     <NavDropdown.Item onClick={onLogOut}>Cerrar sesión</NavDropdown.Item>
                   </NavDropdown>
+                  : <></>}
                 </Nav>
               </Offcanvas.Body>
             </Navbar.Offcanvas>

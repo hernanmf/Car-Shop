@@ -67,9 +67,6 @@ const LogIn = () => {
                         <Form.Control type="password" placeholder="Clave" id='clave' required/>
                       </FloatingLabel>
                     </Form.Group>
-                    <Form.Control.Feedback type="invalid">
-                      Ingresa una contraseña válida
-                    </Form.Control.Feedback>
                     
                 <Button variant="danger" type="submit" size="lg" className='input-button' id='btnIngresar'> Ingresar</Button>
                 
