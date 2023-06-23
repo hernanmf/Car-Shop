@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
@@ -11,7 +12,8 @@ const Footer = () => {
   return (
      <Navbar variant="dark" className='colorapp' >
         <Container>
-        <Navbar.Brand href="/" >
+        <Navbar.Brand>
+          <Link to="/" style={{textDecoration: 'none'}}>
           <img
               alt=""
               src={LogoChico}
@@ -19,11 +21,12 @@ const Footer = () => {
               height="80"
               className="d-inline-block"
             />
+            </Link>
           </Navbar.Brand>
           <Nav>
-            <Nav.Link href="/">Inicio</Nav.Link>
-            <Nav.Link href="/contacto">Contacto</Nav.Link>
-            <Nav.Link href="#pricing">FAQ</Nav.Link>
+            <Nav.Link><Link to="/" style={{textDecoration: 'none'}}>Inicio</Link></Nav.Link>
+            <Nav.Link><Link to="/contacto" style={{textDecoration: 'none'}}>Contacto</Link></Nav.Link>
+            <Nav.Link><Link to="/" style={{textDecoration: 'none'}}>FAQ</Link></Nav.Link>
           </Nav>
         </Container>
       </Navbar>

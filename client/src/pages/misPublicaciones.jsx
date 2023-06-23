@@ -10,6 +10,7 @@ import Image from 'react-bootstrap/Image';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 
 import '../css/bloques.css';
+import { Link } from 'react-router-dom';
 
 const MisPublicaciones = () => {
 
@@ -25,7 +26,6 @@ const MisPublicaciones = () => {
           <br />
 
           <Row xs={1} md={4} className='justify-content-center'>
-
             {autos.map((auto) => (
               <Col className='mb-5' >
               <Card style={{ maxWidth: '100%', maxHeight:'52vh'}} >
@@ -34,14 +34,26 @@ const MisPublicaciones = () => {
                   <h6>{auto.marca} {auto.modelo} {auto.version}</h6>
                     <h5>$ {auto.precio}</h5>
                   <p className="text-muted">{auto.anio} - {auto.kilometros}km</p>
-                  <ButtonGroup size="sm">
-                    <Button variant="danger" href='vistaVehiculo'>Ver</Button>
-                    <Button variant="danger" href='editarauto'>Editar</Button>
-                    <Button variant="danger">Eliminar</Button>
-                  </ButtonGroup>
-                </Card.Body>
-              </Card>
-            </Col>))
+                    <ButtonGroup size="sm">
+                      <Button variant="danger">
+                        <Link to="/vistavehiculo" style={{ textDecoration: 'none' }}>
+                        Ver
+                        </Link>
+                      </Button>
+                      <Button variant="danger">
+                        <Link to="/editarauto" style={{ textDecoration: 'none' }}>
+                          Editar
+                        </Link>
+                      </Button>
+                      <Button variant="danger">
+                        <Link to="/misdatos" style={{ textDecoration: 'none' }}>
+                          Eliminar
+                        </Link>
+                      </Button>
+                    </ButtonGroup>
+                  </Card.Body>
+                </Card>
+              </Col>))
             }
  
           </Row>

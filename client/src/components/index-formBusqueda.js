@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
@@ -43,7 +44,9 @@ const FormBusqueda = () => {
               </Form.Group>
             
               <Form.Group className="mb-3" as={Col} id="formGridButton">
-                <Button type="button" className="button" variant="danger" href='/listaautos'>BUSCAR</Button>
+                <Link to="/listaautos" style={{textDecoration: 'none'}}>
+                  <Button type="button" className="button" variant="danger">BUSCAR</Button>
+                </Link>
               </Form.Group>
             
             </Row>

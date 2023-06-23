@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import { AutosContext } from '../Context/AutosContext';
+import { Link } from 'react-router-dom';
 
 import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/esm/Container';
@@ -37,7 +38,9 @@ const ListaAutos = () => {
                     <h6>{auto.marca} {auto.modelo} {auto.version}</h6>
                     <h5>$ {auto.precio}</h5>
                     <p className="text-muted">{auto.anio} - {auto.kilometros} km</p>
-                    <Button variant="danger" href='/vistavehiculo'>Ver mas</Button>
+                    <Link to="/vistavehiculo" style={{textDecoration: 'none'}}>
+                      <Button variant="danger">Ver mas</Button>
+                    </Link>
                   </Card.Body>
                 </Card>
               </Col>))

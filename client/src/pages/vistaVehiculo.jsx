@@ -10,6 +10,7 @@ import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 
 import '../css/bloques.css';
+import { Link } from 'react-router-dom';
 
 const VistaVehiculo = () => {
   return (
@@ -193,7 +194,7 @@ const VistaVehiculo = () => {
             </Card>
           </Col>
         </Row>
-        <p className="text-muted">¿Tuviste algun problema con la publicación? <a href='/contacto'>Avisanos</a></p>
+        <p className="text-muted">¿Tuviste algun problema con la publicación? <Link to="/contacto" style={{ textDecoration: 'none' }}>Avisanos</Link></p>
         <p className="text-muted">id de publicacion: 93834783</p>
         <br />
       </div>

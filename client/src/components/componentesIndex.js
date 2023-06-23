@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import Button from 'react-bootstrap/Button';
 
@@ -14,12 +15,13 @@ import '../css/bloques.css';
 const ComponentesIndex = () => {
   return (
     <div className='bloques'>
-      <div className="d-grid gap-2">
-        <Button variant="outline-danger" size="lg" href='/nuevoauto'>
+      <Link to="/nuevoauto" style={{textDecoration: 'none'}}>
+        <div className="d-grid gap-2">
+          <Button variant="outline-danger" size="lg" to='/nuevoauto'>
             VENDÉ TU AUTO
-        </Button>
-    </div>
-      
+          </Button>
+        </div>
+      </Link>
       <FormBusqueda />
       <Tiposvehiculos />
       <Marcas />

@@ -8,6 +8,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 import '../css/bloques.css';
+import { Link } from 'react-router-dom';
 
 const EditarAuto = () => {
   return (
@@ -118,7 +119,9 @@ const EditarAuto = () => {
               <Button variant="success" type="submit" size="lg" className="button" id='btnConfirmar' >Confirmar</Button>
             </Col>
             <Col>
-              <Button variant="danger" type="submit" size="lg" className="button" id='btnCancelar' href='/misdatos'>Cancelar</Button>
+              <Link to="/misdatos" style={{textDecoration: 'none'}}>
+                <Button variant="danger" type="submit" size="lg" className="button" id='btnCancelar'>Cancelar</Button>
+              </Link>
             </Col>
           </Row>
           <br />

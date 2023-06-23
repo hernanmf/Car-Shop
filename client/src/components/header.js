@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
@@ -34,15 +34,18 @@ const Header = () => {
   return (
     <>
       <Navbar key={'false'} expand={'sm'} className='colorapp'>
-          <Container >
-          <Navbar.Brand href="/">
+          <Container>
+          <Navbar.Brand>
+            <Link to="/" style={{textDecoration: 'none'}}>
             <img
               alt=""
               src={LogoChico}
               width="120"
               height="60"
               className="d-inline-block align-top"
-            /></Navbar.Brand>
+              />
+            </Link>
+          </Navbar.Brand>
 
           <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-sm`} />
         
@@ -54,31 +57,33 @@ const Header = () => {
           >
             
               <Offcanvas.Header closeButton className='colorapp'>
-                 <img href="#" alt="" src={LogoChico} width="120" height="60" className="d-inline-block align-top"/>  
-            </Offcanvas.Header>
+                <Link to="/" style={{textDecoration: 'none'}}>
+                 <img alt="" src={LogoChico} width="120" height="60" className="d-inline-block align-top"/>  
+                </Link>
+              </Offcanvas.Header>
             
               <Offcanvas.Body>
                 <Col xs={12} md={8}>
                 <Form className="d-flex">
                   <InputGroup className="mb-1">
                     <Form.Control placeholder="Buscá marcas, modelos y mas.." />
-                    <Button variant="light" id="button-addon2" href='/listaautos'>Buscar</Button>
+                    <Link to="/listaautos" style={{textDecoration: 'none'}}><Button variant="light" id="button-addon2">Buscar</Button></Link>
                   </InputGroup>
                 </Form>
                 </Col>
                 
               
                 <Nav className="justify-content-end flex-grow-1 pe-3">
-                  <Nav.Link href="/">Inicio</Nav.Link>
-                  <Nav.Link href="/contacto">Contacto</Nav.Link>
+                  <Nav.Link><Link to="/" style={{textDecoration: 'none'}}>Inicio</Link></Nav.Link>
+                  <Nav.Link><Link to="/contacto" style={{textDecoration: 'none'}}>Contacto</Link></Nav.Link>
                   {activeUser ? <></> :
                   <Nav.Link href="/login">Loguearme</Nav.Link> }
                   
                   {activeUser ?
                   <NavDropdown title={`¡Hola! ${activeUser.nombre_completo}`} id={`offcanvasNavbarDropdown-expand-sm`}>
-                    <NavDropdown.Item href="/misdatos">Mis datos</NavDropdown.Item>
-                    <NavDropdown.Item href="/editardatos">Editar mis datos</NavDropdown.Item>
-                    <NavDropdown.Item href="/mispublicaciones">Mis publicaciones</NavDropdown.Item>
+                    <NavDropdown.Item><Link to="/misdatos" style={{textDecoration: ''}}>Mis datos</Link></NavDropdown.Item>
+                    <NavDropdown.Item><Link to="/editardatos" style={{textDecoration: 'none'}}>Editar mis datos</Link></NavDropdown.Item>
+                    <NavDropdown.Item><Link to="/mispublicaciones" style={{textDecoration: 'none'}}>Mis publicaciones</Link></NavDropdown.Item>
                     <NavDropdown.Divider />
                     <NavDropdown.Item onClick={onLogOut}>Cerrar sesión</NavDropdown.Item>
                   </NavDropdown>
