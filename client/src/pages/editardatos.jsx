@@ -1,4 +1,6 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { Link } from 'react-router-dom';
+import { UsuariosContext } from '../Context/UserContext';
 
 import ListGroup from 'react-bootstrap/ListGroup';
 import Container from 'react-bootstrap/esm/Container';
@@ -8,9 +10,15 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 import '../css/bloques.css';
-import { Link } from 'react-router-dom';
 
 const Editardatos = () => {
+  const { activeUser, setactiveUser } = useContext(UsuariosContext);
+  
+  const handleSubmit = (e) => {
+    
+
+  }
+  
   return (
     <>
       <Container style={{ minHeight: '80vh', }}>
@@ -21,34 +29,35 @@ const Editardatos = () => {
           <ListGroup as="ul">
             <ListGroup.Item as="li">
               <h6>Nombre Completo</h6>
-              <Form.Control type="text" id="inputNombre" size='sm' className="mb-3" />
+              <Form.Control type="text" id="inputNombre" size='sm' className="mb-3" value={activeUser.nombre_completo}/>
             </ListGroup.Item>
             <ListGroup.Item as="li">
               <h6>Correo electrónico</h6>
-              <Form.Control type="text" id="inputEmail" size='sm' className="mb-3"/>
+              <Form.Control type="text" id="inputEmail" size='sm' className="mb-3" value={activeUser.correo_electronico} />
             </ListGroup.Item>
             <ListGroup.Item as="li">
               <h6>Teléfono</h6>
-              <Form.Control type="text" id="inputTelefono" size='sm' className="mb-3"/>
+              <Form.Control type="text" id="inputTelefono" size='sm' className="mb-3" value={activeUser.telefono}/>
             </ListGroup.Item>
             <ListGroup.Item as="li">
               <h6>Provincia</h6> 
-              <Form.Control type="text" id="inputProvincia" size='sm' className="mb-3"/>
+              <Form.Control type="text" id="inputProvincia" size='sm' className="mb-3" value={activeUser.provincia}/>
             </ListGroup.Item>
             <ListGroup.Item as="li">
               <h6>Localidad</h6> 
-              <Form.Control type="text" id="inputLocalidad" size='sm' className="mb-3"/>
+              <Form.Control type="text" id="inputLocalidad" size='sm' className="mb-3" value={activeUser.localidad}/>
             </ListGroup.Item> 
           </ListGroup>
-          <p>id user: ññañañañañalsldasd</p>
+          <p>id user: {activeUser.id}</p>
           <Row>
             <Col>
-              <Button variant="success" type="submit" size="lg" className="button" id='btnConfirmar'>Confirmar</Button>
+              <Button variant="success" type="submit" size="lg" className="button" id='btnConfirmar' onClick={handleSubmit}>Confirmar</Button>
             </Col>
             <Col>
               <Link to="/misdatos" style={{textDecoration: 'none'}}>
                 <Button variant="danger" type="submit" size="lg" className="button" id='btnCancelar'>Cancelar</Button>
-              </Link>            </Col>
+              </Link>
+            </Col>
           </Row>
           <br />
         </div>
