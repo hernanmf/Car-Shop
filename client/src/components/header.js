@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 import Button from 'react-bootstrap/Button';
@@ -19,14 +19,21 @@ const Header = () => {
 
   const { usuarios, activeUser, setactiveUser } = useContext(UsuariosContext);
   const navigate = useNavigate();
+  const [show, setShow] = useState(false);
+  
+  const handleMenu = () => { 
+    show ? setShow(false) : setShow(true);
+  }
 
-  const onLogOut = () => {
+  const onLogOut = (e) => {
+    e.preventDefault();
+    handleMenu();
     let LogOut = window.confirm("Desea cerrar sesión realmente?");
     if (LogOut) {
+      alert(`¡CHAU! ${activeUser.nombre_completo} ESPERAMOS QUE VUELVAS PRONTO`);
       setactiveUser(false);
       navigate('/', {
-        replace: true //replace hace que cuando el user vuelva para atras no siga logueado
-      });
+      }); /* con navigate me refresca la pagina y me mata los estados */
     }
   }
 
@@ -47,13 +54,14 @@ const Header = () => {
             </Link>
           </Navbar.Brand>
 
-          <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-sm`} />
+          <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-sm`} onClick={handleMenu}/>
         
             <Navbar.Offcanvas
               id={`offcanvasNavbar-expand-sm`}
               aria-labelledby={`offcanvasNavbarLabel-expand-sm`}
             placement="end"
             responsive="sm"
+            show={ show }
           >
             
               <Offcanvas.Header closeButton className='colorapp'>
@@ -73,18 +81,46 @@ const Header = () => {
                 </Col>
                 
               
-                <Nav className="justify-content-end flex-grow-1 pe-3">
-                  <Nav.Link><Link to="/" style={{textDecoration: 'none'}}>Inicio</Link></Nav.Link>
-                  <Nav.Link><Link to="/contacto" style={{textDecoration: 'none'}}>Contacto</Link></Nav.Link>
+              <Nav className="justify-content-end flex-grow-1 pe-3">
+                <Nav.Link>
+                  <Link to="/" style={{ textDecoration: 'none' }} onClick={handleMenu}>
+                  Inicio
+                  </Link>
+                </Nav.Link>
+                <Nav.Link>
+                  <Link to="/contacto" style={{ textDecoration: 'none' }} onClick={handleMenu}>
+                  Contacto
+                  </Link>
+                </Nav.Link>
                   {activeUser ? <></> :
-                  <Nav.Link href="/login">Loguearme</Nav.Link> }
+                  <Nav.Link>
+                    <Link to="/login" style={{ textDecoration: 'none' }} onClick={handleMenu}>
+                    Loguearme
+                    </Link>
+                  </Nav.Link>}
                   
                   {activeUser ?
                   <NavDropdown title={`¡Hola! ${activeUser.nombre_completo}`} id={`offcanvasNavbarDropdown-expand-sm`}>
-                    <NavDropdown.Item><Link to="/misdatos" style={{textDecoration: ''}}>Mis datos</Link></NavDropdown.Item>
-                    <NavDropdown.Item><Link to="/editardatos" style={{textDecoration: 'none'}}>Editar mis datos</Link></NavDropdown.Item>
-                    <NavDropdown.Item><Link to="/mispublicaciones" style={{textDecoration: 'none'}}>Mis publicaciones</Link></NavDropdown.Item>
+                    <NavDropdown.Item>
+                      <Link to="/misdatos" style={{ textDecoration: '' }} onClick={handleMenu}>
+                      Mis datos
+                      </Link>
+                    </NavDropdown.Item>
+                    
+                    <NavDropdown.Item>
+                      <Link to="/editardatos" style={{ textDecoration: 'none' }} onClick={handleMenu}>
+                      Editar mis datos
+                      </Link>
+                    </NavDropdown.Item>
+                    
+                    <NavDropdown.Item>
+                      <Link to="/mispublicaciones" style={{ textDecoration: 'none' }} onClick={handleMenu}>
+                        Mis publicaciones
+                      </Link>
+                    </NavDropdown.Item>
+                   
                     <NavDropdown.Divider />
+                  
                     <NavDropdown.Item onClick={onLogOut}>Cerrar sesión</NavDropdown.Item>
                   </NavDropdown>
                   : <></>}

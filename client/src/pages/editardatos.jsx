@@ -1,5 +1,5 @@
-import React, { useContext } from 'react'
-import { Link } from 'react-router-dom';
+import React, { useContext, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom';
 import { UsuariosContext } from '../Context/UserContext';
 
 import ListGroup from 'react-bootstrap/ListGroup';
@@ -12,11 +12,38 @@ import Col from 'react-bootstrap/Col';
 import '../css/bloques.css';
 
 const Editardatos = () => {
-  const { activeUser, setactiveUser } = useContext(UsuariosContext);
-  
-  const handleSubmit = (e) => {
-    
 
+  const { usuarios, activeUser, setactiveUser } = useContext(UsuariosContext);
+  const [validated, setValidated] = useState(false);
+  const navigate = useNavigate();
+
+  const handleSubmit = (e) => {
+    const form = e.currentTarget;
+    if (form.checkValidity() === false) {
+      e.preventDefault();
+      e.stopPropagation();
+    } else {
+      //el form valida bien
+      let newUserData = activeUser;
+      console.log(`Info vieja: `,activeUser);
+      newUserData.nombre_completo =form.inputnombre_completo.value;
+      newUserData.correo_electronico =form.inputcorreo_electronico.value; 
+      newUserData.telefono =form.inputtelefono.value; 
+      newUserData.provincia =form.inputprovincia.value;
+      newUserData.localidad =form.inputlocalidad.value;
+      console.log(`Info nueva: `,newUserData);
+      
+      setactiveUser(newUserData);
+      console.log(`Nuevo usuario activo `, activeUser);
+      
+      console.log(`Array de usuarios `,usuarios);
+        
+        console.log('Usuario modificado', newUserData);
+        navigate('/misdatos', {});
+      }
+      setValidated(true);
+      e.preventDefault();
+      e.stopPropagation();
   }
   
   return (
@@ -26,39 +53,48 @@ const Editardatos = () => {
       <div className='bloques-cerrado'>
       <br />
       <h5>MIS DATOS</h5>
+        <Form validated={validated} onSubmit={handleSubmit}> 
           <ListGroup as="ul">
             <ListGroup.Item as="li">
               <h6>Nombre Completo</h6>
-              <Form.Control type="text" id="inputNombre" size='sm' className="mb-3" value={activeUser.nombre_completo}/>
+              <Form.Group>  
+                  <Form.Control id='inputnombre_completo' type="text" defaultValue={activeUser.nombre_completo} className="mb-3" size='sm' required />
+              </Form.Group>
             </ListGroup.Item>
+              
+
             <ListGroup.Item as="li">
               <h6>Correo electrónico</h6>
-              <Form.Control type="text" id="inputEmail" size='sm' className="mb-3" value={activeUser.correo_electronico} />
+              <Form.Control id='inputcorreo_electronico' type="email" defaultValue={activeUser.correo_electronico} className="mb-3" size='sm' required />
             </ListGroup.Item>
+              
             <ListGroup.Item as="li">
               <h6>Teléfono</h6>
-              <Form.Control type="text" id="inputTelefono" size='sm' className="mb-3" value={activeUser.telefono}/>
+              <Form.Control id='inputtelefono' type="number" defaultValue={activeUser.telefono} className="mb-3" size='sm' required />
             </ListGroup.Item>
+              
             <ListGroup.Item as="li">
               <h6>Provincia</h6> 
-              <Form.Control type="text" id="inputProvincia" size='sm' className="mb-3" value={activeUser.provincia}/>
+              <Form.Control id='inputprovincia' type="text" defaultValue={activeUser.provincia} className="mb-3" size='sm' required />  
             </ListGroup.Item>
+            
             <ListGroup.Item as="li">
               <h6>Localidad</h6> 
-              <Form.Control type="text" id="inputLocalidad" size='sm' className="mb-3" value={activeUser.localidad}/>
+              <Form.Control id='inputlocalidad' type="text" defaultValue={activeUser.localidad} className="mb-3" size='sm' required /> 
             </ListGroup.Item> 
           </ListGroup>
-          <p>id user: {activeUser.id}</p>
+          <p className='text-muted'>id user: {activeUser.id}</p>
           <Row>
             <Col>
-              <Button variant="success" type="submit" size="lg" className="button" id='btnConfirmar' onClick={handleSubmit}>Confirmar</Button>
+              <Button variant="success" type="submit" size="lg" className="button" id='btnConfirmar'>Confirmar</Button>
             </Col>
             <Col>
               <Link to="/misdatos" style={{textDecoration: 'none'}}>
-                <Button variant="danger" type="submit" size="lg" className="button" id='btnCancelar'>Cancelar</Button>
+                <Button variant="danger" type="button" size="lg" className="button" id='btnCancelar'>Cancelar</Button>
               </Link>
             </Col>
           </Row>
+          </Form>   
           <br />
         </div>
       </Container>
