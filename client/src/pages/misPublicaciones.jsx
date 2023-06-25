@@ -10,7 +10,6 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Image from 'react-bootstrap/Image';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
-import Form from 'react-bootstrap/Form';
 
 import '../css/bloques.css';
 
@@ -20,45 +19,13 @@ const MisPublicaciones = () => {
   const { autos, activeCar, setactiveCar } = useContext(AutosContext);
   let mispublicaciones = autos.filter(auto => auto.idusuario === activeUser.id);
   
-  const handleActiveCar = (idAuto) => {
-    /* const form = e.currentTarget; */
+  const handleActiveCar = (idauto, e) => {
 
-    console.log(idAuto);
-    alert();
-
-   /*  console.log('lo que me trae el value del boton: ',form.btnVer.value );
-    alert('lo que me trae el value del boton: ', form.btnVer.value);
-
-    let newactiveCar = mispublicaciones.find((auto => auto.id === form.btnVer.value));
-    console.log('lo que me trae el arreglo con find: ',newactiveCar);
-    alert('lo que me trae el arreglo con find: ', newactiveCar);
-    
+    let newactiveCar = autos.find((auto => auto.id === idauto));
     setactiveCar(newactiveCar);
-    console.log('Auto activo: ',activeCar);
-    alert('Auto activo: ', activeCar);
-    
-    console.log('Auto activo: ', activeCar);
-    alert('Auto activo: ', activeCar);
+
     e.preventDefault();
     e.stopPropagation();
-    
-
-    console.log('lo que me trae el value del boton: ',form.btnVer.value );
-    alert('lo que me trae el value del boton: ', form.btnVer.value);
-
-    let newactiveCar = mispublicaciones.find((auto => auto.id === form.btnVer.value));
-    console.log('lo que me trae el arreglo con find: ',newactiveCar);
-    alert('lo que me trae el arreglo con find: ', newactiveCar);
-    
-    setactiveCar(newactiveCar);
-    console.log('Auto activo: ',activeCar);
-    alert('Auto activo: ', activeCar);
-    
-    console.log('Auto activo: ', activeCar);
-    alert('Auto activo: ', activeCar); 
-    e.preventDefault();
-    e.stopPropagation();
-    */
   };
 
   return (
@@ -80,18 +47,18 @@ const MisPublicaciones = () => {
                       <h5>$ {auto.precio}</h5>
                       <p className="text-muted">{auto.anio} - {auto.kilometros}km</p>
                       {/* <Form onSubmit={handleActiveCar}> */}
-                      <ButtonGroup size="sm">
-                      <Button variant="danger" type='submit' id='btnVer' onClick={handleActiveCar(auto.id)} /* value={`${auto.id}`} */ /* onClick={handleActiveCar} */>
+                    <ButtonGroup size="sm">
+                      <Button variant="danger" id='btnVer' onClick={(event) =>handleActiveCar(auto.id,event)} /* value={`${auto.id}`} */ /* onClick={handleActiveCar} */>
                           <Link to="/vistavehiculo" style={{ textDecoration: 'none' }}>
                           Ver
                           </Link>
                         </Button>
-                      <Button variant="danger" type='submit' id='btnEditar' value={`${auto.id}`} /* onClick={handleActiveCar} */>
+                      <Button variant="danger" id='btnEditar' onClick={(event) =>handleActiveCar(auto.id,event)}>
                           <Link to="/editarauto" style={{ textDecoration: 'none' }} >
                             Editar
                           </Link>
                         </Button>
-                        <Button variant="danger" type='submit' id='btnEliminar' value={`${auto.id}`}>
+                        <Button variant="danger" id='btnEliminar' onClick={(event) =>handleActiveCar(auto.id,event)}>
                           <Link to="/misdatos" style={{ textDecoration: 'none' }}>
                             Eliminar
                           </Link>

@@ -1,4 +1,7 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { Link } from 'react-router-dom';
+import { UsuariosContext } from '../Context/UserContext';
+import { AutosContext } from '../Context/AutosContext';
 
 import Container from 'react-bootstrap/esm/Container';
 import Carousel from 'react-bootstrap/Carousel';
@@ -10,44 +13,35 @@ import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 
 import '../css/bloques.css';
-import { Link } from 'react-router-dom';
 
 const VistaVehiculo = () => {
+  
+  const { activeCar } = useContext(AutosContext);
+  const { usuarios, activeUser } = useContext(UsuariosContext);
+  const infoVendedor = usuarios.find((usuario => usuario.id === activeCar.idusuario));
+
   return (
     <Container>
         <div className='bloques-cerrado'>
         <br />
-        <p className="text-muted">2017 - 70000 km - Publicado: 20/03/2023</p>
-        <h4>Ford Fiesta Kinetic Design Titanium</h4>
+        <p className="text-muted">{activeCar.anio} - {activeCar.kilometros} km</p>
+        <h4>{activeCar.marca} {activeCar.modelo} {activeCar.version? activeCar.version: ''}</h4>
       
         <Carousel /* className="d-block w-100" */ interval={6000} >
-          <Carousel.Item>
-            <img
-              style={{ /* minWidth:'100vw', */ maxWidth:'100vw', minHeight:'33vh', maxHeight:'33vh'  }}
-              /* className="d-block w-100"  */
-              src="http://www.motoresapleno.com.ar/wp-content/uploads/2014/04/Ford-Fiesta-Kinetic-Design-Trend-Plus-1.6-Sedan-1.jpg"
-              alt=""
+          {activeCar.fotos.map((foto) => (
+            <Carousel.Item>
+              <img
+                style={{ /* minWidth:'100vw', */ maxWidth: '100vw', minHeight: '33vh', maxHeight: '33vh' }}
+                /* className="d-block w-100"  */
+                src={foto}
+                alt=""
               />
-          </Carousel.Item>          
-          
-          <Carousel.Item>
-            <img style={{ /* minWidth:'100vw', */ maxWidth:'100vw', minHeight:'33vh', maxHeight:'33vh'  }}
-            /* className="d-block w-100" */
-            src="https://resizer.glanacion.com/resizer/dWlOngl_skg1doCItj44-FwuyMI=/1200x800/smart/filters:format(webp):quality(80)/cloudfront-us-east-1.images.arcpublishing.com/lanacionar/VOC5FV2Y2NFZXL7MVI75I3IJWI.jpg"
-            alt=""
-            />
-          </Carousel.Item>  
-          
-          <Carousel.Item>
-            <img style={{ /* minWidth:'100vw', */ maxWidth:'100vw', minHeight:'33vh', maxHeight:'33vh'  }}/* className="d-block w-100" */  
-            src="https://img.remediosdigitales.com/404f41/citroen_c4_cactus_10/1366_2000.jpg"
-            alt=""
-            />
-          </Carousel.Item>           
-        
+            </Carousel.Item>
+          ))
+          }
         </Carousel>
         <br />
-        <h1>$ 4.400.000</h1>
+        <h1>$ {activeCar.precio}</h1>
         <br />
 
         <Accordion defaultActiveKey={['0','1']} alwaysOpen>
@@ -58,54 +52,78 @@ const VistaVehiculo = () => {
               
               <Table responsive hover striped borderless>
                 <tbody >
-                  <tr>
-                    <td>Marca</td>
-                    <td>Ford</td>
-                  </tr>
-                  <tr>
-                    <td>Modelo</td>
-                    <td>Fiesta KD</td>
-                  </tr>
-                  <tr>
-                    <td>Version</td>
-                    <td>Titanium</td>
-                  </tr>
-                  <tr>
-                    <td>Año</td>
-                    <td>2017</td>
-                  </tr>
-                  <tr>
-                    <td>Kilometros</td>
-                    <td>70000</td>
-                  </tr>
-                  <tr>
-                    <td>Tipo Vehiculo</td>
-                    <td>Auto</td>
-                  </tr>
-                  <tr>
-                    <td>Transmision</td>
-                    <td>Manual</td>
-                  </tr>
-                  <tr>
-                    <td>Rodado</td>
-                    <td>17</td>
-                  </tr>
-                  <tr>
-                    <td>Potencia(cv)</td>
-                    <td>96</td>
-                  </tr>
-                  <tr>
-                    <td>Cap. carga(KG)</td>
-                    <td>400</td>
-                  </tr>
-                  <tr>
-                    <td>Traccion</td>
-                    <td>Delantera</td>
-                  </tr>
-                  <tr>
-                    <td>Color</td>
-                    <td>Gris</td>
-                  </tr>
+                  {activeCar.marca ? 
+                    <tr>
+                      <td>Marca</td>
+                      <td>{activeCar.marca}</td>
+                    </tr>
+                    : <></>}
+                  {activeCar.modelo ? 
+                    <tr>
+                      <td>Modelo</td>
+                      <td>{activeCar.modelo}</td>
+                    </tr>
+                    : <></>}
+                  {activeCar.version ? 
+                    <tr>
+                      <td>Version</td>
+                      <td>{activeCar.version}</td>
+                    </tr>
+                    : <></>}
+                  {activeCar.anio ? 
+                    <tr>
+                      <td>Año</td>
+                      <td>{activeCar.anio}</td>
+                    </tr>
+                    : <></>}
+                  {activeCar.kilometros ?
+                    <tr>
+                      <td>Kilometros</td>
+                      <td>{activeCar.kilometros}</td>
+                    </tr>
+                    : <></>}
+                  {activeCar.tipo ? 
+                    <tr>
+                      <td>Tipo vehiculo</td>
+                      <td>{activeCar.tipo}</td>
+                    </tr>
+                    : <></>}
+                  {activeCar.transmision ? 
+                    <tr>
+                      <td>Transmision</td>
+                      <td>{activeCar.transmision}</td>
+                    </tr>
+                    : <></>}
+                  {activeCar.rodado ? 
+                    <tr>
+                      <td>Rodado</td>
+                      <td>{activeCar.rodado}</td>
+                    </tr>
+                    : <></>}
+                  {activeCar.potencia ? 
+                    <tr>
+                      <td>Potencia(cv o hp)</td>
+                      <td>{activeCar.potencia}</td>
+                    </tr>
+                    : <></>}
+                  {activeCar.capacidad_carga ? 
+                    <tr>
+                      <td>Cap. carga(KG)</td>
+                      <td>{activeCar.capacidad_carga}</td>
+                    </tr>
+                    : <></>}
+                  {activeCar.traccion ? 
+                    <tr>
+                      <td>Traccion</td>
+                      <td>{activeCar.traccion}</td>
+                    </tr>
+                    : <></>}
+                  {activeCar.color ? 
+                    <tr>
+                      <td>Color</td>
+                      <td>{activeCar.color}</td>
+                    </tr>
+                    : <></>}
                 </tbody>
               </Table>
             </Accordion.Body>
@@ -115,15 +133,9 @@ const VistaVehiculo = () => {
           <Accordion.Item eventKey="1">
             <Accordion.Header>Descripcion</Accordion.Header>
             <Accordion.Body>
-            
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-              minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-              aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-              pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-              culpa qui officia deserunt mollit anim id est laborum.
-            
+            {activeCar.descripcion_adicional ?
+              activeCar.descripcion_adicional
+              : `El vendedor no incluyó una ampliacion de los detalles adicionales`}
             </Accordion.Body>
           </Accordion.Item>
 
@@ -132,20 +144,36 @@ const VistaVehiculo = () => {
         <br />
         <h5>Información del vendedor</h5>
         <Card style={{ width: '100%' }}>
+          {activeUser ?   
           <Card.Body>
-            <Card.Title>Fulano de tal</Card.Title>
-            <Row xs={1} md={2} className='justify-content-center'>
-              <Col /*key={}*/ >
+            <Card.Title>{ infoVendedor.nombre_completo }</Card.Title>
+            <Row xs={1} md={3} className='justify-content-center'>
+              <Col>
                 <Card.Subtitle>Ubicacion</Card.Subtitle>
-                <Card.Text className="mb-2 text-muted">Mar del Plata</Card.Text>
+                  <Card.Text className="mb-2 text-muted">{infoVendedor.localidad}, {infoVendedor.provincia}</Card.Text>
               </Col>
-              <Col /*key={}*/ >
-                <Card.Subtitle>Horario de atencion</Card.Subtitle>
-                <Card.Text className="mb-2 text-muted">de 8 a 16</Card.Text>
+              <Col >
+                <Card.Subtitle>Telefono</Card.Subtitle>
+                  <Card.Text className="mb-2 text-muted">{infoVendedor.telefono}</Card.Text>
               </Col>
-            </Row>
-            <Button variant="danger">Contactar</Button> {/* Aca se mostraria email y celular del vendedor */}
-          </Card.Body>
+              <Col >
+                <Card.Subtitle>Email</Card.Subtitle>
+                  <Card.Text className="mb-2 text-muted">{infoVendedor.correo_electronico}</Card.Text>
+              </Col>
+              </Row>
+            </Card.Body>
+            : 
+            <Card.Body>
+              <Row xs={1} md={1} className='justify-content-center'>
+              <Col>
+                <Card.Text className="mb-2 text-muted">Para poder ver la informacion del vendedor y poder contactarlo deberás loguearte.</Card.Text>
+              </Col>
+              </Row>
+              <Link to="/login" style={{ textDecoration: 'none' }}>
+                <Button variant="danger">Loguearme</Button> 
+              </Link>
+            </Card.Body>
+          }
         </Card>
         
 
@@ -195,7 +223,7 @@ const VistaVehiculo = () => {
           </Col>
         </Row>
         <p className="text-muted">¿Tuviste algun problema con la publicación? <Link to="/contacto" style={{ textDecoration: 'none' }}>Avisanos</Link></p>
-        <p className="text-muted">id de publicacion: 93834783</p>
+        <p className="text-muted">id de publicacion: { activeCar.id }</p>
         <br />
       </div>
     </Container>
