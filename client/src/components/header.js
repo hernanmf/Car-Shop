@@ -41,7 +41,7 @@ const Header = () => {
   return (
     <>
       <Navbar key={'false'} expand={'sm'} className='colorapp'>
-          <Container>
+        <Container>
           <Navbar.Brand>
             <Link to="/" style={{textDecoration: 'none'}}>
             <img
@@ -55,14 +55,13 @@ const Header = () => {
           </Navbar.Brand>
 
           <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-sm`} onClick={showHideMenu}/>
-        
             <Navbar.Offcanvas
               id={`offcanvasNavbar-expand-sm`}
               aria-labelledby={`offcanvasNavbarLabel-expand-sm`}
-            placement="end"
-            responsive="sm"
-            show={ show }
-          >
+              placement="end"
+              responsive="sm"
+              show={ show }
+              >
             
               <Offcanvas.Header closeButton className='colorapp' onClick={showHideMenu}>
                 <Link to="/" style={{textDecoration: 'none'}}>
@@ -70,7 +69,7 @@ const Header = () => {
                 </Link>
               </Offcanvas.Header>
             
-              <Offcanvas.Body onClick={showHideMenu}>
+              <Offcanvas.Body>
                 <Col xs={12} md={8}>
                 <Form className="d-flex">
                   <InputGroup className="mb-1">
@@ -126,8 +125,8 @@ const Header = () => {
                   : <></>}
                 </Nav>
               </Offcanvas.Body>
-            </Navbar.Offcanvas>
-          </Container>
+          </Navbar.Offcanvas>
+        </Container>
       </Navbar>
     </>
   );

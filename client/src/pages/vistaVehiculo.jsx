@@ -182,7 +182,7 @@ const VistaVehiculo = () => {
         <h5>Consejos de seguridad</h5>
         <Row xs={1} md={2} className='justify-content-center'>
           
-          <Col /*key={}*/ className='mb-3' >
+          <Col className='mb-3' >
             <Card style={{ maxWidth: '100%' }}>
               <Card.Body>
                 <Card.Subtitle className="mb-2 text-muted">Seguí estos consejos cuando contactes al vendedor:</Card.Subtitle>
