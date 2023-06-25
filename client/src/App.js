@@ -17,6 +17,7 @@ import EditarAuto from './pages/editarAuto';
 import NuevoAuto from './pages/nuevoAuto';
 import MisPublicaciones from './pages/misPublicaciones';
 import Contacto from './pages/contacto';
+import Container from 'react-bootstrap/esm/Container';
 
 
 
@@ -27,7 +28,7 @@ function App() {
       <AutosProvider>
       <div className='App'>  
         <Router>
-          <Header />
+            <Header />
             <Routes>
             <Route path="*" element={ <Home /> } />
             <Route path="/login" element={ <LogIn /> } />

@@ -40,7 +40,7 @@ const Header = () => {
 
   return (
     <>
-      <Navbar key={'false'} expand={'sm'} className='colorapp'>
+      <Navbar key={'false'} expand={'sm'} className='colorapp' sticky="top">
         <Container>
           <Navbar.Brand>
             <Link to="/" style={{textDecoration: 'none'}}>
@@ -98,8 +98,8 @@ const Header = () => {
                     </Link>
                   </Nav.Link>}
                   
-                  {activeUser ?
-                  <NavDropdown title={`¡Hola! ${activeUser.nombre_completo}`} id={`offcanvasNavbarDropdown-expand-sm`}>
+                {activeUser ?
+                  <NavDropdown title="Mi Perfil" align={{ false: "start" }} id={`offcanvasNavbarDropdown-expand-sm`}>
                     <NavDropdown.Item>
                       <Link to="/misdatos" style={{ textDecoration: '' }} onClick={showHideMenu}>
                       Mis datos
