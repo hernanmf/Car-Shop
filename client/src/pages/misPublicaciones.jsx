@@ -48,7 +48,7 @@ const MisPublicaciones = () => {
                       <p className="text-muted">{auto.anio} - {auto.kilometros}km</p>
                       {/* <Form onSubmit={handleActiveCar}> */}
                     <ButtonGroup size="sm">
-                      <Button variant="danger" id='btnVer' onClick={(event) =>handleActiveCar(auto.id,event)} /* value={`${auto.id}`} */ /* onClick={handleActiveCar} */>
+                      <Button variant="danger" id='btnVer' onClick={(event) =>handleActiveCar(auto.id,event)}>
                           <Link to="/vistavehiculo" style={{ textDecoration: 'none' }}>
                           Ver
                           </Link>

@@ -21,13 +21,13 @@ const Header = () => {
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
   
-  const handleMenu = () => { 
+  const showHideMenu = () => { 
     show ? setShow(false) : setShow(true);
   }
 
   const onLogOut = (e) => {
     e.preventDefault();
-    handleMenu();
+    showHideMenu();
     let LogOut = window.confirm("Desea cerrar sesión realmente?");
     if (LogOut) {
       alert(`¡CHAU! ${activeUser.nombre_completo} ESPERAMOS QUE VUELVAS PRONTO`);
@@ -54,7 +54,7 @@ const Header = () => {
             </Link>
           </Navbar.Brand>
 
-          <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-sm`} onClick={handleMenu}/>
+          <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-sm`} onClick={showHideMenu}/>
         
             <Navbar.Offcanvas
               id={`offcanvasNavbar-expand-sm`}
@@ -64,13 +64,13 @@ const Header = () => {
             show={ show }
           >
             
-              <Offcanvas.Header closeButton className='colorapp'>
+              <Offcanvas.Header closeButton className='colorapp' onClick={showHideMenu}>
                 <Link to="/" style={{textDecoration: 'none'}}>
                  <img alt="" src={LogoChico} width="120" height="60" className="d-inline-block align-top"/>  
                 </Link>
               </Offcanvas.Header>
             
-              <Offcanvas.Body>
+              <Offcanvas.Body onClick={showHideMenu}>
                 <Col xs={12} md={8}>
                 <Form className="d-flex">
                   <InputGroup className="mb-1">
@@ -83,18 +83,18 @@ const Header = () => {
               
               <Nav className="justify-content-end flex-grow-1 pe-3">
                 <Nav.Link>
-                  <Link to="/" style={{ textDecoration: 'none' }} onClick={handleMenu}>
+                  <Link to="/" style={{ textDecoration: 'none' }} onClick={showHideMenu}>
                   Inicio
                   </Link>
                 </Nav.Link>
                 <Nav.Link>
-                  <Link to="/contacto" style={{ textDecoration: 'none' }} onClick={handleMenu}>
+                  <Link to="/contacto" style={{ textDecoration: 'none' }} onClick={showHideMenu}>
                   Contacto
                   </Link>
                 </Nav.Link>
                   {activeUser ? <></> :
                   <Nav.Link>
-                    <Link to="/login" style={{ textDecoration: 'none' }} onClick={handleMenu}>
+                    <Link to="/login" style={{ textDecoration: 'none' }} onClick={showHideMenu}>
                     Loguearme
                     </Link>
                   </Nav.Link>}
@@ -102,19 +102,19 @@ const Header = () => {
                   {activeUser ?
                   <NavDropdown title={`¡Hola! ${activeUser.nombre_completo}`} id={`offcanvasNavbarDropdown-expand-sm`}>
                     <NavDropdown.Item>
-                      <Link to="/misdatos" style={{ textDecoration: '' }} onClick={handleMenu}>
+                      <Link to="/misdatos" style={{ textDecoration: '' }} onClick={showHideMenu}>
                       Mis datos
                       </Link>
                     </NavDropdown.Item>
                     
                     <NavDropdown.Item>
-                      <Link to="/editardatos" style={{ textDecoration: 'none' }} onClick={handleMenu}>
+                      <Link to="/editardatos" style={{ textDecoration: 'none' }} onClick={showHideMenu}>
                       Editar mis datos
                       </Link>
                     </NavDropdown.Item>
                     
                     <NavDropdown.Item>
-                      <Link to="/mispublicaciones" style={{ textDecoration: 'none' }} onClick={handleMenu}>
+                      <Link to="/mispublicaciones" style={{ textDecoration: 'none' }} onClick={showHideMenu}>
                         Mis publicaciones
                       </Link>
                     </NavDropdown.Item>

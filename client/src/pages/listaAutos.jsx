@@ -13,7 +13,16 @@ import '../css/bloques.css';
 
 const ListaAutos = () => {
 
-  const autos = useContext( AutosContext );
+  const { autos, setactiveCar} = useContext(AutosContext);
+  
+  const handleActiveCar = (idauto, e) => {
+
+    let newactiveCar = autos.find((auto => auto.id === idauto));
+    setactiveCar(newactiveCar);
+
+    e.preventDefault();
+    e.stopPropagation();
+  };
 
   return (
     <>
@@ -38,9 +47,11 @@ const ListaAutos = () => {
                     <h6>{auto.marca} {auto.modelo} {auto.version}</h6>
                     <h5>$ {auto.precio}</h5>
                     <p className="text-muted">{auto.anio} - {auto.kilometros} km</p>
-                    <Link to="/vistavehiculo" style={{textDecoration: 'none'}}>
-                      <Button variant="danger">Ver mas</Button>
-                    </Link>
+                    <Button variant="danger" id='btnVer' onClick={(event) => handleActiveCar(auto.id, event)}>
+                      <Link to="/vistavehiculo" style={{textDecoration: 'none'}}>
+                        Ver mas
+                      </Link>
+                    </Button>
                   </Card.Body>
                 </Card>
               </Col>))
