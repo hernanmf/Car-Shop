@@ -36,7 +36,8 @@ const ListaAutos = () => {
           
             {autos.map((auto) => (
               <Col className='mb-5' >
-                <Card style={{ maxWidth: '100%', height: '24rem', maxHeight: '52vh' }} >
+                <Card /* style={{ maxWidth: '100%', height: '24rem', maxHeight: '52vh' }} */
+                style={{ maxWidth: '100%', minHeight:'47vh' ,maxHeight: '47vh' }}  onMouseOver={(event) => handleActiveCar(auto.id, event)} onTouchStart={(event) => handleActiveCar(auto.id, event)}>
                   <Image
                     alt=""
                     src={auto.fotos[0]}
@@ -47,11 +48,13 @@ const ListaAutos = () => {
                     <h6>{auto.marca} {auto.modelo} {auto.version}</h6>
                     <h5>$ {auto.precio}</h5>
                     <p className="text-muted">{auto.anio} - {auto.kilometros} km</p>
+                    
                     <Button variant="danger" id='btnVer' onClick={(event) => handleActiveCar(auto.id, event)}>
                       <Link to="/vistavehiculo" style={{textDecoration: 'none'}}>
                         Ver mas
                       </Link>
                     </Button>
+                    
                   </Card.Body>
                 </Card>
               </Col>))

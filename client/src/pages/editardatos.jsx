@@ -17,7 +17,7 @@ const Editardatos = () => {
   const [validated, setValidated] = useState(false);
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleModificarUsuario = (e) => {
     const form = e.currentTarget;
     if (form.checkValidity() === false) {
       e.preventDefault();
@@ -26,11 +26,11 @@ const Editardatos = () => {
       //el form valida bien
       let newUserData = activeUser;
       console.log(`Info vieja: `,activeUser);
-      newUserData.nombre_completo =form.inputnombre_completo.value;
-      newUserData.correo_electronico =form.inputcorreo_electronico.value; 
+      newUserData.nombre_completo =form.inputnombre_completo.value.trim();
+      newUserData.correo_electronico =form.inputcorreo_electronico.value.trim(); 
       newUserData.telefono =form.inputtelefono.value; 
-      newUserData.provincia =form.inputprovincia.value;
-      newUserData.localidad =form.inputlocalidad.value;
+      newUserData.provincia =form.inputprovincia.value.trim();
+      newUserData.localidad =form.inputlocalidad.value.trim();
       console.log(`Info nueva: `,newUserData);
       
       setactiveUser(newUserData);
@@ -53,7 +53,7 @@ const Editardatos = () => {
       <div className='bloques-cerrado'>
       <br />
       <h5>MIS DATOS</h5>
-        <Form validated={validated} onSubmit={handleSubmit}> 
+        <Form validated={validated} onSubmit={handleModificarUsuario}> 
           <ListGroup as="ul">
             <ListGroup.Item as="li">
               <h6>Nombre Completo</h6>

@@ -7,10 +7,10 @@ export const AutosContext = createContext();
 export const AutosProvider = ({ children }) => {
 
   const [activeCar, setactiveCar] = useState(false);
-  const [ autos ] = useState(scriptAutos);
+  const [ autos , setAutos] = useState(scriptAutos);
 
   return (
-    <AutosContext.Provider value={{ autos, activeCar, setactiveCar }}>
+    <AutosContext.Provider value={{ autos ,setAutos , activeCar, setactiveCar}}>
       { children }
     </AutosContext.Provider>
   )
