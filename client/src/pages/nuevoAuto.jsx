@@ -13,7 +13,7 @@ import Col from 'react-bootstrap/Col';
 import '../css/bloques.css';
 
 const NuevoAuto = () => {
-  const { autos, setAutos, activeCar, setactiveCar } = useContext(AutosContext);
+  const { autos, setAutos, setactiveCar } = useContext(AutosContext);
   const {activeUser} = useContext(UsuariosContext)
   const [validated, setValidated] = useState(false);
   const navigate = useNavigate();
@@ -27,37 +27,37 @@ const NuevoAuto = () => {
       e.stopPropagation();
     } else {
       //el form valida bien
-      let newCarData = autos[autos.length-1];
-      console.log('Ultimo objeto del array', newCarData);
-      newCarData.id = autos.length;
-      newCarData.idusuario = activeUser.id;
-      newCarData.tipo =form.inputTipo.value.trim(); 
-      newCarData.marca =form.inputMarca.value.trim(); 
-      newCarData.modelo =form.inputModelo.value.trim(); 
-      newCarData.anio =form.inputAnio.value; 
-      newCarData.kilometros =form.inputKilometros.value; 
-      newCarData.precio =form.inputPrecio.value; 
-      newCarData.version = form.inputVersion.value.trim(); 
-      newCarData.transmision =form.inputTransmision.value.trim(); 
-      newCarData.rodado =form.inputRodado.value; 
-      newCarData.potencia =form.inputPotencia.value.trim(); 
-      newCarData.capacidad_carga =form.inputCapacidadCarga.value; 
-      newCarData.traccion =form.inputTraccion.value.trim(); 
-      newCarData.color =form.inputColor.value.trim(); 
-      newCarData.descripcion_adicional =form.inputDescripcion.value.trim(); 
-      newCarData.fotos[0] =form.inputFoto1.value.trim(); 
-      newCarData.fotos[1] =form.inputFoto2.value.trim(); 
-      newCarData.fotos[2] = form.inputFoto3.value.trim(); 
+      let newAutosListado = autos;
+      let newCarData = {
+        id : autos.length,
+        idusuario : activeUser.id,
+        tipo : form.inputTipo.value.trim(),
+        marca : form.inputMarca.value.trim(),
+        modelo : form.inputModelo.value.trim(),
+        anio : form.inputAnio.value,
+        kilometros : form.inputKilometros.value,
+        precio : form.inputPrecio.value,
+        version : form.inputVersion.value.trim(),
+        transmision : form.inputTransmision.value.trim(),
+        rodado : form.inputRodado.value,
+        potencia : form.inputPotencia.value.trim(),
+        capacidad_carga : form.inputCapacidadCarga.value,
+        traccion : form.inputTraccion.value.trim(),
+        color : form.inputColor.value.trim(),
+        descripcion_adicional : form.inputDescripcion.value.trim(),
+        fotos:[form.inputFoto1.value.trim(),form.inputFoto2.value.trim(),form.inputFoto3.value.trim()]
+      }
       
       console.log('Nuevo auto', newCarData);
-      let newAutosListado = autos;
+      console.log('Listado de autos', newAutosListado);
       newAutosListado.push(newCarData);
+      console.log('Nuevo listado de autos', newAutosListado);
       setAutos(newAutosListado);
 
-      console.log('Nuevo listado de autos', autos);
       setactiveCar(newCarData);
       alert('Vehiculo publicado con exito!');
       navigate('/vistaVehiculo', {});
+    }
   }
 
   return (
@@ -169,9 +169,10 @@ const NuevoAuto = () => {
 
             <ListGroup.Item as="li">
               <h6>Fotos del vehículo</h6> 
-              <Form.Control type="text" multiple id="inputFoto1" size='sm'  className="mb-3" required/>
-              <Form.Control type="text" multiple id="inputFoto2" size='sm'  className="mb-3"/>
-              <Form.Control type="text" multiple id="inputFoto3" size='sm'  className="mb-3"/>
+              <Form.Control type="text" multiple id="inputFoto1" size='sm'  className="mb-3" placeholder='Pon aqui la url de la foto' required/>
+              <Form.Control type="text" multiple id="inputFoto2" size='sm' placeholder='Pon aqui la url de la foto' className="mb-3"/>
+              <Form.Control type="text" multiple id="inputFoto3" size='sm' placeholder='Pon aqui la url de la foto' className="mb-3" />
+              <p className="text-muted">Recuerda que debes poner al menos una foto del vehiculo, no olvides rellenar la 1er fila</p>      
             </ListGroup.Item>
           </ListGroup>
           </Col>
