@@ -1,7 +1,7 @@
 let autos = [ 
     { "id": "0", 
       "idusuario": "001", 
-      "tipo": "Sedán", 
+      "tipo": "Auto", 
       "marca": "Toyota", 
       "modelo": "Corolla", 
       "version": "LE", 
@@ -24,7 +24,7 @@ let autos = [
   { 
       "id": "1", 
       "idusuario": "002", 
-      "tipo": "SUV", 
+      "tipo": "Camioneta", 
       "marca": "Nissan", 
       "modelo": "Kicks", 
       "version": "Advance", 
@@ -47,7 +47,7 @@ let autos = [
     { 
       "id": "2", 
       "idusuario": "003", 
-      "tipo": "Hatchback", 
+      "tipo": "Auto", 
       "marca": "Ford", 
       "modelo": "Fiesta", 
       "version": "SE", 
@@ -70,7 +70,7 @@ let autos = [
     { 
       "id": "3", 
       "idusuario": "001",
-      "tipo": "Pickup", 
+      "tipo": "Camioneta", 
       "marca": "Chevrolet", 
       "modelo": "Silverado", 
       "version": "LT", 
@@ -93,7 +93,7 @@ let autos = [
     { 
       "id": "4", 
       "idusuario": "003",
-      "tipo": "Sedán", 
+      "tipo": "Auto", 
       "marca": "Honda", 
       "modelo": "Civic", 
       "version": "Touring", 
@@ -116,7 +116,7 @@ let autos = [
     { 
       "id": "5", 
       "idusuario": "002",
-      "tipo": "SUV", 
+      "tipo": "Camioneta", 
       "marca": "Jeep", 
       "modelo": "Compass", 
       "version": "Limited", 
@@ -139,7 +139,7 @@ let autos = [
     { 
       "id": "6", 
       "idusuario": "001",
-      "tipo": "Deportivo", 
+      "tipo": "Auto", 
       "marca": "Mazda", 
       "modelo": "MX-5", 
       "version": "RF", 
@@ -162,7 +162,7 @@ let autos = [
     { 
       "id": "7", 
       "idusuario": "003",
-      "tipo": "Sedán", 
+      "tipo": "Auto", 
       "marca": "Volkswagen", 
       "modelo": "Vento", 
       "version": "Highline", 
@@ -185,7 +185,7 @@ let autos = [
     { 
       "id": "8", 
       "idusuario": "002",
-      "tipo": "SUV", 
+      "tipo": "Camioneta", 
       "marca": "Renault", 
       "modelo": "Captur", 
       "version": "Zen", 
@@ -208,7 +208,7 @@ let autos = [
     { 
       "id": "9", 
       "idusuario": "001",
-      "tipo": "Pickup", 
+      "tipo": "Camioneta", 
       "marca": "Ford", 
       "modelo": "Ranger", 
       "version": "XLT", 
@@ -231,7 +231,7 @@ let autos = [
     { 
       "id": "10", 
       "idusuario": "003",
-      "tipo": "Sedán", 
+      "tipo": "Auto", 
       "marca": "Chevrolet", 
       "modelo": "Cruze", 
       "version": "LT", 
@@ -254,7 +254,7 @@ let autos = [
     { 
       "id": "11", 
       "idusuario": "002",
-      "tipo": "SUV", 
+      "tipo": "Camioneta", 
       "marca": "Toyota", 
       "modelo": "Rav4", 
       "version": "XLE", 
@@ -277,7 +277,7 @@ let autos = [
   {
   "id": "12",
   "idusuario": "001",
-  "tipo": "Coupé",
+  "tipo": "Auto",
   "marca": "Volkswagen",
   "modelo": "Arteon",
   "version": "R-Line",
@@ -299,7 +299,7 @@ let autos = [
   }, {
   "id": "13",
   "idusuario": "002",
-  "tipo": "SUV",
+  "tipo": "Camioneta",
   "marca": "Volkswagen",
   "modelo": "Tiguan",
   "version": "R-Line",
@@ -320,7 +320,7 @@ let autos = [
   ]
 },{"id": "14",
   "idusuario": "003",
-  "tipo": "Sedán",
+  "tipo": "Auto",
   "marca": "Volkswagen",
   "modelo": "Passat",
   "version": "R-Line",
@@ -343,7 +343,7 @@ let autos = [
   {
   "id": "15",
   "idusuario": "003",
-  "tipo": "Hatchback",
+  "tipo": "Auto",
   "marca": "Volkswagen",
   "modelo": "Golf",
   "version": "GTI",
@@ -364,7 +364,7 @@ let autos = [
   ]
 },{"id": "16",
   "idusuario": "002",
-  "tipo": "Sedán",
+  "tipo": "Auto",
   "marca": "Volkswagen",
   "modelo": "Jetta",
   "version": "GLI",
@@ -385,7 +385,7 @@ let autos = [
   ]
 },{"id": "17",
   "idusuario": "001",
-  "tipo": "Hatchback",
+  "tipo": "Auto",
   "marca": "Citroen",
   "modelo": "C3",
   "version": "Feel",
@@ -406,7 +406,7 @@ let autos = [
   ]
 },{"id": "18",
   "idusuario": "002",
-  "tipo": "SUV",
+  "tipo": "Camioneta",
   "marca": "Citroen",
   "modelo": "C4 Cactus",
   "version": "Feel",
@@ -427,7 +427,7 @@ let autos = [
   ]
 },{"id": "19",
   "idusuario": "004",
-  "tipo": "Furgoneta",
+  "tipo": "Camioneta",
   "marca": "Citroen",
   "modelo": "Berlingo",
   "version": "Feel",
@@ -447,7 +447,7 @@ let autos = [
   ]
 },{"id": "20",
   "idusuario": "004",
-  "tipo": "SUV",
+  "tipo": "Camioneta",
   "marca": "Jeep",
   "modelo": "Wrangler",
   "version": "Sport",
@@ -468,7 +468,7 @@ let autos = [
   ]
 },{"id": "21",
   "idusuario": "002",
-  "tipo": "SUV",
+  "tipo": "Camioneta",
   "marca": "Jeep",
   "modelo": "Grand Cherokee",
   "version": "Limited",
@@ -489,7 +489,7 @@ let autos = [
   ]
 },{"id": "22",
   "idusuario": "004",
-  "tipo": "SUV",
+  "tipo": "Camioneta",
   "marca": "Jeep",
   "modelo": "Renegade",
   "version": "Sport",

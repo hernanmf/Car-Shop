@@ -10,14 +10,15 @@ import Row from 'react-bootstrap/Row';
 import Image from 'react-bootstrap/Image';
 
 import '../css/bloques.css';
+import FormBusqueda from '../components/index-formBusqueda'
 
 const ListaAutos = () => {
 
-  const { autos, setactiveCar} = useContext(AutosContext);
+  const { listado, setactiveCar} = useContext(AutosContext);
   
   const handleActiveCar = (idauto, e) => {
 
-    let newactiveCar = autos.find((auto => auto.id === idauto));
+    let newactiveCar = listado.find((auto => auto.id === idauto));
     setactiveCar(newactiveCar);
 
     e.preventDefault();
@@ -34,7 +35,13 @@ const ListaAutos = () => {
 
           <Row xs={1} md={4} className='justify-content-center'>
           
-            {autos.map((auto) => (
+            {listado.length ===0 ?
+              <>
+              <h1>No se han encontrado resultados con las caracteristicas que buscabas, volve a intentarlo</h1>
+              <FormBusqueda />
+              </>
+              :
+              listado.map((auto) => (
               <Col className='mb-5' >
                 <Card /* style={{ maxWidth: '100%', height: '24rem', maxHeight: '52vh' }} */
                 style={{ maxWidth: '100%', minHeight:'47vh' ,maxHeight: '47vh' }}  onMouseOver={(event) => handleActiveCar(auto.id, event)} onTouchStart={(event) => handleActiveCar(auto.id, event)}>
