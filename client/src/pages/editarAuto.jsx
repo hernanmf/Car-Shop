@@ -114,7 +114,7 @@ const EditarAuto = () => {
               <Form.Select id="inputTipo" defaultValue={activeCar.tipo} size='sm' className="mb-3" required>
                   <option value="Auto"> Auto </option>
                   <option value="Camioneta"> Camioneta </option>
-                  <option value="Camion"> Camión </option>
+                  <option value="Camiones"> Camión </option>
                   <option value="Colectivo"> Colectivo </option>
                   <option value="Maquinaria"> Maquinaria </option>
                   <option value="Moto"> Moto </option>

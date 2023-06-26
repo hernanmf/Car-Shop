@@ -10,7 +10,7 @@ import LogoChico from '../assets/images/logochico.png';
 
 const Footer = () => {
   return (
-     <Navbar variant="dark" className='colorapp' >
+     <Navbar variant="dark" className='colorapp'>
         <Container>
         <Navbar.Brand>
           <Link to="/" style={{textDecoration: 'none'}}>

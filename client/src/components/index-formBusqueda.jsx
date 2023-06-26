@@ -1,5 +1,5 @@
-import React, { useContext, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { AutosContext } from '../Context/AutosContext';
 
 import Button from 'react-bootstrap/Button';
@@ -71,7 +71,7 @@ const FormBusqueda = () => {
                 <Form.Select defaultValue="Auto" id="inputTipo" required>
                   <option value="Auto"> Auto </option>
                   <option value="Camioneta"> Camioneta </option>
-                  <option value="Camion"> Camión </option>
+                  <option value="Camiones"> Camión </option>
                   <option value="Colectivo"> Colectivo </option>
                   <option value="Maquinaria"> Maquinaria </option>
                   <option value="Moto"> Moto </option>

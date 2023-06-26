@@ -47,7 +47,7 @@ const LogIn = () => {
 
   return (
      <>
-      <Container>
+      <Container style={{ minHeight: '78vh' }}>
         <Col style={{ padding: '1vw' }} >
             <Card>
               <Card.Img variant="top" src={LogoGrande} />
