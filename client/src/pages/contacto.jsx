@@ -56,7 +56,7 @@ const Contacto = () => {
             <Button variant="success" type="submit" size="lg" className="button" id='btnConfirmar' >Enviar</Button>
           </Col>
           <Col>
-            <Link to="/misdatos" style={{textDecoration: 'none'}}>
+            <Link to="/" style={{textDecoration: 'none'}}>
             <Button variant="danger" type="submit" size="lg" className="button" id='btnCancelar'>Cancelar</Button>
             </Link>
           </Col>

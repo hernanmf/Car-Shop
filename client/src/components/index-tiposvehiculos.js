@@ -15,6 +15,12 @@ import camioneta from '../assets/images/icons/camioneta64.png';
 
 import '../css/bloques.css';
 
+const tipos = [
+  { imagen: motocicleta, nombre:'moto' },
+  { imagen: coche, nombre:'auto'},
+  { imagen: camion, nombre:'camion'},
+  { imagen: camioneta, nombre:'camioneta'},
+
 const Tiposvehiculos = () => {
   return (
     <>
@@ -27,7 +33,7 @@ const Tiposvehiculos = () => {
       <Row>
         
         <Col xs={3} md={3}>
-          <Link to="/listaautos"><Image src={coche} className='icon-button'/></Link>
+          <Image src={coche} className='icon-button'/>
         </Col>
         <Col xs={3} md={3}>
           <Link to="/listaautos"><Image src={motocicleta} className='icon-button'/></Link>

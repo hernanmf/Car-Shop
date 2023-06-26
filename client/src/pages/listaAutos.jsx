@@ -27,13 +27,13 @@ const ListaAutos = () => {
 
   return (
     <>
-      <Container>
+      <Container style={{ minHeight: '77vh' }}>
         <div className='bloques-cerrado'>
           <br />
           <h5>AUTOS</h5>
           <br />
 
-          <Row xs={1} md={4} className='justify-content-center'>
+          <Row key='' xs={1} md={4} className='justify-content-center'>
           
             {listado.length ===0 ?
               <>

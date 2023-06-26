@@ -1,5 +1,5 @@
-import React from 'react'
-import { Link } from 'react-router-dom';
+import React, { useContext } from 'react'
+import { Link, useNavigate } from 'react-router-dom';
 
 import Badge from 'react-bootstrap/Badge';
 import Col from 'react-bootstrap/Col';
@@ -18,8 +18,38 @@ import citroen from '../assets/images/brands/citroen.jpg';
 import jeep from '../assets/images/brands/jeep.jpg';
 
 import '../css/bloques.css';
+import { AutosContext } from '../Context/AutosContext';
+
+const marcas = [
+  { imagen: chevrolet, nombre:'chevrolet' },
+  { imagen: fiat, nombre:'fiat'},
+  { imagen: ford, nombre:'ford'},
+  { imagen: honda, nombre:'honda'},
+  { imagen: peugeot, nombre:'peugeot'},
+  { imagen: renault, nombre:'renault'},
+  { imagen: vw, nombre:'volkswagen'},
+  { imagen: citroen, nombre:'citroen'},
+  { imagen: jeep, nombre: 'jeep' }
+];
 
 const Marcas = () => {
+  const { autos, listado, setListado } = useContext(AutosContext);
+  const navigate = useNavigate();
+
+  const handleMarca = (marcaBuscada, e) => { 
+    e.preventDefault();
+    e.stopPropagation();
+    console.log('Listado sin filtrar',autos);
+    console.log('Marca', marcaBuscada);
+    let nuevoListado = autos.filter(auto => auto.marca.toLowerCase() === marcaBuscada);
+    console.log('Nuevo listado', nuevoListado);
+    setListado(nuevoListado);
+    console.log('Listado', listado);
+    navigate('/listaautos', {});
+    e.preventDefault();
+    e.stopPropagation();
+  }
+
   return (
     <>
         <div className='bloques'>
@@ -28,45 +58,13 @@ const Marcas = () => {
           </h6>
         </div>
      <Container className='bloques'>
-      <Row xs={3} md={5} className="justify-content-md-center" >
-        
-        <Col>
-            <Link to="/listaautos"><Image src={chevrolet} className='icon-button' roundedCircle />
-            </Link>
-        </Col>
-        <Col>
-            <Link to="/listaautos"><Image src={fiat} className='icon-button' roundedCircle />
-            </Link>
-        </Col>
-        <Col>
-          <Link to="/listaautos"><Image src={ford} className='icon-button' roundedCircle />
-          </Link>
-        </Col>
-        <Col>
-          <Link to="/listaautos"><Image src={honda} className='icon-button' roundedCircle />
-          </Link>
-        </Col>
-        <Col>
-          <Link to="/listaautos"><Image src={peugeot} className='icon-button' roundedCircle />
-          </Link>
-        </Col>
-        <Col>
-          <Link to="/listaautos"><Image src={renault} className='icon-button' roundedCircle />
-          </Link>
-        </Col>
-        <Col>
-          <Link to="/listaautos"><Image src={vw} className='icon-button' roundedCircle />
-          </Link>
-        </Col>
-        <Col>
-          <Link to="/listaautos"><Image src={citroen} className='icon-button' roundedCircle />
-          </Link>
-        </Col>
-        <Col>
-          <Link to="/listaautos"><Image src={jeep} className='icon-button' roundedCircle />
-          </Link>
-        </Col>
-        
+      <Row key='' xs={3} md={5} className="justify-content-md-center" >
+          {marcas.map((marca) => (
+            <Col>
+              <Image src={marca.imagen} className='icon-button' roundedCircle
+                onClick={(event) => handleMarca(marca.nombre, event)} />
+            </Col>
+          ))}
       </Row>
       </Container>
     </>

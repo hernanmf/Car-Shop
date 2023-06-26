@@ -14,13 +14,14 @@ import Col from 'react-bootstrap/Col';
 import '../css/nav.css';
 import LogoChico from '../assets/images/logochico.png';
 import { UsuariosContext } from '../Context/UserContext';
+import { AutosContext } from '../Context/AutosContext';
 
 const Header = () => {
 
   const { usuarios, activeUser, setactiveUser } = useContext(UsuariosContext);
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
-  
+  const { autos, listado, setListado  } = useContext(AutosContext);
   const showHideMenu = () => { 
     show ? setShow(false) : setShow(true);
   }
@@ -38,6 +39,41 @@ const Header = () => {
   }
 
 
+  const handleBuscar = (e) => {
+    e.preventDefault();
+      e.stopPropagation();
+    const form = e.currentTarget;
+    if (form.checkValidity() === false) {
+      e.preventDefault();
+      e.stopPropagation();
+    } else {
+      e.preventDefault();
+      e.stopPropagation();
+      //si el form valida bien, hay que listar
+      setListado(autos);
+      let nuevoListado = autos; 
+      console.log('Listado sin filtrar', listado);
+      
+      const palabrasBuscadas = form.inputBusqueda.value.trim().toLowerCase().split(" ");
+      const camposBuscados = ['tipo','marca','modelo','version','anio','kilometros','transmision','rodado','potencia','capacidad_carga','traccion','color','precio','descripcion_adicional'];
+      console.log(palabrasBuscadas);
+      nuevoListado = nuevoListado.filter(auto => {
+        return palabrasBuscadas.every(palabra => { 
+          return camposBuscados.some(campo => {
+            return auto[campo].toString().toLowerCase().includes(palabra); 
+          });
+        });
+      });
+      console.log('Filtado resultado', nuevoListado);
+      
+      setListado(nuevoListado);
+      e.preventDefault();
+      e.stopPropagation();
+    navigate('/listaautos', {});
+    e.preventDefault();
+    e.stopPropagation();
+    }
+  }
   return (
     <>
       <Navbar key={'false'} expand={'sm'} className='colorapp' sticky="top">
@@ -71,10 +107,10 @@ const Header = () => {
             
               <Offcanvas.Body>
                 <Col xs={12} md={8}>
-                <Form className="d-flex">
+                <Form className="d-flex" onSubmit={handleBuscar}>
                   <InputGroup className="mb-1">
-                    <Form.Control placeholder="Buscá marcas, modelos y mas.." />
-                    <Link to="/listaautos" style={{textDecoration: 'none'}}><Button variant="light" id="button-addon2">Buscar</Button></Link>
+                    <Form.Control placeholder="Buscá marcas, modelos y mas.." id="inputBusqueda" required/>
+                    <Button type="submit" variant="light" id="button-addon2" onClick={showHideMenu}>Buscar</Button>
                   </InputGroup>
                 </Form>
                 </Col>
