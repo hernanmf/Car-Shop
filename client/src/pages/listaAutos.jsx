@@ -60,7 +60,7 @@ const ListaAutos = () => {
                       <h5>$ {auto.precio}</h5>
                       <p className="text-muted">{auto.anio} - {auto.kilometros} km</p>
                       <Button variant="danger" id='btnVer' onClick={(event) => handleActiveCar(auto.id, event)}>
-                        <Link to="/vistavehiculo" style={{ textDecoration: 'none' }}>
+                        <Link to="/vistavehiculo" style={{ color:'white' ,textDecoration: 'none' }}>
                         Ver mas
                         </Link>
                       </Button>

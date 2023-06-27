@@ -1,7 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; 
-import React from "react";
-import { AutosProvider } from './Context/AutosContext';
-import { UsuariosProvider } from './Context/UserContext';
+import React, { useContext } from "react";
+import { UsuariosContext } from './Context/UserContext';
 
 import './App.css';
 
@@ -22,32 +21,35 @@ import NuevoUsuario from './pages/nuevoUsuario';
 
 
 function App() {
+  const { activeUser } = useContext(UsuariosContext);
   return (
     <>
-      <UsuariosProvider>
-      <AutosProvider>
       <div className='App'>  
         <Router>
             <Header />
-            <Routes>
+          <Routes>
             <Route path="*" element={ <Home /> } />
-            <Route path="/" element={ <Home /> } />
+            <Route path="/" element={<Home />} />
             <Route path="/login" element={ <LogIn /> } />
             <Route path="/contacto" element={<Contacto />} />
             <Route path="/listaautos" element={<ListaAutos />} />
             <Route path="/vistavehiculo" element={<VistaVehiculo />} />
-            <Route path="/misdatos" element={ <Misdatos /> } />
-            <Route path="/mispublicaciones" element={<MisPublicaciones />} />
-            <Route path="/nuevoauto" element={<NuevoAuto />} />
             <Route path="/nuevousuario" element={<NuevoUsuario />} />
-            <Route path="/editarauto" element={<EditarAuto />} />
-            <Route path="/editardatos" element={<Editardatos />} />
+            {activeUser ?
+              <>
+              <Route path="/misdatos" element={<Misdatos />} />
+              <Route path="/mispublicaciones" element={<MisPublicaciones />} />
+              <Route path="/nuevoauto" element={<NuevoAuto />} />
+              <Route path="/editarauto" element={<EditarAuto />} />
+              <Route path="/editardatos" element={<Editardatos />} />
+              </>
+              :
+              <></>
+            }
             </Routes>
           <Footer />  
         </Router>
       </div>
-      </AutosProvider>
-      </UsuariosProvider>
     </>
   );
 }
