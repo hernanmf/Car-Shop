@@ -29,7 +29,7 @@ const NuevoAuto = () => {
       //el form valida bien
       let newAutosListado = autos;
       let newCarData = {
-        id : autos.length,
+        id : autos.length+1,
         idusuario : activeUser.id,
         tipo : form.inputTipo.value.trim(),
         marca : form.inputMarca.value.trim(),

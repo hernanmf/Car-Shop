@@ -10,7 +10,7 @@ import MisPublicaciones from './misPublicaciones';
 import '../css/bloques.css';
 
 const Misdatos = () => {
-  const { activeUser, setactiveUser } = useContext(UsuariosContext);
+  const { activeUser } = useContext(UsuariosContext);
 
   return (
     <>

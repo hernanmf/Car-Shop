@@ -1,29 +1,7 @@
-let autos = [ 
-    { "id": "0", 
-      "idusuario": "001", 
-      "tipo": "Auto", 
-      "marca": "Toyota", 
-      "modelo": "Corolla", 
-      "version": "LE", 
-      "anio": 2021, 
-      "kilometros": 0, 
-      "transmision": "Automática", 
-      "rodado": 16, 
-      "potencia": 139, 
-      "capacidad_carga": 400, 
-      "traccion": "Delantera", 
-      "color": "Blanco", 
-      "precio": 350000, 
-      "descripcion_adicional": "Nuevo modelo 2021 con pantalla táctil de 8 pulgadas y cámara de reversa", 
-      "fotos": [ 
-        "https://blog.karvi.com.ar/wp-content/uploads/2021/02/corolla1.jpg", 
-        "https://ejemplo.com/foto2.jpg", 
-        "https://ejemplo.com/foto3.jpg" 
-      ] 
-    }, 
+let autos = [  
   { 
-      "id": "1", 
-      "idusuario": "002", 
+      "id": 1, 
+      "idusuario": 2, 
       "tipo": "Camioneta", 
       "marca": "Nissan", 
       "modelo": "Kicks", 
@@ -45,8 +23,8 @@ let autos = [
       ] 
     }, 
     { 
-      "id": "2", 
-      "idusuario": "003", 
+      "id": 2, 
+      "idusuario": 3, 
       "tipo": "Auto", 
       "marca": "Ford", 
       "modelo": "Fiesta", 
@@ -68,8 +46,8 @@ let autos = [
       ] 
     }, 
     { 
-      "id": "3", 
-      "idusuario": "001",
+      "id": 3, 
+      "idusuario": 1,
       "tipo": "Camioneta", 
       "marca": "Chevrolet", 
       "modelo": "Silverado", 
@@ -91,8 +69,8 @@ let autos = [
       ] 
     }, 
     { 
-      "id": "4", 
-      "idusuario": "003",
+      "id": 4, 
+      "idusuario": 3,
       "tipo": "Auto", 
       "marca": "Honda", 
       "modelo": "Civic", 
@@ -114,8 +92,8 @@ let autos = [
       ] 
     }, 
     { 
-      "id": "5", 
-      "idusuario": "002",
+      "id": 5, 
+      "idusuario": 2,
       "tipo": "Camioneta", 
       "marca": "Jeep", 
       "modelo": "Compass", 
@@ -137,8 +115,8 @@ let autos = [
       ] 
     }, 
     { 
-      "id": "6", 
-      "idusuario": "001",
+      "id": 6, 
+      "idusuario": 1,
       "tipo": "Auto", 
       "marca": "Mazda", 
       "modelo": "MX-5", 
@@ -160,8 +138,8 @@ let autos = [
       ] 
     }, 
     { 
-      "id": "7", 
-      "idusuario": "003",
+      "id": 7, 
+      "idusuario": 3,
       "tipo": "Auto", 
       "marca": "Volkswagen", 
       "modelo": "Vento", 
@@ -183,8 +161,8 @@ let autos = [
       ] 
     }, 
     { 
-      "id": "8", 
-      "idusuario": "002",
+      "id": 8, 
+      "idusuario": 2,
       "tipo": "Camioneta", 
       "marca": "Renault", 
       "modelo": "Captur", 
@@ -206,8 +184,8 @@ let autos = [
       ] 
     }, 
     { 
-      "id": "9", 
-      "idusuario": "001",
+      "id": 9, 
+      "idusuario": 1,
       "tipo": "Camioneta", 
       "marca": "Ford", 
       "modelo": "Ranger", 
@@ -229,8 +207,8 @@ let autos = [
       ] 
     }, 
     { 
-      "id": "10", 
-      "idusuario": "003",
+      "id": 10, 
+      "idusuario": 3,
       "tipo": "Auto", 
       "marca": "Chevrolet", 
       "modelo": "Cruze", 
@@ -252,8 +230,8 @@ let autos = [
       ] 
     }, 
     { 
-      "id": "11", 
-      "idusuario": "002",
+      "id": 11, 
+      "idusuario": 2,
       "tipo": "Camioneta", 
       "marca": "Toyota", 
       "modelo": "Rav4", 
@@ -275,8 +253,8 @@ let autos = [
       ] 
   },
   {
-  "id": "12",
-  "idusuario": "001",
+  "id": 12,
+  "idusuario": 1,
   "tipo": "Auto",
   "marca": "Volkswagen",
   "modelo": "Arteon",
@@ -297,8 +275,8 @@ let autos = [
     "https://noticias.coches.com/wp-content/uploads/2014/07/jeep_grand-cherokee-limited-2013_r10.jpg"
   ]
   }, {
-  "id": "13",
-  "idusuario": "002",
+  "id": 13,
+  "idusuario": 2,
   "tipo": "Camioneta",
   "marca": "Volkswagen",
   "modelo": "Tiguan",
@@ -318,8 +296,8 @@ let autos = [
     "https://noticias.coches.com/wp-content/uploads/2014/07/jeep_grand-cherokee-limited-2013_r10.jpg",
     "https://noticias.coches.com/wp-content/uploads/2014/07/jeep_grand-cherokee-limited-2013_r10.jpg"
   ]
-},{"id": "14",
-  "idusuario": "003",
+},{"id": 14,
+  "idusuario": 3,
   "tipo": "Auto",
   "marca": "Volkswagen",
   "modelo": "Passat",
@@ -341,8 +319,8 @@ let autos = [
   ]
   },
   {
-  "id": "15",
-  "idusuario": "003",
+  "id": 15,
+  "idusuario": 3,
   "tipo": "Auto",
   "marca": "Volkswagen",
   "modelo": "Golf",
@@ -362,8 +340,8 @@ let autos = [
     "https://noticias.coches.com/wp-content/uploads/2014/07/jeep_grand-cherokee-limited-2013_r10.jpg",
     "https://noticias.coches.com/wp-content/uploads/2014/07/jeep_grand-cherokee-limited-2013_r10.jpg"
   ]
-},{"id": "16",
-  "idusuario": "002",
+},{"id": 16,
+  "idusuario": 2,
   "tipo": "Auto",
   "marca": "Volkswagen",
   "modelo": "Jetta",
@@ -383,8 +361,8 @@ let autos = [
     "https://noticias.coches.com/wp-content/uploads/2014/07/jeep_grand-cherokee-limited-2013_r10.jpg",
     "https://noticias.coches.com/wp-content/uploads/2014/07/jeep_grand-cherokee-limited-2013_r10.jpg"
   ]
-},{"id": "17",
-  "idusuario": "001",
+},{"id": 17,
+  "idusuario": 1,
   "tipo": "Auto",
   "marca": "Citroen",
   "modelo": "C3",
@@ -404,8 +382,8 @@ let autos = [
     "https://noticias.coches.com/wp-content/uploads/2014/07/jeep_grand-cherokee-limited-2013_r10.jpg",
     "https://noticias.coches.com/wp-content/uploads/2014/07/jeep_grand-cherokee-limited-2013_r10.jpg"
   ]
-},{"id": "18",
-  "idusuario": "002",
+},{"id": 18,
+  "idusuario": 2,
   "tipo": "Camioneta",
   "marca": "Citroen",
   "modelo": "C4 Cactus",
@@ -425,8 +403,8 @@ let autos = [
     "https://noticias.coches.com/wp-content/uploads/2014/07/jeep_grand-cherokee-limited-2013_r10.jpg",
     "https://noticias.coches.com/wp-content/uploads/2014/07/jeep_grand-cherokee-limited-2013_r10.jpg"
   ]
-},{"id": "19",
-  "idusuario": "004",
+},{"id": 19,
+  "idusuario": 4,
   "tipo": "Camioneta",
   "marca": "Citroen",
   "modelo": "Berlingo",
@@ -445,8 +423,8 @@ let autos = [
     "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/2019_Citroen_Berlingo_Feel_Puretech_1.2_Front.jpg/800px-2019_Citroen_Berlingo_Feel_Puretech_1.2_Front.jpg",
     "https://noticias.coches.com/wp-content/uploads/2014/07/jeep_grand-cherokee-limited-2013_r10.jpg"
   ]
-},{"id": "20",
-  "idusuario": "004",
+},{"id": 20,
+  "idusuario": 4,
   "tipo": "Camioneta",
   "marca": "Jeep",
   "modelo": "Wrangler",
@@ -466,8 +444,8 @@ let autos = [
     "https://noticias.coches.com/wp-content/uploads/2014/07/jeep_grand-cherokee-limited-2013_r10.jpg",
     "https://noticias.coches.com/wp-content/uploads/2014/07/jeep_grand-cherokee-limited-2013_r10.jpg"
   ]
-},{"id": "21",
-  "idusuario": "002",
+},{"id": 21,
+  "idusuario": 2,
   "tipo": "Camioneta",
   "marca": "Jeep",
   "modelo": "Grand Cherokee",
@@ -487,8 +465,8 @@ let autos = [
     "https://noticias.coches.com/wp-content/uploads/2014/07/jeep_grand-cherokee-limited-2013_r10.jpg",
     "https://noticias.coches.com/wp-content/uploads/2014/07/jeep_grand-cherokee-limited-2013_r10.jpg"
   ]
-},{"id": "22",
-  "idusuario": "004",
+},{"id": 22,
+  "idusuario": 4,
   "tipo": "Camioneta",
   "marca": "Jeep",
   "modelo": "Renegade",
@@ -508,7 +486,28 @@ let autos = [
     "https://noticias.coches.com/wp-content/uploads/2014/07/jeep_grand-cherokee-limited-2013_r10.jpg",
     "https://noticias.coches.com/wp-content/uploads/2014/07/jeep_grand-cherokee-limited-2013_r10.jpg"
   ]
-}
+},{ "id": 23, 
+      "idusuario": 1, 
+      "tipo": "Auto", 
+      "marca": "Toyota", 
+      "modelo": "Corolla", 
+      "version": "LE", 
+      "anio": 2021, 
+      "kilometros": 0, 
+      "transmision": "Automática", 
+      "rodado": 16, 
+      "potencia": 139, 
+      "capacidad_carga": 400, 
+      "traccion": "Delantera", 
+      "color": "Blanco", 
+      "precio": 350000, 
+      "descripcion_adicional": "Nuevo modelo 2021 con pantalla táctil de 8 pulgadas y cámara de reversa", 
+      "fotos": [ 
+        "https://blog.karvi.com.ar/wp-content/uploads/2021/02/corolla1.jpg", 
+        "https://ejemplo.com/foto2.jpg", 
+        "https://ejemplo.com/foto3.jpg" 
+      ] 
+  }
 ];
   
 module.exports = autos;

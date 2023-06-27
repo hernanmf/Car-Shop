@@ -17,7 +17,8 @@ const LogIn = () => {
   const { usuarios, activeUser, setactiveUser } = useContext(UsuariosContext);
   const navigate = useNavigate();
 
-  const [validated, setValidated] = useState( true );
+  const [validated, setValidated] = useState(true);
+  console.log('LISTA DE USUARIOS ANTES DE LOGUEARNOS',usuarios);
 
   const handleSubmit = (e) => {
     const form = e.currentTarget;
@@ -27,14 +28,14 @@ const LogIn = () => {
         e.stopPropagation();
       } else {
         //si el form valida bien, hay q ver si el user existe
-        let usuarioEncontrado = usuarios.find(usuario => usuario.correo_electronico === e.target.email.value && usuario.password === e.target.clave.value);
+        let usuarioEncontrado = usuarios.find(usuario => usuario.correo_electronico === e.target.email.value.trim() && usuario.password === e.target.clave.value.trim());
         console.log('Usuario encontrado:', usuarioEncontrado);
         if (usuarioEncontrado) {
           setactiveUser(usuarioEncontrado);
           /* console.log('Bienvenido', activeUser ); */
           alert('BIENVENIDO A CAR SHOP');
           navigate('/', {
-            replace: true //replace hace que cuando el user vuelva para atras no siga logueado
+            /* replace: true */ //replace hace que cuando el user vuelva para atras no siga logueado
           });
         } else {
           alert('EL USUARIO NO EXISTE, REVISE LOS DATOS Y REINTENTE');

@@ -1,7 +1,7 @@
 
 let usuarios = [
     {
-      "id": "001",
+      "id": 1,
       "password": "contraseña1",
       "nombre_completo": "Juan Pérez",
       "correo_electronico": "juan.perez@mail.com",
@@ -10,7 +10,7 @@ let usuarios = [
       "localidad": "La Plata"
     },
     {
-      "id": "002",
+      "id": 2,
       "password": "contraseña2",
       "nombre_completo": "María González",
       "correo_electronico": "maria.gonzalez@mail.com",
@@ -19,7 +19,7 @@ let usuarios = [
       "localidad": "Córdoba"
     },
     {
-      "id": "003",
+      "id": 3,
       "password": "contraseña3",
       "nombre_completo": "Pedro Rodríguez",
       "correo_electronico": "pedro.rodriguez@mail.com",
@@ -28,7 +28,7 @@ let usuarios = [
       "localidad": "Mendoza"
     },
     {
-      "id": "004",
+      "id": 4,
       "password": "aa",
       "nombre_completo": "Pedro Rodríguez",
       "correo_electronico": "aa@aa",

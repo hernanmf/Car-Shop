@@ -22,15 +22,16 @@ const NuevoUsuario = () => {
       e.stopPropagation();
     } else {
       //el form valida bien
+      let newListadoUsuarios = usuarios;
+      console.log('Listado de usuarios', newListadoUsuarios);
       let usuarioExiste = usuarios.find(usuario => usuario.correo_electronico === form.inputcorreo_electronico.value.trim() || usuario.telefono === form.inputtelefono.value);
+      console.log('Usuario existe? ',usuarioExiste);
       if (!usuarioExiste) {
-        let newListadoUsuarios = usuarios;
-        console.log('Listado de usuarios', newListadoUsuarios);
         let newUserData = {
-          id: usuarios.length,
+          id: newListadoUsuarios.length + 1,
           nombre_completo: form.inputnombre_completo.value.trim(),
           correo_electronico: form.inputcorreo_electronico.value.trim(),
-          password: form.inputtelefono.value.trim(),
+          password: form.inputpassword.value.trim(),
           telefono: form.inputtelefono.value,
           provincia: form.inputprovincia.value.trim(),
           localidad: form.inputlocalidad.value.trim()
@@ -39,17 +40,18 @@ const NuevoUsuario = () => {
         newListadoUsuarios.push(newUserData);
         console.log(`Nuevo listado de usuarios`, newListadoUsuarios);
         setUsuarios(newListadoUsuarios);
+        
         console.log(`${newUserData.nombre_completo} te has registrado exitosamente! \n Logueate y busca ese vehículo que tanto estas buscando!`);
         window.alert(`${newUserData.nombre_completo} te has registrado exitosamente! \n Logueate y busca ese vehículo que tanto estas buscando!`);
         navigate('/login', {});
+        e.preventDefault();
+        e.stopPropagation();
       } else {
         console.log('Ya hay alguien listado con ese correo electronico o telefono, revise los datos y vuelva a intentar');
         window.alert('Ya hay alguien listado con ese correo electronico o telefono, revise los datos y vuelva a intentar');
       }
     }
-      setValidated(true);
-      e.preventDefault();
-      e.stopPropagation();
+    setValidated(true);
   }
 
   return (
