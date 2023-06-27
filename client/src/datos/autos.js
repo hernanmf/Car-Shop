@@ -86,8 +86,7 @@ let autos = [
       "precio": 450000, 
       "descripcion_adicional": "Nuevo modelo 2021 con sistema de sonido premium y asientos de piel", 
       "fotos": [ 
-        "https://blog.karvi.com.ar/wp-content/uploads/2021/02/corolla1.jpg",
-        "https://noticias.coches.com/wp-content/uploads/2014/07/jeep_grand-cherokee-limited-2013_r10.jpg",
+        "https://www.carpro.com/hubfs/2022-Honda-Civic-feature-carprousa.jpg",
     "https://noticias.coches.com/wp-content/uploads/2014/07/jeep_grand-cherokee-limited-2013_r10.jpg" 
       ] 
     }, 
@@ -109,8 +108,7 @@ let autos = [
       "precio": 550000, 
       "descripcion_adicional": "Servicios de agencia, en excelente estado", 
       "fotos": [ 
-        "https://blog.karvi.com.ar/wp-content/uploads/2021/02/corolla1.jpg",
-        "https://noticias.coches.com/wp-content/uploads/2014/07/jeep_grand-cherokee-limited-2013_r10.jpg",
+        "https://rosasautomotriz.com/wp-content/uploads/2022/04/Jee-Compass-Sport-2014-RosasAutomotriz16-730x535.jpg",
     "https://noticias.coches.com/wp-content/uploads/2014/07/jeep_grand-cherokee-limited-2013_r10.jpg" 
       ] 
     }, 
@@ -132,7 +130,7 @@ let autos = [
       "precio": 600000, 
       "descripcion_adicional": "Nuevo modelo 2021, descapotable, asientos deportivos de piel", 
       "fotos": [ 
-        "https://blog.karvi.com.ar/wp-content/uploads/2021/02/corolla1.jpg",
+        "https://img.remediosdigitales.com/0ce237/mazda-mx-5-na.-02/1366_2000.jpg",
         "https://noticias.coches.com/wp-content/uploads/2014/07/jeep_grand-cherokee-limited-2013_r10.jpg",
     "https://noticias.coches.com/wp-content/uploads/2014/07/jeep_grand-cherokee-limited-2013_r10.jpg" 
       ] 
@@ -155,7 +153,7 @@ let autos = [
       "precio": 200000, 
       "descripcion_adicional": "Único dueño, servicios de agencia, en buen estado", 
       "fotos": [ 
-        "https://blog.karvi.com.ar/wp-content/uploads/2021/02/corolla1.jpg",
+        "https://i0.wp.com/tiempomotor.com/wp-content/uploads/2019/06/Vento_Highline_Test_11.jpg?resize=960%2C720&ssl=1",
         "https://noticias.coches.com/wp-content/uploads/2014/07/jeep_grand-cherokee-limited-2013_r10.jpg",
     "https://noticias.coches.com/wp-content/uploads/2014/07/jeep_grand-cherokee-limited-2013_r10.jpg" 
       ] 
@@ -178,7 +176,7 @@ let autos = [
       "precio": 280000, 
       "descripcion_adicional": "Servicios de agencia, en buen estado", 
       "fotos": [ 
-        "https://blog.karvi.com.ar/wp-content/uploads/2021/02/corolla1.jpg",
+        "https://http2.mlstatic.com/D_NQ_NP_638422-MLA69817374247_062023-O.jpg",
         "https://noticias.coches.com/wp-content/uploads/2014/07/jeep_grand-cherokee-limited-2013_r10.jpg",
     "https://noticias.coches.com/wp-content/uploads/2014/07/jeep_grand-cherokee-limited-2013_r10.jpg" 
       ] 
@@ -201,7 +199,7 @@ let autos = [
       "precio": 750000, 
       "descripcion_adicional": "Servicios de agencia, en excelente estado", 
       "fotos": [ 
-        "https://blog.karvi.com.ar/wp-content/uploads/2021/02/corolla1.jpg",
+        "https://www.deruedas.com.ar/images/autos/593/593662_1_im.jpg",
         "https://noticias.coches.com/wp-content/uploads/2014/07/jeep_grand-cherokee-limited-2013_r10.jpg",
     "https://noticias.coches.com/wp-content/uploads/2014/07/jeep_grand-cherokee-limited-2013_r10.jpg" 
       ] 
@@ -224,7 +222,7 @@ let autos = [
       "precio": 180000, 
       "descripcion_adicional": "Único dueño, en buen estado", 
       "fotos": [ 
-        "https://blog.karvi.com.ar/wp-content/uploads/2021/02/corolla1.jpg",
+        "https://tiendacars.com/media/2023/05/6054_23251_desktop.jpeg",
         "https://noticias.coches.com/wp-content/uploads/2014/07/jeep_grand-cherokee-limited-2013_r10.jpg",
         "https://noticias.coches.com/wp-content/uploads/2014/07/jeep_grand-cherokee-limited-2013_r10.jpg" 
       ] 
@@ -247,7 +245,7 @@ let autos = [
       "precio": 500000, 
       "descripcion_adicional": "Servicios de agencia, en excelente estado", 
       "fotos": [ 
-        "https://blog.karvi.com.ar/wp-content/uploads/2021/02/corolla1.jpg",
+        "https://http2.mlstatic.com/D_NQ_NP_683676-MLA70109527517_062023-O.webp",
         "https://noticias.coches.com/wp-content/uploads/2014/07/jeep_grand-cherokee-limited-2013_r10.jpg",
         "https://noticias.coches.com/wp-content/uploads/2014/07/jeep_grand-cherokee-limited-2013_r10.jpg" 
       ] 
@@ -270,9 +268,9 @@ let autos = [
   "precio": 800000,
   "descripcion_adicional": "Nuevo modelo 2021 con sistema de cámara 360 y asientos de cuero Nappa",
   "fotos": [
-    "https://blog.karvi.com.ar/wp-content/uploads/2021/02/corolla1.jpg",
-    "https://noticias.coches.com/wp-content/uploads/2014/07/jeep_grand-cherokee-limited-2013_r10.jpg",
-    "https://noticias.coches.com/wp-content/uploads/2014/07/jeep_grand-cherokee-limited-2013_r10.jpg"
+    "https://images.carexpert.com.au/resize/3000/-/app/uploads/2022/02/2022-Volkswagen-Arteon-206TSI-R-Line-Liftback-HERO.jpg",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyQ6n9u8qaaxAPsIezls96pLdYfWKKD1QVFNCo9IURRX_B7KQa25b81wPToyAe1XgjjrQ&usqp=CAU",
+    "https://vw.plichta.com.pl/wp-content/uploads/otomoto-sync/464747/b2dcba9f6ee86625d66d64adc9dac48f.jpg"
   ]
   }, {
   "id": 13,
@@ -292,9 +290,9 @@ let autos = [
   "precio": 700000,
   "descripcion_adicional": "Nuevo modelo 2021 con sistema de sonido Fender y techo panorámico corredizo",
   "fotos": [
-    "https://blog.karvi.com.ar/wp-content/uploads/2021/02/corolla1.jpg",
-    "https://noticias.coches.com/wp-content/uploads/2014/07/jeep_grand-cherokee-limited-2013_r10.jpg",
-    "https://noticias.coches.com/wp-content/uploads/2014/07/jeep_grand-cherokee-limited-2013_r10.jpg"
+    "https://fncdn.blob.core.windows.net/web-clean/1/root/arteon.jpg",
+    "https://vw.plichta.com.pl/wp-content/uploads/otomoto-sync/464747/b2dcba9f6ee86625d66d64adc9dac48f.jpg",
+    "https://www.autoscout24.de/cms-content-assets/4IsmvtZbVx6Jyk0VShBcf1-e802e145588bc66774cf53e10a5fe640-vw-arteon-back-1100.jpeg"
   ]
 },{"id": 14,
   "idusuario": 3,
@@ -313,7 +311,7 @@ let autos = [
   "precio": 600000,
   "descripcion_adicional": "Nuevo modelo 2021 con sistema de asistencia de frenado de emergencia y control de crucero adaptativo",
   "fotos": [
-    "https://blog.karvi.com.ar/wp-content/uploads/2021/02/corolla1.jpg",
+    "https://http2.mlstatic.com/D_NQ_NP_999509-MLA54657779141_032023-O.webp",
     "https://noticias.coches.com/wp-content/uploads/2014/07/jeep_grand-cherokee-limited-2013_r10.jpg",
     "https://noticias.coches.com/wp-content/uploads/2014/07/jeep_grand-cherokee-limited-2013_r10.jpg"
   ]
@@ -336,7 +334,7 @@ let autos = [
   "precio": 500000,
   "descripcion_adicional": "Nuevo modelo 2021 con techo corredizo panorámico y sistema de navegación",
   "fotos": [
-    "https://blog.karvi.com.ar/wp-content/uploads/2021/02/corolla1.jpg",
+    "https://cdn.motor1.com/images/mgl/B3Pme/s1/llego-a-la-argentina-el-ultimo-embarque-de-vw-golf-gti.jpg",
     "https://noticias.coches.com/wp-content/uploads/2014/07/jeep_grand-cherokee-limited-2013_r10.jpg",
     "https://noticias.coches.com/wp-content/uploads/2014/07/jeep_grand-cherokee-limited-2013_r10.jpg"
   ]
@@ -357,7 +355,7 @@ let autos = [
   "precio": 450000,
   "descripcion_adicional": "Nuevo modelo 2021 con sistema de sonido premium y asientos deportivos",
   "fotos": [
-    "https://cdn.motor1.com/images/mgl/L3Yxrm/s3/volkswagen-jetta-gli-2022.jpg",
+    "https://hips.hearstapps.com/hmg-prod/images/2022-volkswagen-jetta-gli-autobahn-103-edit-1645827739.jpg?crop=0.622xw:0.699xh;0.129xw,0.301xh&resize=640:*",
     "https://noticias.coches.com/wp-content/uploads/2014/07/jeep_grand-cherokee-limited-2013_r10.jpg",
     "https://noticias.coches.com/wp-content/uploads/2014/07/jeep_grand-cherokee-limited-2013_r10.jpg"
   ]

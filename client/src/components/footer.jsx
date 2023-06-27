@@ -10,6 +10,7 @@ import LogoChico from '../assets/images/logochico.png';
 
 const Footer = () => {
   return (
+    <>
      <Navbar variant="dark" className='colorapp'>
         <Container>
         <Navbar.Brand>
@@ -24,12 +25,13 @@ const Footer = () => {
             </Link>
           </Navbar.Brand>
           <Nav>
-            <Nav.Link><Link to="/" style={{color: 'black' ,textDecoration: 'none'}}>Inicio</Link></Nav.Link>
-            <Nav.Link><Link to="/contacto" style={{color: 'black' ,textDecoration: 'none'}}>Contacto</Link></Nav.Link>
-            <Nav.Link><Link to="/" style={{color: 'black' ,textDecoration: 'none'}}>FAQ</Link></Nav.Link>
+            <Nav.Link><Link to="/" style={{color: 'white' ,textDecoration: 'none'}}>Inicio</Link></Nav.Link>
+            <Nav.Link><Link to="/contacto" style={{color: 'white' ,textDecoration: 'none'}}>Contacto</Link></Nav.Link>
+            <Nav.Link><Link to="/" style={{color: 'white' ,textDecoration: 'none'}}>FAQ</Link></Nav.Link>
           </Nav>
         </Container>
-      </Navbar>
+    </Navbar>
+    </>
   );
 }
 
