@@ -22,6 +22,7 @@ import NuevoUsuario from './pages/nuevoUsuario';
 
 function App() {
   const { activeUser } = useContext(UsuariosContext);
+  
   return (
     <>
       <div className='App'>  
@@ -35,21 +36,22 @@ function App() {
             <Route path="/listaautos" element={<ListaAutos />} />
             <Route path="/vistavehiculo" element={<VistaVehiculo />} />
             <Route path="/nuevousuario" element={<NuevoUsuario />} />
-            {activeUser ?
-              <>
-              <Route path="/misdatos" element={<Misdatos />} />
-              <Route path="/mispublicaciones" element={<MisPublicaciones />} />
-              <Route path="/nuevoauto" element={<NuevoAuto />} />
-              <Route path="/editarauto" element={<EditarAuto />} />
-              <Route path="/editardatos" element={<Editardatos />} />
-              </>
-              :
-              <></>
+            {  
+              activeUser?
+                <>
+                <Route path="/misdatos" element={<Misdatos />} />
+                <Route path="/mispublicaciones" element={<MisPublicaciones />} />
+                <Route path="/nuevoauto" element={<NuevoAuto />} />
+                <Route path="/editarauto" element={<EditarAuto />} />
+                <Route path="/editardatos" element={<Editardatos />} />
+                </>
+                :
+                <></>
             }
             </Routes>
           <Footer />  
         </Router>
-      </div>
+          </div>
     </>
   );
 }
