@@ -14,7 +14,6 @@ const Contacto = () => {
   return (
     <>
       <Container>
-      <br />
       <div className='bloques-cerrado'>
       <br />
       <h5>Contactanos</h5>

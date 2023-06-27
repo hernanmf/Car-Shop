@@ -43,7 +43,7 @@ const MisPublicaciones = () => {
 
   return (
     <>
-      <Container style={{/* height: "100vh" ,*/minHeight: "75vh"}}>
+      <Container style={{/* height: "100vh" ,*/minHeight: "80vh"}}>
         <br />
         <div className='bloques-cerrado'>
           <br />

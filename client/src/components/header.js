@@ -137,7 +137,15 @@ const Header = () => {
                 {activeUser ?
                   <NavDropdown title="Mi Perfil" align={{ false: "start" }} id={`offcanvasNavbarDropdown-expand-sm`}>
                     <NavDropdown.Item>
-                      <Link to="/misdatos" style={{ color: 'black' ,textDecoration: '' }} onClick={showHideMenu}>
+                      <Link to="/misdatos" style={{ color: 'black' ,textDecoration: 'none' }} onClick={showHideMenu}>
+                        {activeUser.nombre_completo}
+                      </Link>
+                    </NavDropdown.Item>
+                    
+                    <NavDropdown.Divider />
+                    
+                    <NavDropdown.Item>
+                      <Link to="/misdatos" style={{ color: 'black' ,textDecoration: 'none' }} onClick={showHideMenu}>
                       Mis datos
                       </Link>
                     </NavDropdown.Item>
