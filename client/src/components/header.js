@@ -118,18 +118,18 @@ const Header = () => {
               
               <Nav className="justify-content-end flex-grow-1 pe-3">
                 <Nav.Link>
-                  <Link to="/" style={{ textDecoration: 'none' }} onClick={showHideMenu}>
+                  <Link to="/" style={{ color: 'black' ,textDecoration: 'none' }} onClick={showHideMenu}>
                   Inicio
                   </Link>
                 </Nav.Link>
                 <Nav.Link>
-                  <Link to="/contacto" style={{ textDecoration: 'none' }} onClick={showHideMenu}>
+                  <Link to="/contacto" style={{ color: 'black' ,textDecoration: 'none' }} onClick={showHideMenu}>
                   Contacto
                   </Link>
                 </Nav.Link>
                   {activeUser ? <></> :
                   <Nav.Link>
-                    <Link to="/login" style={{ textDecoration: 'none' }} onClick={showHideMenu}>
+                    <Link to="/login" style={{ color: 'black' ,textDecoration: 'none' }} onClick={showHideMenu}>
                     Loguearme
                     </Link>
                   </Nav.Link>}
@@ -137,19 +137,19 @@ const Header = () => {
                 {activeUser ?
                   <NavDropdown title="Mi Perfil" align={{ false: "start" }} id={`offcanvasNavbarDropdown-expand-sm`}>
                     <NavDropdown.Item>
-                      <Link to="/misdatos" style={{ textDecoration: '' }} onClick={showHideMenu}>
+                      <Link to="/misdatos" style={{ color: 'black' ,textDecoration: '' }} onClick={showHideMenu}>
                       Mis datos
                       </Link>
                     </NavDropdown.Item>
                     
                     <NavDropdown.Item>
-                      <Link to="/editardatos" style={{ textDecoration: 'none' }} onClick={showHideMenu}>
+                      <Link to="/editardatos" style={{ color: 'black' ,textDecoration: 'none' }} onClick={showHideMenu}>
                       Editar mis datos
                       </Link>
                     </NavDropdown.Item>
                     
                     <NavDropdown.Item>
-                      <Link to="/mispublicaciones" style={{ textDecoration: 'none' }} onClick={showHideMenu}>
+                      <Link to="/mispublicaciones" style={{ color: 'black' ,textDecoration: 'none' }} onClick={showHideMenu}>
                         Mis publicaciones
                       </Link>
                     </NavDropdown.Item>

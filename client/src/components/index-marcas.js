@@ -58,9 +58,9 @@ const Marcas = () => {
           </h6>
         </div>
      <Container className='bloques'>
-      <Row key='' xs={3} md={5} className="justify-content-md-center" >
+        <Row  xs={3} md={5} className="justify-content-md-center" >
           {marcas.map((marca) => (
-            <Col>
+            <Col key={marca.nombre}>
               <Image src={marca.imagen} className='icon-button' roundedCircle
                 onClick={(event) => handleMarca(marca.nombre, event)} />
             </Col>

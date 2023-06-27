@@ -57,8 +57,8 @@ const LogIn = () => {
      <>
       <Container style={{ minHeight: '78vh' }}>
         <Col style={{ padding: '1vw' }} >
-            <Card>
-              <Card.Img variant="top" src={LogoGrande} />
+            <Card style={{ maxWidth: "110vh", margin: "0 auto" }}>
+              <Card.Img variant="top" src={LogoGrande} style={{ maxHeight: "37vh", maxWidth: "110vh" }}/>
               <Card.Body>
                 <Card.Title>INICIA SESIÓN</Card.Title>
     
@@ -77,7 +77,7 @@ const LogIn = () => {
                   </Form.Group>
                   <Button variant="danger" type="submit" size="lg" className='input-button' id='btnIngresar'> Ingresar</Button>
               
-                  <h6>¿NO TENES CUENTA? <Link to="/nuevoUsuario" style={{ textDecoration: 'none' }}>
+                  <h6>¿NO TENES CUENTA? <Link to="/nuevoUsuario" style={{ color: 'red' ,textDecoration: 'none' }}>
                       UNITE
                     </Link>
                   </h6>

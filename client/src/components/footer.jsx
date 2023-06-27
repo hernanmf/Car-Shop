@@ -24,9 +24,9 @@ const Footer = () => {
             </Link>
           </Navbar.Brand>
           <Nav>
-            <Nav.Link><Link to="/" style={{textDecoration: 'none'}}>Inicio</Link></Nav.Link>
-            <Nav.Link><Link to="/contacto" style={{textDecoration: 'none'}}>Contacto</Link></Nav.Link>
-            <Nav.Link><Link to="/" style={{textDecoration: 'none'}}>FAQ</Link></Nav.Link>
+            <Nav.Link><Link to="/" style={{color: 'black' ,textDecoration: 'none'}}>Inicio</Link></Nav.Link>
+            <Nav.Link><Link to="/contacto" style={{color: 'black' ,textDecoration: 'none'}}>Contacto</Link></Nav.Link>
+            <Nav.Link><Link to="/" style={{color: 'black' ,textDecoration: 'none'}}>FAQ</Link></Nav.Link>
           </Nav>
         </Container>
       </Navbar>

@@ -50,7 +50,7 @@ const Tiposvehiculos = () => {
      <Container className='bloques'>
       <Row>
         {tipos.map((tipo) => (
-          <Col xs={3} md={3}>
+          <Col xs={3} md={3} key={tipo.nombre}>
             <Image src={tipo.imagen} className='icon-button'
             onClick={(event) => handleTipo(tipo.nombre, event)}/>
           </Col>

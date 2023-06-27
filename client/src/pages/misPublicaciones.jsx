@@ -62,17 +62,17 @@ const MisPublicaciones = () => {
                       <p className="text-muted">{auto.anio} - {auto.kilometros}km</p>
                     <ButtonGroup size="sm">
                       <Button variant="danger" id='btnVer' onClick={(event) =>handleActiveCar(auto.id,event)}>
-                          <Link to="/vistavehiculo" style={{ textDecoration: 'none' }}>
+                          <Link to="/vistavehiculo" style={{ color: 'white' ,textDecoration: 'none' }}>
                           Ver
                           </Link>
                         </Button>
                       <Button variant="danger" id='btnEditar' onClick={(event) =>handleActiveCar(auto.id,event)}>
-                          <Link to="/editarauto" style={{ textDecoration: 'none' }} >
+                          <Link to="/editarauto" style={{ color: 'white' ,textDecoration: 'none' }} >
                             Editar
                           </Link>
                         </Button>
                         <Button variant="danger" id='btnEliminar' onClick={(event) =>handleDeleteCar(auto.id,event)}>
-                          <Link to="/misdatos" style={{ textDecoration: 'none' }}>
+                          <Link to="/misdatos" style={{ color: 'white' ,textDecoration: 'none' }}>
                             Eliminar
                           </Link>
                         </Button>

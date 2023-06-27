@@ -3,6 +3,10 @@
   background-color: #E7E7E7;
 }
 
+.a, .link {
+  text-decoration: none;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
