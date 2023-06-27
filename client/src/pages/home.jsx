@@ -6,8 +6,6 @@ import '../css/home.css';
 import Banner from '../components/banner';
 import ComponentesIndex from '../components/componentesIndex';
 
-
-
 const Home = () => {
   return (
     <div className='index'>

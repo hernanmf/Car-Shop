@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import Badge from 'react-bootstrap/Badge';
 import Col from 'react-bootstrap/Col';
