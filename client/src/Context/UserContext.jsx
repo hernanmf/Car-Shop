@@ -7,10 +7,10 @@ export const UsuariosContext = createContext();
 export const UsuariosProvider = ({ children }) => {
   
   const [activeUser, setactiveUser] = useState(false);
-  const [usuarios] = useState(scriptUsuarios);
+  const [usuarios, setUsuarios] = useState(scriptUsuarios);
   
   return (
-    <UsuariosContext.Provider value={{ usuarios ,activeUser, setactiveUser }}>
+    <UsuariosContext.Provider value={{ usuarios , setUsuarios, activeUser, setactiveUser }}>
       { children }
     </UsuariosContext.Provider>
   )

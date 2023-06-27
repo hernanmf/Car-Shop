@@ -17,7 +17,7 @@ import EditarAuto from './pages/editarAuto';
 import NuevoAuto from './pages/nuevoAuto';
 import MisPublicaciones from './pages/misPublicaciones';
 import Contacto from './pages/contacto';
-import Container from 'react-bootstrap/esm/Container';
+import NuevoUsuario from './pages/nuevoUsuario';
 
 
 
@@ -31,16 +31,17 @@ function App() {
             <Header />
             <Routes>
             <Route path="*" element={ <Home /> } />
-            <Route path="/login" element={ <LogIn /> } />
             <Route path="/" element={ <Home /> } />
-            <Route path="/misdatos" element={ <Misdatos /> } />
-            <Route path="/listaautos" element={<ListaAutos />} />
-            <Route path="/nuevoauto" element={<NuevoAuto />} />
-            <Route path="/editarauto" element={<EditarAuto />} />
-            <Route path="/vistavehiculo" element={<VistaVehiculo />} />
-            <Route path="/editardatos" element={<Editardatos />} />
-            <Route path="/mispublicaciones" element={<MisPublicaciones />} />
+            <Route path="/login" element={ <LogIn /> } />
             <Route path="/contacto" element={<Contacto />} />
+            <Route path="/listaautos" element={<ListaAutos />} />
+            <Route path="/vistavehiculo" element={<VistaVehiculo />} />
+            <Route path="/misdatos" element={ <Misdatos /> } />
+            <Route path="/mispublicaciones" element={<MisPublicaciones />} />
+            <Route path="/nuevoauto" element={<NuevoAuto />} />
+            <Route path="/nuevousuario" element={<NuevoUsuario />} />
+            <Route path="/editarauto" element={<EditarAuto />} />
+            <Route path="/editardatos" element={<Editardatos />} />
             </Routes>
           <Footer />  
         </Router>

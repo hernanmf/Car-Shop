@@ -18,7 +18,7 @@ import { AutosContext } from '../Context/AutosContext';
 
 const Header = () => {
 
-  const { usuarios, activeUser, setactiveUser } = useContext(UsuariosContext);
+  const { activeUser, setactiveUser } = useContext(UsuariosContext);
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
   const { autos, listado, setListado  } = useContext(AutosContext);
