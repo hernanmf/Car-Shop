@@ -27,15 +27,13 @@ function App() {
     <>
       <div className='App'>  
         <Router>
-            <Header />
+          <Header />
           <Routes>
             <Route path="*" element={ <Home /> } />
             <Route path="/" element={<Home />} />
-            <Route path="/login" element={ <LogIn /> } />
             <Route path="/contacto" element={<Contacto />} />
             <Route path="/listaautos" element={<ListaAutos />} />
             <Route path="/vistavehiculo" element={<VistaVehiculo />} />
-            <Route path="/nuevousuario" element={<NuevoUsuario />} />
             {  
               activeUser?
                 <>
@@ -46,12 +44,15 @@ function App() {
                 <Route path="/editardatos" element={<Editardatos />} />
                 </>
                 :
-                <></>
+                <>
+                <Route path="/login" element={<LogIn />} />
+                <Route path="/nuevousuario" element={<NuevoUsuario />} />
+                </>
             }
             </Routes>
           <Footer />  
         </Router>
-          </div>
+      </div>
     </>
   );
 }

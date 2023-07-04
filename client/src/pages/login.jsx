@@ -57,8 +57,10 @@ const LogIn = () => {
      <>
       <Container style={{ minHeight: '78vh' }}>
         <Col style={{ padding: '1vw' }} >
-            <Card style={{ maxWidth: "110vh", margin: "0 auto" }}>
-              <Card.Img variant="top" src={LogoGrande} style={{ maxHeight: "37vh", maxWidth: "110vh" }}/>
+          <Card style={{ maxWidth: "110vh", margin: "0 auto" }}>
+              <Link to="/home" style={{ color: 'red' ,textDecoration: 'none' }}>
+              <Card.Img variant="top" src={LogoGrande} style={{ maxHeight: "37vh", maxWidth: "110vh" }} />
+              </Link>
               <Card.Body>
                 <Card.Title>INICIA SESIÓN</Card.Title>
     
