@@ -7,6 +7,6 @@ import { Foto } from './entities/foto.entity';
 @Module({
   imports: [TypeOrmModule.forFeature([Foto])],
   controllers: [FotosController],
-  providers: [FotosService]
+  providers: [FotosService],
 })
 export class FotosModule {}
