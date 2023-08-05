@@ -1,0 +1,12 @@
+{
+  "type": "mysql",
+  "host": "nombre_del_host",
+  "port": 3306,
+  "username": "root",
+  "password": "hernan87",
+  "database": "CarShopBD",
+  "entities": [
+    "dist/**/**.entity{.ts,.js}"
+  ],
+  "synchronize": true
+}

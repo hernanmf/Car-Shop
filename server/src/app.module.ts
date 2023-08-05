@@ -1,9 +1,29 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { UsuariosModule } from './usuarios/usuarios.module';
+import { PublicacionesModule } from './publicaciones/publicaciones.module';
+import { FotosModule } from './fotos/fotos.module';
+import { SolicitudescontactoModule } from './solicitudescontacto/solicitudescontacto.module';
 
 @Module({
-  imports: [],
+  imports: [
+    TypeOrmModule.forRoot({
+      type: 'mysql',
+      host: 'nombre_del_host',
+      port: 3306,
+      username: 'root',
+      password: 'hernan87',
+      database: 'CarShopBD',
+      entities: ['dist/**/**.entity{.ts,.js}'],
+      synchronize: true,
+    }),
+    UsuariosModule,
+    PublicacionesModule,
+    FotosModule,
+    SolicitudescontactoModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
