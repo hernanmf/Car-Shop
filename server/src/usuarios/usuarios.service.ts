@@ -1,19 +1,30 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateUsuarioDto } from './dto/create-usuario.dto';
 import { UpdateUsuarioDto } from './dto/update-usuario.dto';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { Usuario } from './entities/usuario.entity';
 
 @Injectable()
 export class UsuariosService {
-  create(createUsuarioDto: CreateUsuarioDto) {
-    return 'This action adds a new usuario';
+  constructor(
+    @InjectRepository(Usuario)
+    private readonly usuarios: Repository<Usuario>,
+  ) {}
+
+  create(usuarioDto: CreateUsuarioDto) {
+    const u = this.usuarios.create(usuarioDto);
+    return this.usuarios.save(u);
   }
 
   findAll() {
-    return `This action returns all usuarios`;
+    return this.usuarios.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} usuario`;
+  async findOne(id: number) {
+    const u = await this.usuarios.findOneBy({ idusuario: id });
+    if (u) return u;
+    throw new NotFoundException(`No se encontro foto con el id ${id}`);
   }
 
   update(id: number, updateUsuarioDto: UpdateUsuarioDto) {

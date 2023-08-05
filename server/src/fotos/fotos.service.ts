@@ -1,19 +1,30 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateFotoDto } from './dto/create-foto.dto';
 import { UpdateFotoDto } from './dto/update-foto.dto';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { Foto } from './entities/foto.entity';
 
 @Injectable()
 export class FotosService {
-  create(createFotoDto: CreateFotoDto) {
-    return 'This action adds a new foto';
+  constructor(
+    @InjectRepository(Foto)
+    private readonly fotos: Repository<Foto>,
+  ) {}
+
+  create(fotoDto: CreateFotoDto) {
+    const f = this.fotos.create(fotoDto);
+    return this.fotos.save(f);
   }
 
   findAll() {
-    return `This action returns all fotos`;
+    return this.fotos.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} foto`;
+  async findOne(id: number) {
+    const f = await this.fotos.findOneBy({ idfoto: id });
+    if (f) return f;
+    throw new NotFoundException(`No se encontro foto con el id ${id}`);
   }
 
   update(id: number, updateFotoDto: UpdateFotoDto) {
