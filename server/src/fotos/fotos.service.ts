@@ -1,9 +1,15 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import {
+  HttpException,
+  HttpStatus,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { CreateFotoDto } from './dto/create-foto.dto';
 import { UpdateFotoDto } from './dto/update-foto.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Foto } from './entities/foto.entity';
+import { catchError } from 'rxjs';
 
 @Injectable()
 export class FotosService {
@@ -27,11 +33,29 @@ export class FotosService {
     throw new NotFoundException(`No se encontro foto con el id ${id}`);
   }
 
-  update(id: number, updateFotoDto: UpdateFotoDto) {
-    return `This action updates a #${id} foto`;
+  async update(id: number, updateFotoDto: UpdateFotoDto) {
+    try {
+      const result = await this.fotos.update(
+        { idfoto: id },
+        { idfoto: id, ...updateFotoDto },
+      );
+      console.log(`Update, id: ${id}, result: ${result}`);
+      return result;
+    } catch (error) {
+      console.log(error);
+      throw new NotFoundException(`No se encontro foto con el id ${id}`);
+    }
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} foto`;
+  async remove(id: number) {
+    const r = await this.fotos.delete(id);
+    console.log(
+      `Remove, id: ${id}, result: ${r.affected ? 'Eliminado' : 'No eliminado'}`,
+    );
+    if (r.affected) {
+      throw new HttpException(`Remove: id: ${id}`, HttpStatus.OK);
+    } else {
+      throw new NotFoundException(`No se encontro foto con el id ${id}`);
+    }
   }
 }

@@ -1,4 +1,4 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable, NotFoundException } from '@nestjs/common';
 import { CreateUsuarioDto } from './dto/create-usuario.dto';
 import { UpdateUsuarioDto } from './dto/update-usuario.dto';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -27,11 +27,29 @@ export class UsuariosService {
     throw new NotFoundException(`No se encontro foto con el id ${id}`);
   }
 
-  update(id: number, updateUsuarioDto: UpdateUsuarioDto) {
-    return `This action updates a #${id} usuario`;
+  async update(id: number, updateUsuarioDto: UpdateUsuarioDto) {
+    try {
+      const result = await this.usuarios.update(
+        { idusuario: id },
+        { idusuario: id, ...updateUsuarioDto },
+      );
+      console.log(`Update, id: ${id}, result: ${result}`);
+      return result
+    } catch (error) {
+      console.log(error);
+      throw new NotFoundException(`No se encontro usuario con el id ${id}`);
+    }
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} usuario`;
+  async remove(id: number) {
+    const r = await this.usuarios.delete(id);
+    console.log(
+      `Remove, id: ${id}, result: ${r.affected ? 'Eliminado' : 'No eliminado'}`,
+    );
+    if (r.affected) {
+      throw new HttpException(`Remove: id: ${id}`, HttpStatus.OK);
+    } else {
+      throw new NotFoundException(`No se encontro usuario con el id ${id}`);
+    }
   }
 }
