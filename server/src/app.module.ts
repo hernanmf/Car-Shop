@@ -11,10 +11,10 @@ import { SolicitudescontactoModule } from './solicitudescontacto/solicitudescont
   imports: [
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: 'nombre_del_host',
+      host: 'localhost',
       port: 3306,
       username: 'root',
-      password: 'hernan87',
+      password: 'Hernan87',
       database: 'CarShopBD',
       entities: ['dist/**/**.entity{.ts,.js}'],
       synchronize: true,
