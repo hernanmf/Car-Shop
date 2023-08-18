@@ -20,7 +20,6 @@ export class Solicitudescontacto {
   idusuario: number;
 
   constructor(
-    idsolicitudesdecontacto: number,
     nombrecompleto: string,
     correoelectronico: string,
     telefono: string,

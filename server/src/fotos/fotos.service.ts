@@ -4,12 +4,14 @@ import {
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
-import { CreateFotoDto } from './dto/create-foto.dto';
-import { UpdateFotoDto } from './dto/update-foto.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Foto } from './entities/foto.entity';
+
 import { catchError } from 'rxjs';
+
+import { Foto } from './entities/foto.entity';
+import { CreateFotoDto } from './dto/create-foto.dto';
+import { UpdateFotoDto } from './dto/update-foto.dto';
 
 @Injectable()
 export class FotosService {
