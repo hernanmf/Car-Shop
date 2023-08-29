@@ -5,27 +5,31 @@ export class Usuario {
   @PrimaryGeneratedColumn()
   idusuario: number;
   @Column()
-  nombrecompleto: string;
+  nombre: string;
+  @Column()
+  apellido: string;
   @Column()
   correoelectronico: string;
   @Column()
   telefono: string;
   @Column()
-  provincia: string;
+  idprovincia: number;
   @Column()
   admin: boolean;
 
   constructor(
-    nombrecompleto: string,
+    nombre: string,
+    apellido: string,
     correoelectronico: string,
     telefono: string,
-    provincia: string,
+    idprovincia: number,
     admin: boolean,
   ) {
-    this.nombrecompleto = nombrecompleto;
+    this.nombre = nombre;
+    this.apellido = apellido;
     this.correoelectronico = correoelectronico;
     this.telefono = telefono;
-    this.provincia = provincia;
+    this.idprovincia = idprovincia;
     this.admin = admin;
   }
 }

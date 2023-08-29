@@ -14,7 +14,7 @@ import { SolicitudescontactoModule } from './solicitudescontacto/solicitudescont
       host: 'localhost',
       port: 3306,
       username: 'root',
-      password: 'Hernan87',
+      password: 'Hernan87', /*'admin' en windows*/
       database: 'CarShopBD',
       entities: ['dist/**/**.entity{.ts,.js}'],
       synchronize: true,
