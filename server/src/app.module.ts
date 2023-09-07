@@ -17,7 +17,7 @@ import { SolicitudescontactoModule } from './solicitudescontacto/solicitudescont
       password: 'Carshop2023',
       database: 'CarShopBD',
       entities: ['dist/**/**.entity{.ts,.js}'],
-      synchronize: true,
+      synchronize: false,
     }),
     UsuariosModule,
     PublicacionesModule,
