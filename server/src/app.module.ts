@@ -7,6 +7,7 @@ import { PublicacionesModule } from './publicaciones/publicaciones.module';
 import { FotosModule } from './fotos/fotos.module';
 import { SolicitudescontactoModule } from './solicitudescontacto/solicitudescontacto.module';
 import { ProvinciasModule } from './provincias/provincias.module';
+import { MarcasModule } from './marcas/marcas.module';
 
 @Module({
   imports: [
@@ -25,6 +26,7 @@ import { ProvinciasModule } from './provincias/provincias.module';
     FotosModule,
     SolicitudescontactoModule,
     ProvinciasModule,
+    MarcasModule,
   ],
   controllers: [AppController],
   providers: [AppService],

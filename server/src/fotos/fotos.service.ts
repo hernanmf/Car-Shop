@@ -18,8 +18,8 @@ export class FotosService {
     private readonly fotos: Repository<Foto>,
   ) {}
 
-  create(fotoDto: CreateFotoDto) {
-    const f = this.fotos.create(fotoDto);
+  create(createFotoDto: CreateFotoDto) {
+    const f = this.fotos.create(createFotoDto);
     return this.fotos.save(f);
   }
 
