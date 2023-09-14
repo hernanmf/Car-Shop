@@ -3,33 +3,33 @@ import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 @Entity('usuario')
 export class Usuario {
   @PrimaryGeneratedColumn()
-  idusuario: number;
+  idUsuario: number;
   @Column()
   nombre: string;
   @Column()
   apellido: string;
   @Column()
-  correoelectronico: string;
+  correoElectronico: string;
   @Column()
   telefono: string;
   @Column()
-  idprovincia: number;
+  idProvincia: number;
   @Column()
-  admin: boolean;
+  administrador: boolean;
 
   constructor(
     nombre: string,
     apellido: string,
-    correoelectronico: string,
+    correoElectronico: string,
     telefono: string,
-    idprovincia: number,
-    admin: boolean,
+    idProvincia: number,
+    administrador: boolean,
   ) {
     this.nombre = nombre;
     this.apellido = apellido;
-    this.correoelectronico = correoelectronico;
+    this.correoElectronico = correoElectronico;
     this.telefono = telefono;
-    this.idprovincia = idprovincia;
-    this.admin = admin;
+    this.idProvincia = idProvincia;
+    this.administrador = administrador;
   }
 }

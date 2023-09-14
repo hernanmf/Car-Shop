@@ -1,4 +1,9 @@
-import { HttpException, HttpStatus, Injectable, NotFoundException } from '@nestjs/common';
+import {
+  HttpException,
+  HttpStatus,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { CreateUsuarioDto } from './dto/create-usuario.dto';
 import { UpdateUsuarioDto } from './dto/update-usuario.dto';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -22,7 +27,7 @@ export class UsuariosService {
   }
 
   async findOne(id: number) {
-    const u = await this.usuarios.findOneBy({ idusuario: id });
+    const u = await this.usuarios.findOneBy({ idUsuario: id });
     if (u) return u;
     throw new NotFoundException(`No se encontro foto con el id ${id}`);
   }
@@ -30,8 +35,8 @@ export class UsuariosService {
   async update(id: number, updateUsuarioDto: UpdateUsuarioDto) {
     try {
       const result = await this.usuarios.update(
-        { idusuario: id },
-        { idusuario: id, ...updateUsuarioDto },
+        { idUsuario: id },
+        { idUsuario: id, ...updateUsuarioDto },
       );
       console.log(`Update, id: ${id}, result: ${result}`);
       return result

@@ -7,11 +7,7 @@ export class Publicacion {
   @Column()
   tipo: string;
   @Column()
-  marca: string;
-  @Column()
-  modelo: string;
-  @Column()
-  version: string;
+  version: Version;
   @Column()
   anio: number;
   @Column()
@@ -33,7 +29,7 @@ export class Publicacion {
   @Column()
   descripcionadicional: string;
   @Column()
-  estadopublicacion: string;
+  estadopublicacion: boolean;
   @Column()
   idusuario: number;
 

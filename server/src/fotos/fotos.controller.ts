@@ -11,7 +11,7 @@ import { FotosService } from './fotos.service';
 import { CreateFotoDto } from './dto/create-foto.dto';
 import { UpdateFotoDto } from './dto/update-foto.dto';
 
-@Controller('fotos')
+@Controller('Fotos')
 export class FotosController {
   constructor(private readonly fotosService: FotosService) {}
 

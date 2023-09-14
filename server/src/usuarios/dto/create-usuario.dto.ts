@@ -1,7 +1,8 @@
 export class CreateUsuarioDto {
-  nombrecompleto: string;
+  nombre: string;
+  apellido: string;
   correoelectronico: string;
   telefono: string;
-  provincia: string;
-  admin: boolean;
+  idprovincia: number;
+  adm: boolean;
 }
