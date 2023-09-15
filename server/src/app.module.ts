@@ -9,6 +9,7 @@ import { SolicitudescontactoModule } from './solicitudescontacto/solicitudescont
 import { ProvinciasModule } from './provincias/provincias.module';
 import { MarcasModule } from './marcas/marcas.module';
 import { ModelosModule } from './modelos/modelos.module';
+import { VersionesModule } from './versiones/versiones.module';
 
 @Module({
   imports: [
@@ -29,6 +30,7 @@ import { ModelosModule } from './modelos/modelos.module';
     ProvinciasModule,
     MarcasModule,
     ModelosModule,
+    VersionesModule,
   ],
   controllers: [AppController],
   providers: [AppService],

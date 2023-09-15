@@ -1,8 +1,8 @@
 export class CreatePublicacionDto {
   tipo: string;
-  marca: string;
-  modelo: string;
-  version: string;
+  idmarca: number;
+  idmodelo: number;
+  idversion: number;
   anio: number;
   kilometros: number;
   transmision: string;
