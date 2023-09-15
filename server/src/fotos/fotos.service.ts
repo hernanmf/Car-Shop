@@ -28,7 +28,7 @@ export class FotosService {
   }
 
   async findOne(id: number) {
-    const f = await this.fotos.findOneBy({ idfoto: id });
+    const f = await this.fotos.findOneBy({ idFoto: id });
     if (f) return f;
     throw new NotFoundException(`No se encontro foto con el id ${id}`);
   }
@@ -36,8 +36,8 @@ export class FotosService {
   async update(id: number, updateFotoDto: UpdateFotoDto) {
     try {
       const result = await this.fotos.update(
-        { idfoto: id },
-        { idfoto: id, ...updateFotoDto },
+        { idFoto: id },
+        { idFoto: id, ...updateFotoDto },
       );
       console.log(`Update, id: ${id}, result: ${result}`);
       return result;

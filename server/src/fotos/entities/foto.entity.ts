@@ -3,7 +3,7 @@ import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 @Entity('foto')
 export class Foto {
   @PrimaryGeneratedColumn()
-  idfoto: number;
+  idFoto: number;
   @Column()
   url: string;
   @Column()
