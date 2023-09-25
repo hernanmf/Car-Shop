@@ -1,4 +1,4 @@
 export class CreateFotoDto {
   url: string;
-  idpublicacion: number;
+  idPublicacion: number;
 }

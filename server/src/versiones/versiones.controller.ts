@@ -16,8 +16,8 @@ export class VersionesController {
   constructor(private readonly versionesService: VersionesService) {}
 
   @Post()
-  create(@Body() createVersioneDto: CreateVersionDto) {
-    return this.versionesService.create(createVersioneDto);
+  create(@Body() createVersionDto: CreateVersionDto) {
+    return this.versionesService.create(createVersionDto);
   }
 
   @Get()

@@ -1,26 +1,56 @@
-import { Injectable } from '@nestjs/common';
-import { CreateVersioneDto } from './dto/create-version.dto';
-import { UpdateVersioneDto } from './dto/update-version.dto';
+import { HttpException, HttpStatus, Injectable, NotFoundException } from '@nestjs/common';
+import { CreateVersionDto } from './dto/create-version.dto';
+import { UpdateVersionDto } from './dto/update-version.dto';
+import { InjectRepository } from '@nestjs/typeorm';
+import { NoNeedToReleaseEntityManagerError, Repository } from 'typeorm';
+import { Version } from './entities/version.entity';
 
 @Injectable()
 export class VersionesService {
-  create(createVersioneDto: CreateVersioneDto) {
-    return 'This action adds a new versione';
+  constructor(
+    @InjectRepository(Version)
+    private readonly versiones: Repository<Version>,
+  ) {}
+
+  create(createVersionDto: CreateVersionDto) {
+    const version = this.versiones.create(createVersionDto);
+    return this.versiones.save(version);
   }
 
   findAll() {
-    return `This action returns all versiones`;
+    return this.versiones.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} versione`;
+  async findOne(id: number) {
+    const version = await this.versiones.findOneBy({ idVersion: id });
+    if (version) return version;
+    throw new NotFoundException(`No se encontro version con el id ${id}`);
   }
 
-  update(id: number, updateVersioneDto: UpdateVersioneDto) {
-    return `This action updates a #${id} versione`;
+  async update(id: number, updateVersionDto: UpdateVersionDto) {
+    try {
+      const resultado = await this.versiones.update(
+        { idVersion: id },
+        { idVersion: id, ...updateVersionDto },
+      );
+      console.log(`Update, id: ${id}, result: ${resultado}`);
+      return resultado;
+    } catch (error) {
+      console.log(error);
+      throw new NotFoundException(`No se encontro foto con el id ${id}`);
+    }
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} versione`;
+  async remove(id: number) {
+    const remover = await this.versiones.delete(id);
+    console.log(
+      `Remove, id: ${id}, result: ${remover.affected ? 'Eliminado' : 'No eliminado'
+      }`,
+    );
+    if (remover.affected) {
+      throw new HttpException(`Remove: id: ${id}`, HttpStatus.OK);
+    } else {
+      throw new NotFoundException(`No se encontro version con el id ${id}`);
+    }
   }
 }
