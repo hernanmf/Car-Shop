@@ -1,7 +1,5 @@
 export class CreatePublicacionDto {
   tipo: string;
-  idmarca: number;
-  idmodelo: number;
   idversion: number;
   anio: number;
   kilometros: number;
@@ -13,6 +11,6 @@ export class CreatePublicacionDto {
   color: string;
   precio: number;
   descripcionadicional: string;
-  estadopublicacion: string;
+  estadopublicacion: boolean;
   idusuario: number;
 }

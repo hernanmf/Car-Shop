@@ -7,7 +7,7 @@ export class Publicacion {
   @Column()
   tipo: string;
   @Column()
-  version: Version;
+  idVersion: number;
   @Column()
   anio: number;
   @Column()
@@ -35,9 +35,7 @@ export class Publicacion {
 
   constructor(
     tipo: string,
-    marca: string,
-    modelo: string,
-    version: string,
+    idVersion: number,
     anio: number,
     kilometros: number,
     transmision: string,
@@ -48,13 +46,11 @@ export class Publicacion {
     color: string,
     precio: number,
     descripcionadicional: string,
-    estadopublicacion: string,
+    estadopublicacion: boolean,
     idusuario: number,
   ) {
     this.tipo = tipo;
-    this.marca = marca;
-    this.modelo = modelo;
-    this.version = version;
+    this.idVersion = idVersion;
     this.anio = anio;
     this.kilometros = kilometros;
     this.transmision = transmision;
