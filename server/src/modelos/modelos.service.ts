@@ -18,8 +18,8 @@ export class ModelosService {
   ) {}
 
   create(createModeloDto: CreateModeloDto) {
-    const m = this.modelos.create(createModeloDto);
-    return this.modelos.save(m);
+    const modelo = this.modelos.create(createModeloDto);
+    return this.modelos.save(modelo);
   }
 
   findAll() {
@@ -27,19 +27,19 @@ export class ModelosService {
   }
 
   async findOne(id: number) {
-    const m = await this.modelos.findOneBy({ idModelo: id });
-    if (m) return m;
+    const modelo = await this.modelos.findOneBy({ idModelo: id });
+    if (modelo) return modelo;
     throw new NotFoundException(`No se encontro modelo con el id ${id}`);
   }
 
   async update(id: number, updateModeloDto: UpdateModeloDto) {
     try {
-      const result = await this.modelos.update(
+      const resultado = await this.modelos.update(
         { idModelo: id },
         { idModelo: id, ...updateModeloDto },
       );
-      console.log(`Update, id: ${id}, result: ${result}`);
-      return result;
+      console.log(`Update, id: ${id}, result: ${resultado}`);
+      return resultado;
     } catch (error) {
       console.log(error);
       throw new NotFoundException(`No se encontro modelo con el id ${id}`);
@@ -47,11 +47,11 @@ export class ModelosService {
   }
 
   async remove(id: number) {
-    const r = await this.modelos.delete(id);
+    const remover = await this.modelos.delete(id);
     console.log(
-      `Remove, id: ${id}, result: ${r.affected ? 'Eliminado' : 'No eliminado'}`,
+      `Remove, id: ${id}, result: ${remover.affected ? 'Eliminado' : 'No eliminado'}`,
     );
-    if (r.affected) {
+    if (remover.affected) {
       throw new HttpException(`Remove: id: ${id}`, HttpStatus.OK);
     } else {
       throw new NotFoundException(`No se encontro modelo con el id ${id}`);

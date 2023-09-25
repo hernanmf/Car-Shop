@@ -19,8 +19,8 @@ export class FotosService {
   ) {}
 
   create(createFotoDto: CreateFotoDto) {
-    const f = this.fotos.create(createFotoDto);
-    return this.fotos.save(f);
+    const foto = this.fotos.create(createFotoDto);
+    return this.fotos.save(foto);
   }
 
   findAll() {
@@ -28,19 +28,19 @@ export class FotosService {
   }
 
   async findOne(id: number) {
-    const f = await this.fotos.findOneBy({ idFoto: id });
-    if (f) return f;
+    const foto = await this.fotos.findOneBy({ idFoto: id });
+    if (foto) return foto;
     throw new NotFoundException(`No se encontro foto con el id ${id}`);
   }
 
   async update(id: number, updateFotoDto: UpdateFotoDto) {
     try {
-      const result = await this.fotos.update(
+      const resultado = await this.fotos.update(
         { idFoto: id },
         { idFoto: id, ...updateFotoDto },
       );
-      console.log(`Update, id: ${id}, result: ${result}`);
-      return result;
+      console.log(`Update, id: ${id}, result: ${resultado}`);
+      return resultado;
     } catch (error) {
       console.log(error);
       throw new NotFoundException(`No se encontro foto con el id ${id}`);
@@ -48,11 +48,11 @@ export class FotosService {
   }
 
   async remove(id: number) {
-    const r = await this.fotos.delete(id);
+    const remover = await this.fotos.delete(id);
     console.log(
-      `Remove, id: ${id}, result: ${r.affected ? 'Eliminado' : 'No eliminado'}`,
+      `Remove, id: ${id}, result: ${remover.affected ? 'Eliminado' : 'No eliminado'}`,
     );
-    if (r.affected) {
+    if (remover.affected) {
       throw new HttpException(`Remove: id: ${id}`, HttpStatus.OK);
     } else {
       throw new NotFoundException(`No se encontro foto con el id ${id}`);

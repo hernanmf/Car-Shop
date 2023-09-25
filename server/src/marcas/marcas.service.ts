@@ -4,11 +4,12 @@ import {
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
-import { CreateMarcaDto } from './dto/create-marca.dto';
-import { UpdateMarcaDto } from './dto/update-marca.dto';
-import { Marca } from './entities/marca.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
+
+import { Marca } from './entities/marca.entity';
+import { CreateMarcaDto } from './dto/create-marca.dto';
+import { UpdateMarcaDto } from './dto/update-marca.dto';
 
 @Injectable()
 export class MarcasService {
@@ -18,8 +19,8 @@ export class MarcasService {
   ) {}
 
   create(createMarcaDto: CreateMarcaDto) {
-    const m = this.marcas.create(createMarcaDto);
-    return this.marcas.save(m);
+    const marca = this.marcas.create(createMarcaDto);
+    return this.marcas.save(marca);
   }
 
   findAll() {
@@ -27,19 +28,19 @@ export class MarcasService {
   }
 
   async findOne(id: number) {
-    const m = await this.marcas.findOneBy({ idMarca: id });
-    if (m) return m;
+    const marca = await this.marcas.findOneBy({ idMarca: id });
+    if (marca) return marca;
     throw new NotFoundException(`No se encontro marca con el id ${id}`);
   }
 
   async update(id: number, updateMarcaDto: UpdateMarcaDto) {
     try {
-      const result = await this.marcas.update(
+      const resultado = await this.marcas.update(
         { idMarca: id },
         { idMarca: id, ...updateMarcaDto },
       );
-      console.log(`Update, id: ${id}, result: ${result}`);
-      return result;
+      console.log(`Update, id: ${id}, result: ${resultado}`);
+      return resultado;
     } catch (error) {
       console.log(error);
       throw new NotFoundException(`No se encontro marca con el id ${id}`);
@@ -47,11 +48,11 @@ export class MarcasService {
   }
 
   async remove(id: number) {
-    const r = await this.marcas.delete(id);
+    const remover = await this.marcas.delete(id);
     console.log(
-      `Remove, id: ${id}, result: ${r.affected ? 'Eliminado' : 'No eliminado'}`,
+      `Remove, id: ${id}, result: ${remover.affected ? 'Eliminado' : 'No eliminado'}`,
     );
-    if (r.affected) {
+    if (remover.affected) {
       throw new HttpException(`Remove: id: ${id}`, HttpStatus.OK);
     } else {
       throw new NotFoundException(`No se encontro marca con el id ${id}`);

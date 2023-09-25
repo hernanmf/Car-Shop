@@ -1,8 +1,5 @@
 export class CreateSolicitudescontactoDto {
-  idsolicitudesdecontacto: number;
-  nombrecompleto: string;
-  correoelectronico: string;
-  telefono: string;
+  idSolicitudesDeDontacto: number;
   motivo: string;
   mensaje: string;
   idpublicacion: number;

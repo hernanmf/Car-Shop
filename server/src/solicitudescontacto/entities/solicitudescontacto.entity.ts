@@ -3,13 +3,7 @@ import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 @Entity('solicitudescontacto')
 export class Solicitudescontacto {
   @PrimaryGeneratedColumn()
-  idsolicitudesdecontacto: number;
-  @Column()
-  nombrecompleto: string;
-  @Column()
-  correoelectronico: string;
-  @Column()
-  telefono: string;
+  idSolicitudesDeContacto: number;
   @Column()
   motivo: string;
   @Column()
@@ -20,17 +14,11 @@ export class Solicitudescontacto {
   idusuario: number;
 
   constructor(
-    nombrecompleto: string,
-    correoelectronico: string,
-    telefono: string,
     motivo: string,
     mensaje: string,
     idpublicacion: number,
     idusuario: number,
   ) {
-    this.nombrecompleto = nombrecompleto;
-    this.correoelectronico = correoelectronico;
-    this.telefono = telefono;
     this.motivo = motivo;
     this.mensaje = mensaje;
     this.idpublicacion = idpublicacion;

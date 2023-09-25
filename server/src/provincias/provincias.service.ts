@@ -19,8 +19,8 @@ export class ProvinciasService {
   ) {}
 
   create(createProvinciaDto: CreateProvinciaDto) {
-    const p = this.provincias.create(createProvinciaDto);
-    return this.provincias.save(p);
+    const provincia = this.provincias.create(createProvinciaDto);
+    return this.provincias.save(provincia);
   }
 
   findAll() {
@@ -28,19 +28,19 @@ export class ProvinciasService {
   }
 
   async findOne(id: number) {
-    const p = await this.provincias.findOneBy({ idProvincia: id });
-    if (p) return p;
+    const provincia = await this.provincias.findOneBy({ idProvincia: id });
+    if (provincia) return provincia;
     throw new NotFoundException(`No se encontro provincia con el id ${id}`);
   }
 
   async update(id: number, updateProvinciaDto: UpdateProvinciaDto) {
     try {
-      const result = await this.provincias.update(
+      const resultado = await this.provincias.update(
         { idProvincia: id },
         { idProvincia: id, ...updateProvinciaDto },
       );
-      console.log(`Update, id: ${id}, result: ${result}`);
-      return result;
+      console.log(`Update, id: ${id}, result: ${resultado}`);
+      return resultado;
     } catch (error) {
       console.log(error);
       throw new NotFoundException(`No se encontro provincia con el id ${id}`);
@@ -48,11 +48,11 @@ export class ProvinciasService {
   }
 
   async remove(id: number) {
-    const r = await this.provincias.delete(id);
+    const remover = await this.provincias.delete(id);
     console.log(
-      `Remove, id: ${id}, result: ${r.affected ? 'Eliminado' : 'No eliminado'}`,
+      `Remove, id: ${id}, result: ${remover.affected ? 'Eliminado' : 'No eliminado'}`,
     );
-    if (r.affected) {
+    if (remover.affected) {
       throw new HttpException(`Remove: id: ${id}`, HttpStatus.OK);
     } else {
       throw new NotFoundException(`No se encontro provincia con el id ${id}`);

@@ -13,8 +13,8 @@ export class PublicacionesService {
   ) {}
 
   create(publicacionDto: CreatePublicacionDto) {
-    const p = this.publicaciones.create(publicacionDto);
-    return this.publicaciones.save(p);
+    const publicacion = this.publicaciones.create(publicacionDto);
+    return this.publicaciones.save(publicacion);
   }
 
   findAll() {
@@ -22,19 +22,19 @@ export class PublicacionesService {
   }
 
   async findOne(id: number) {
-    const p = await this.publicaciones.findOneBy({ idpublicacion: id });
-    if (p) return p;
+    const publicacion = await this.publicaciones.findOneBy({ idpublicacion: id });
+    if (publicacion) return publicacion;
     throw new NotFoundException(`No se encontro publicacion con el id ${id}`);
   }
 
   async update(id: number, updatePublicacionDto: UpdatePublicacionDto) {
     try {
-      const result = await this.publicaciones.update(
+      const resultado = await this.publicaciones.update(
         { idpublicacion: id },
         { idpublicacion: id, ...updatePublicacionDto }
       );
-      console.log(`Update, id: ${id}, result: ${result}`);
-      return result
+      console.log(`Update, id: ${id}, result: ${resultado}`);
+      return resultado
     } catch (error) {
       console.log(error);
       throw new NotFoundException(`No se encontro publicacion con el id ${id}`);
@@ -42,11 +42,11 @@ export class PublicacionesService {
   }
 
   async remove(id: number) {
-    const r = await this.publicaciones.delete(id);
+    const remover = await this.publicaciones.delete(id);
     console.log(
-      `Remove, id: ${id}, result: ${r.affected ? 'Eliminado' : 'No eliminado'}`,
+      `Remove, id: ${id}, result: ${remover.affected ? 'Eliminado' : 'No eliminado'}`,
     );
-    if (r.affected) {
+    if (remover.affected) {
       throw new HttpException(`Remove: id: ${id}`, HttpStatus.OK);
     } else {
       throw new NotFoundException(`No se encontro publicacion con el id ${id}`);
