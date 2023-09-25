@@ -1,4 +1,9 @@
-import { HttpException, HttpStatus, Injectable, NotFoundException } from '@nestjs/common';
+import {
+  HttpException,
+  HttpStatus,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { CreateVersionDto } from './dto/create-version.dto';
 import { UpdateVersionDto } from './dto/update-version.dto';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -44,7 +49,8 @@ export class VersionesService {
   async remove(id: number) {
     const remover = await this.versiones.delete(id);
     console.log(
-      `Remove, id: ${id}, result: ${remover.affected ? 'Eliminado' : 'No eliminado'
+      `Remove, id: ${id}, result: ${
+        remover.affected ? 'Eliminado' : 'No eliminado'
       }`,
     );
     if (remover.affected) {
