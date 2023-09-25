@@ -4,11 +4,12 @@ import {
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+
+import { Version } from './entities/version.entity';
 import { CreateVersionDto } from './dto/create-version.dto';
 import { UpdateVersionDto } from './dto/update-version.dto';
-import { InjectRepository } from '@nestjs/typeorm';
-import { NoNeedToReleaseEntityManagerError, Repository } from 'typeorm';
-import { Version } from './entities/version.entity';
 
 @Injectable()
 export class VersionesService {
