@@ -2,7 +2,7 @@ import {
   HttpException,
   HttpStatus,
   Injectable,
-  NotFoundException
+  NotFoundException,
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
@@ -39,10 +39,10 @@ export class PublicacionesService {
     try {
       const resultado = await this.publicaciones.update(
         { idpublicacion: id },
-        { idpublicacion: id, ...updatePublicacionDto }
+        { idpublicacion: id, ...updatePublicacionDto },
       );
       console.log(`Update, id: ${id}, result: ${resultado}`);
-      return resultado
+      return resultado;
     } catch (error) {
       console.log(error);
       throw new NotFoundException(`No se encontro publicacion con el id ${id}`);

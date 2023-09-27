@@ -39,7 +39,7 @@ export class UsuariosService {
         { idUsuario: id, ...updateUsuarioDto },
       );
       console.log(`Update, id: ${id}, result: ${resultado}`);
-      return resultado
+      return resultado;
     } catch (error) {
       console.log(error);
       throw new NotFoundException(`No se encontro usuario con el id ${id}`);
@@ -49,7 +49,9 @@ export class UsuariosService {
   async remove(id: number) {
     const remover = await this.usuarios.delete(id);
     console.log(
-      `Remove, id: ${id}, result: ${remover.affected ? 'Eliminado' : 'No eliminado'}`,
+      `Remove, id: ${id}, result: ${
+        remover.affected ? 'Eliminado' : 'No eliminado'
+      }`,
     );
     if (remover.affected) {
       throw new HttpException(`Remove: id: ${id}`, HttpStatus.OK);

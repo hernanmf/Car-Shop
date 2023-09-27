@@ -49,7 +49,9 @@ export class ModelosService {
   async remove(id: number) {
     const remover = await this.modelos.delete(id);
     console.log(
-      `Remove, id: ${id}, result: ${remover.affected ? 'Eliminado' : 'No eliminado'}`,
+      `Remove, id: ${id}, result: ${
+        remover.affected ? 'Eliminado' : 'No eliminado'
+      }`,
     );
     if (remover.affected) {
       throw new HttpException(`Remove: id: ${id}`, HttpStatus.OK);

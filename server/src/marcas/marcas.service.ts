@@ -50,7 +50,9 @@ export class MarcasService {
   async remove(id: number) {
     const remover = await this.marcas.delete(id);
     console.log(
-      `Remove, id: ${id}, result: ${remover.affected ? 'Eliminado' : 'No eliminado'}`,
+      `Remove, id: ${id}, result: ${
+        remover.affected ? 'Eliminado' : 'No eliminado'
+      }`,
     );
     if (remover.affected) {
       throw new HttpException(`Remove: id: ${id}`, HttpStatus.OK);
