@@ -28,7 +28,9 @@ export class PublicacionesService {
   }
 
   async findOne(id: number) {
-    const publicacion = await this.publicaciones.findOneBy({ idpublicacion: id });
+    const publicacion = await this.publicaciones.findOneBy({
+      idpublicacion: id,
+    });
     if (publicacion) return publicacion;
     throw new NotFoundException(`No se encontro publicacion con el id ${id}`);
   }
@@ -50,7 +52,9 @@ export class PublicacionesService {
   async remove(id: number) {
     const remover = await this.publicaciones.delete(id);
     console.log(
-      `Remove, id: ${id}, result: ${remover.affected ? 'Eliminado' : 'No eliminado'}`,
+      `Remove, id: ${id}, result: ${
+        remover.affected ? 'Eliminado' : 'No eliminado'
+      }`,
     );
     if (remover.affected) {
       throw new HttpException(`Remove: id: ${id}`, HttpStatus.OK);
