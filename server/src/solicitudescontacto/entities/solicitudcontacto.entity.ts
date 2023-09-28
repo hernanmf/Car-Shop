@@ -1,7 +1,7 @@
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity('solicitudescontacto')
-export class Solicitudescontacto {
+@Entity('SolicitudContacto')
+export class SolicitudContacto {
   @PrimaryGeneratedColumn()
   idSolicitudesDeContacto: number;
   @Column()
@@ -25,4 +25,3 @@ export class Solicitudescontacto {
     this.idusuario = idusuario;
   }
 }
-

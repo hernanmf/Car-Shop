@@ -7,15 +7,15 @@ import {
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
-import { Solicitudescontacto } from './entities/solicitudescontacto.entity';
+import { SolicitudContacto } from './entities/solicitudcontacto.entity';
 import { CreateSolicitudescontactoDto } from './dto/create-solicitudescontacto.dto';
 import { UpdateSolicitudescontactoDto } from './dto/update-solicitudescontacto.dto';
 
 @Injectable()
 export class SolicitudescontactoService {
   constructor(
-    @InjectRepository(Solicitudescontacto)
-    private readonly Solicitudescontacto: Repository<Solicitudescontacto>,
+    @InjectRepository(SolicitudContacto)
+    private readonly Solicitudescontacto: Repository<SolicitudContacto>,
   ) {}
 
   create(createSolicitudescontactoDto: CreateSolicitudescontactoDto) {

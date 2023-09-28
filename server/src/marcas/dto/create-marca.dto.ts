@@ -1,4 +1,4 @@
 export class CreateMarcaDto {
-  Nombre: string;
-  Foto: string;
+  nombre: string;
+  foto: string;
 }
