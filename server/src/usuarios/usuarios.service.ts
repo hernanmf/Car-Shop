@@ -9,32 +9,46 @@ import { UpdateUsuarioDto } from './dto/update-usuario.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Usuario } from './entities/usuario.entity';
+import { ProvinciasService } from 'src/provincias/provincias.service';
 
 @Injectable()
 export class UsuariosService {
   constructor(
     @InjectRepository(Usuario)
-    private readonly usuarios: Repository<Usuario>,
+    private readonly usuarioRepository: Repository<Usuario>,
+    private provinciaService: ProvinciasService,
   ) {}
 
-  create(usuarioDto: CreateUsuarioDto) {
-    const usuario = this.usuarios.create(usuarioDto);
-    return this.usuarios.save(usuario);
+  async create(createUsuarioDto: CreateUsuarioDto) {
+    const provincia = await this.provinciaService.findOne(
+      createUsuarioDto.idprovincia,
+    );
+
+    if (!provincia)
+      return new HttpException(
+        'No se encontro Provincia',
+        HttpStatus.NOT_FOUND,
+      );
+
+    const usuario = this.usuarioRepository.create(createUsuarioDto);
+    usuario.provincia = provincia;
+    console.log(usuario);
+    return this.usuarioRepository.save(usuario);
   }
 
   findAll() {
-    return this.usuarios.find();
+    return this.usuarioRepository.find();
   }
 
   async findOne(id: number) {
-    const usuario = await this.usuarios.findOneBy({ idUsuario: id });
+    const usuario = await this.usuarioRepository.findOneBy({ idUsuario: id });
     if (usuario) return usuario;
     throw new NotFoundException(`No se encontro foto con el id ${id}`);
   }
 
   async update(id: number, updateUsuarioDto: UpdateUsuarioDto) {
     try {
-      const resultado = await this.usuarios.update(
+      const resultado = await this.usuarioRepository.update(
         { idUsuario: id },
         { idUsuario: id, ...updateUsuarioDto },
       );
@@ -47,7 +61,7 @@ export class UsuariosService {
   }
 
   async remove(id: number) {
-    const remover = await this.usuarios.delete(id);
+    const remover = await this.usuarioRepository.delete(id);
     console.log(
       `Remove, id: ${id}, result: ${
         remover.affected ? 'Eliminado' : 'No eliminado'

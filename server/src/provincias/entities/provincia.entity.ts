@@ -7,14 +7,14 @@ import {
   JoinColumn,
 } from 'typeorm';
 
-@Entity('Provincia')
+@Entity('Provincias')
 export class Provincia {
   @PrimaryGeneratedColumn()
   idProvincia: number;
   @Column()
   nombre: string;
 
-  @OneToMany(() => Provincia, (provincia) => provincia.usuarios)
+  @OneToMany(() => Usuario, (usuario) => usuario.provincia)
   @JoinColumn()
   usuarios: Usuario[];
 
