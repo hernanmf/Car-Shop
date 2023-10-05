@@ -15,27 +15,27 @@ import { UpdateProvinciaDto } from './dto/update-provincia.dto';
 export class ProvinciasService {
   constructor(
     @InjectRepository(Provincia)
-    private readonly provincias: Repository<Provincia>,
+    private readonly provinciasRepository: Repository<Provincia>,
   ) {}
 
   create(createProvinciaDto: CreateProvinciaDto) {
-    const provincia = this.provincias.create(createProvinciaDto);
-    return this.provincias.save(provincia);
+    const provincia = this.provinciasRepository.create(createProvinciaDto);
+    return this.provinciasRepository.save(provincia);
   }
 
   findAll() {
-    return this.provincias.find();
+    return this.provinciasRepository.find();
   }
 
   async findOne(id: number) {
-    const provincia = await this.provincias.findOneBy({ idProvincia: id });
+    const provincia = await this.provinciasRepository.findOneBy({ idProvincia: id });
     if (provincia) return provincia;
     throw new NotFoundException(`No se encontro provincia con el id ${id}`);
   }
 
   async update(id: number, updateProvinciaDto: UpdateProvinciaDto) {
     try {
-      const resultado = await this.provincias.update(
+      const resultado = await this.provinciasRepository.update(
         { idProvincia: id },
         { idProvincia: id, ...updateProvinciaDto },
       );
@@ -48,7 +48,7 @@ export class ProvinciasService {
   }
 
   async remove(id: number) {
-    const remover = await this.provincias.delete(id);
+    const remover = await this.provinciasRepository.delete(id);
     console.log(
       `Remove, id: ${id}, result: ${
         remover.affected ? 'Eliminado' : 'No eliminado'

@@ -14,27 +14,27 @@ import { Repository } from 'typeorm';
 export class ModelosService {
   constructor(
     @InjectRepository(Modelo)
-    private readonly modelos: Repository<Modelo>,
+    private readonly modelosRepository: Repository<Modelo>,
   ) {}
 
   create(createModeloDto: CreateModeloDto) {
-    const modelo = this.modelos.create(createModeloDto);
-    return this.modelos.save(modelo);
+    const modelo = this.modelosRepository.create(createModeloDto);
+    return this.modelosRepository.save(modelo);
   }
 
   findAll() {
-    return this.modelos.find;
+    return this.modelosRepository.find;
   }
 
   async findOne(id: number) {
-    const modelo = await this.modelos.findOneBy({ idModelo: id });
+    const modelo = await this.modelosRepository.findOneBy({ idModelo: id });
     if (modelo) return modelo;
     throw new NotFoundException(`No se encontro modelo con el id ${id}`);
   }
 
   async update(id: number, updateModeloDto: UpdateModeloDto) {
     try {
-      const resultado = await this.modelos.update(
+      const resultado = await this.modelosRepository.update(
         { idModelo: id },
         { idModelo: id, ...updateModeloDto },
       );
@@ -47,7 +47,7 @@ export class ModelosService {
   }
 
   async remove(id: number) {
-    const remover = await this.modelos.delete(id);
+    const remover = await this.modelosRepository.delete(id);
     console.log(
       `Remove, id: ${id}, result: ${
         remover.affected ? 'Eliminado' : 'No eliminado'

@@ -15,27 +15,27 @@ import { UpdateVersionDto } from './dto/update-version.dto';
 export class VersionesService {
   constructor(
     @InjectRepository(Version)
-    private readonly versiones: Repository<Version>,
+    private readonly versionesRepository: Repository<Version>,
   ) {}
 
   create(createVersionDto: CreateVersionDto) {
-    const version = this.versiones.create(createVersionDto);
-    return this.versiones.save(version);
+    const version = this.versionesRepository.create(createVersionDto);
+    return this.versionesRepository.save(version);
   }
 
   findAll() {
-    return this.versiones.find();
+    return this.versionesRepository.find();
   }
 
   async findOne(id: number) {
-    const version = await this.versiones.findOneBy({ idVersion: id });
+    const version = await this.versionesRepository.findOneBy({ idVersion: id });
     if (version) return version;
     throw new NotFoundException(`No se encontro version con el id ${id}`);
   }
 
   async update(id: number, updateVersionDto: UpdateVersionDto) {
     try {
-      const resultado = await this.versiones.update(
+      const resultado = await this.versionesRepository.update(
         { idVersion: id },
         { idVersion: id, ...updateVersionDto },
       );
@@ -48,7 +48,7 @@ export class VersionesService {
   }
 
   async remove(id: number) {
-    const remover = await this.versiones.delete(id);
+    const remover = await this.versionesRepository.delete(id);
     console.log(
       `Remove, id: ${id}, result: ${
         remover.affected ? 'Eliminado' : 'No eliminado'

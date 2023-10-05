@@ -15,27 +15,27 @@ import { UpdateFotoDto } from './dto/update-foto.dto';
 export class FotosService {
   constructor(
     @InjectRepository(Foto)
-    private readonly fotos: Repository<Foto>,
+    private readonly fotosRepository: Repository<Foto>,
   ) {}
 
   create(createFotoDto: CreateFotoDto) {
-    const foto = this.fotos.create(createFotoDto);
-    return this.fotos.save(foto);
+    const foto = this.fotosRepository.create(createFotoDto);
+    return this.fotosRepository.save(foto);
   }
 
   findAll() {
-    return this.fotos.find();
+    return this.fotosRepository.find();
   }
 
   async findOne(id: number) {
-    const foto = await this.fotos.findOneBy({ idFoto: id });
+    const foto = await this.fotosRepository.findOneBy({ idFoto: id });
     if (foto) return foto;
     throw new NotFoundException(`No se encontro foto con el id ${id}`);
   }
 
   async update(id: number, updateFotoDto: UpdateFotoDto) {
     try {
-      const resultado = await this.fotos.update(
+      const resultado = await this.fotosRepository.update(
         { idFoto: id },
         { idFoto: id, ...updateFotoDto },
       );
@@ -48,7 +48,7 @@ export class FotosService {
   }
 
   async remove(id: number) {
-    const remover = await this.fotos.delete(id);
+    const remover = await this.fotosRepository.delete(id);
     console.log(
       `Remove, id: ${id}, result: ${
         remover.affected ? 'Eliminado' : 'No eliminado'

@@ -15,27 +15,27 @@ import { UpdateMarcaDto } from './dto/update-marca.dto';
 export class MarcasService {
   constructor(
     @InjectRepository(Marca)
-    private readonly marcas: Repository<Marca>,
+    private readonly marcasRepository: Repository<Marca>,
   ) {}
 
   create(createMarcaDto: CreateMarcaDto) {
-    const marca = this.marcas.create(createMarcaDto);
-    return this.marcas.save(marca);
+    const marca = this.marcasRepository.create(createMarcaDto);
+    return this.marcasRepository.save(marca);
   }
 
   findAll() {
-    return this.marcas.find();
+    return this.marcasRepository.find();
   }
 
   async findOne(id: number) {
-    const marca = await this.marcas.findOneBy({ idMarca: id });
+    const marca = await this.marcasRepository.findOneBy({ idMarca: id });
     if (marca) return marca;
     throw new NotFoundException(`No se encontro marca con el id ${id}`);
   }
 
   async update(id: number, updateMarcaDto: UpdateMarcaDto) {
     try {
-      const resultado = await this.marcas.update(
+      const resultado = await this.marcasRepository.update(
         { idMarca: id },
         { idMarca: id, ...updateMarcaDto },
       );
@@ -48,7 +48,7 @@ export class MarcasService {
   }
 
   async remove(id: number) {
-    const remover = await this.marcas.delete(id);
+    const remover = await this.marcasRepository.delete(id);
     console.log(
       `Remove, id: ${id}, result: ${
         remover.affected ? 'Eliminado' : 'No eliminado'

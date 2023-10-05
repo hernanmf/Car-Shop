@@ -15,20 +15,20 @@ import { UpdatePublicacionDto } from './dto/update-publicacion.dto';
 export class PublicacionesService {
   constructor(
     @InjectRepository(Publicacion)
-    private readonly publicaciones: Repository<Publicacion>,
+    private readonly publicacionesRepository: Repository<Publicacion>,
   ) {}
 
   create(publicacionDto: CreatePublicacionDto) {
-    const publicacion = this.publicaciones.create(publicacionDto);
-    return this.publicaciones.save(publicacion);
+    const publicacion = this.publicacionesRepository.create(publicacionDto);
+    return this.publicacionesRepository.save(publicacion);
   }
 
   findAll() {
-    return this.publicaciones.find();
+    return this.publicacionesRepository.find();
   }
 
   async findOne(id: number) {
-    const publicacion = await this.publicaciones.findOneBy({
+    const publicacion = await this.publicacionesRepository.findOneBy({
       idpublicacion: id,
     });
     if (publicacion) return publicacion;
@@ -37,7 +37,7 @@ export class PublicacionesService {
 
   async update(id: number, updatePublicacionDto: UpdatePublicacionDto) {
     try {
-      const resultado = await this.publicaciones.update(
+      const resultado = await this.publicacionesRepository.update(
         { idpublicacion: id },
         { idpublicacion: id, ...updatePublicacionDto },
       );
@@ -50,7 +50,7 @@ export class PublicacionesService {
   }
 
   async remove(id: number) {
-    const remover = await this.publicaciones.delete(id);
+    const remover = await this.publicacionesRepository.delete(id);
     console.log(
       `Remove, id: ${id}, result: ${
         remover.affected ? 'Eliminado' : 'No eliminado'

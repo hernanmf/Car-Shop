@@ -15,22 +15,22 @@ import { UpdateSolicitudescontactoDto } from './dto/update-solicitudescontacto.d
 export class SolicitudescontactoService {
   constructor(
     @InjectRepository(SolicitudContacto)
-    private readonly Solicitudescontacto: Repository<SolicitudContacto>,
+    private readonly SolicitudescontactoRepository: Repository<SolicitudContacto>,
   ) {}
 
   create(createSolicitudescontactoDto: CreateSolicitudescontactoDto) {
-    const solicitud = this.Solicitudescontacto.create(
+    const solicitud = this.SolicitudescontactoRepository.create(
       createSolicitudescontactoDto,
     );
-    return this.Solicitudescontacto.save(solicitud);
+    return this.SolicitudescontactoRepository.save(solicitud);
   }
 
   findAll() {
-    return this.Solicitudescontacto.find();
+    return this.SolicitudescontactoRepository.find();
   }
 
   async findOne(id: number) {
-    const solicitud = await this.Solicitudescontacto.findOneBy({
+    const solicitud = await this.SolicitudescontactoRepository.findOneBy({
       idSolicitudesDeContacto: id,
     });
     if (solicitud) return solicitud;
@@ -42,7 +42,7 @@ export class SolicitudescontactoService {
     updateSolicitudescontactoDto: UpdateSolicitudescontactoDto,
   ) {
     try {
-      const resultado = await this.Solicitudescontacto.update(
+      const resultado = await this.SolicitudescontactoRepository.update(
         { idSolicitudesDeContacto: id },
         { idSolicitudesDeContacto: id, ...updateSolicitudescontactoDto },
       );
@@ -55,7 +55,7 @@ export class SolicitudescontactoService {
   }
 
   async remove(id: number) {
-    const remover = await this.Solicitudescontacto.delete(id);
+    const remover = await this.SolicitudescontactoRepository.delete(id);
     console.log(
       `Remove, id: ${id}, result: ${
         remover.affected ? 'Eliminado' : 'No eliminado'
