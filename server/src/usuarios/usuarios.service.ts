@@ -37,13 +37,18 @@ export class UsuariosService {
   }
 
   findAll() {
-    return this.usuarioRepository.find();
+    return this.usuarioRepository.find({ relations: ['provincia'] });
   }
 
   async findOne(id: number) {
-    const usuario = await this.usuarioRepository.findOneBy({ idUsuario: id });
+    /* const usuario = await this.usuarioRepository.findOneBy({ idUsuario: id }); */
+    const usuario = await this.usuarioRepository.findOne({
+      where: { idUsuario: id },
+      relations: ['provincia'],
+    });
+
     if (usuario) return usuario;
-    throw new NotFoundException(`No se encontro foto con el id ${id}`);
+    throw new NotFoundException(`No se encontro usuario con el id ${id}`);
   }
 
   async update(id: number, updateUsuarioDto: UpdateUsuarioDto) {
