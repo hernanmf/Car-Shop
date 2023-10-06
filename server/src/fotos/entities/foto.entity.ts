@@ -1,6 +1,13 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Publicacion } from 'src/publicaciones/entities/publicacion.entity';
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  ManyToOne,
+  JoinColumn,
+} from 'typeorm';
 
-@Entity('Foto')
+@Entity('Fotos')
 export class Foto {
   @PrimaryGeneratedColumn()
   idFoto: number;
@@ -9,8 +16,12 @@ export class Foto {
   @Column()
   idpublicacion: number;
 
-  constructor(url: string, idpublicacion: number) {
+  @ManyToOne(() => Publicacion, (publicacion) => publicacion.fotos)
+  @JoinColumn({ name: 'IDPublicacion' })
+  publicacion: Publicacion;
+
+  constructor(url: string, publicacion: Publicacion) {
     this.url = url;
-    this.idpublicacion = idpublicacion;
+    this.publicacion = publicacion;
   }
 }

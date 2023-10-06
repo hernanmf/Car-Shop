@@ -1,6 +1,6 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity('version')
+@Entity('Versiones')
 export class Version {
   @PrimaryGeneratedColumn()
   idVersion: number;

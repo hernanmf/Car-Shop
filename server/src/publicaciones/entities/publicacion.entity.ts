@@ -1,6 +1,7 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Foto } from 'src/fotos/entities/foto.entity';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany, JoinColumn } from 'typeorm';
 
-@Entity('Publicacion')
+@Entity('Publicaciones')
 export class Publicacion {
   @PrimaryGeneratedColumn()
   idpublicacion: number;
@@ -32,6 +33,10 @@ export class Publicacion {
   estadopublicacion: boolean;
   @Column()
   idusuario: number;
+
+  @OneToMany(() => Foto, (foto) => foto.idpublicacion)
+  @JoinColumn()
+  fotos: Foto[];
 
   constructor(
     tipo: string,
