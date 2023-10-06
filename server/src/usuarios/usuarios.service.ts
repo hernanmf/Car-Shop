@@ -41,7 +41,6 @@ export class UsuariosService {
   }
 
   async findOne(id: number) {
-    /* const usuario = await this.usuarioRepository.findOneBy({ idUsuario: id }); */
     const usuario = await this.usuarioRepository.findOne({
       where: { idUsuario: id },
       relations: ['provincia'],

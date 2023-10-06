@@ -43,7 +43,10 @@ export class FotosService {
   }
 
   async findOne(id: number) {
-    const foto = await this.fotosRepository.findOneBy({ idFoto: id });
+    const foto = await this.fotosRepository.findOne({
+      where: { idFoto: id },
+      relations: ['publicacion'],
+    });
     if (foto) return foto;
     throw new NotFoundException(`No se encontro foto con el id ${id}`);
   }
