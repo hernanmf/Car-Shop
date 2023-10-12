@@ -1,5 +1,11 @@
 import { Foto } from 'src/fotos/entities/foto.entity';
-import { Entity, Column, PrimaryGeneratedColumn, OneToMany, JoinColumn } from 'typeorm';
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  OneToMany,
+  JoinColumn,
+} from 'typeorm';
 
 @Entity('Publicaciones')
 export class Publicacion {
@@ -34,7 +40,7 @@ export class Publicacion {
   @Column()
   idusuario: number;
 
-  @OneToMany(() => Foto, (foto) => foto.idpublicacion)
+  @OneToMany(() => Foto, (foto) => foto.publicacion)
   @JoinColumn()
   fotos: Foto[];
 
@@ -53,6 +59,7 @@ export class Publicacion {
     descripcionadicional: string,
     estadopublicacion: boolean,
     idusuario: number,
+    fotos: Foto[],
   ) {
     this.tipo = tipo;
     this.idVersion = idVersion;
@@ -68,5 +75,6 @@ export class Publicacion {
     this.descripcionadicional = descripcionadicional;
     this.estadopublicacion = estadopublicacion;
     this.idusuario = idusuario;
+    this.fotos = fotos;
   }
 }

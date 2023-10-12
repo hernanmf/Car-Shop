@@ -32,7 +32,7 @@ export class FotosService {
       );
 
     const foto = this.fotosRepository.create(createFotoDto);
-    foto.idpublicacion = publicacion.idpublicacion;
+    foto.publicacion = publicacion;
     console.log(foto);
 
     return this.fotosRepository.save(foto);

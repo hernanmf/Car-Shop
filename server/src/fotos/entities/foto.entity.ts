@@ -13,8 +13,6 @@ export class Foto {
   idFoto: number;
   @Column()
   url: string;
-  @Column()
-  idpublicacion: number;
 
   @ManyToOne(() => Publicacion, (publicacion) => publicacion.fotos)
   @JoinColumn({ name: 'IDPublicacion' })
