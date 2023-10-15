@@ -24,12 +24,13 @@ export class PublicacionesService {
   }
 
   findAll() {
-    return this.publicacionesRepository.find();
+    return this.publicacionesRepository.find({ relations: ['fotos'] });
   }
 
   async findOne(id: number) {
-    const publicacion = await this.publicacionesRepository.findOneBy({
-      idpublicacion: id,
+    const publicacion = await this.publicacionesRepository.findOne({
+      where: { idpublicacion: id },
+      relations: ['fotos'],
     });
     if (publicacion) return publicacion;
     throw new NotFoundException(`No se encontro publicacion con el id ${id}`);

@@ -17,7 +17,7 @@ export class FotosService {
   constructor(
     @InjectRepository(Foto)
     private readonly fotosRepository: Repository<Foto>,
-    private publicacionesService: PublicacionesService
+    private publicacionesService: PublicacionesService,
   ) {}
 
   async create(createFotoDto: CreateFotoDto) {

@@ -10,25 +10,42 @@ import { Repository } from 'typeorm';
 import { Version } from './entities/version.entity';
 import { CreateVersionDto } from './dto/create-version.dto';
 import { UpdateVersionDto } from './dto/update-version.dto';
+import { ModelosService } from 'src/modelos/modelos.service';
 
 @Injectable()
 export class VersionesService {
   constructor(
     @InjectRepository(Version)
     private readonly versionesRepository: Repository<Version>,
+    private modelosService: ModelosService,
   ) {}
 
-  create(createVersionDto: CreateVersionDto) {
+  async create(createVersionDto: CreateVersionDto) {
+    const modelo = await this.modelosService.findOne(createVersionDto.idModelo);
+
+    if (!modelo)
+      return new HttpException(
+        'No se encontro Provincia',
+        HttpStatus.NOT_FOUND,
+      );
+
     const version = this.versionesRepository.create(createVersionDto);
+    version.modelo = modelo;
+    console.log(version);
     return this.versionesRepository.save(version);
   }
 
   findAll() {
-    return this.versionesRepository.find();
+    return this.versionesRepository.find({
+      relations: ['modelo','marca'],
+    });
   }
 
   async findOne(id: number) {
-    const version = await this.versionesRepository.findOneBy({ idVersion: id });
+    const version = await this.versionesRepository.findOne({
+      where: { idVersion: id },
+      relations: ['modelo','marca'],
+    });
     if (version) return version;
     throw new NotFoundException(`No se encontro version con el id ${id}`);
   }

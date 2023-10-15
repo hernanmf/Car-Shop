@@ -16,11 +16,11 @@ export class UsuariosService {
   constructor(
     @InjectRepository(Usuario)
     private readonly usuarioRepository: Repository<Usuario>,
-    private provinciaService: ProvinciasService,
+    private provinciasService: ProvinciasService,
   ) {}
 
   async create(createUsuarioDto: CreateUsuarioDto) {
-    const provincia = await this.provinciaService.findOne(
+    const provincia = await this.provinciasService.findOne(
       createUsuarioDto.idprovincia,
     );
 

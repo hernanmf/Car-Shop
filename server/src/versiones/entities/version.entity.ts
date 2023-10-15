@@ -1,4 +1,6 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Marca } from 'src/marcas/entities/marca.entity';
+import { Modelo } from 'src/modelos/entities/modelo.entity';
+import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('Versiones')
 export class Version {
@@ -6,14 +8,16 @@ export class Version {
   idVersion: number;
   @Column()
   nombre: string;
-  @Column()
-  idModelo: number;
-  @Column()
-  idMarca: number;
 
-  constructor(nombre: string, idModelo: number, idMarca: number) {
+  @ManyToOne(() => Modelo, (modelo) => modelo.versiones)
+  @JoinColumn({ name: 'IDModelo' })
+  modelo: Modelo;
+  @JoinColumn({ name: 'IDMarca' })
+  marca: Marca;
+
+  constructor(nombre: string, modelo: Modelo, marca: Marca) {
     this.nombre = nombre;
-    this.idModelo = idModelo;
-    this.idMarca = idMarca;
+    this.modelo = modelo;
+    this.marca = marca;
   }
 }

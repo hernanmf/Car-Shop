@@ -41,7 +41,7 @@ export class Publicacion {
   idusuario: number;
 
   @OneToMany(() => Foto, (foto) => foto.publicacion)
-  @JoinColumn()
+  @JoinColumn({ name: 'IDPublicacion' })
   fotos: Foto[];
 
   constructor(

@@ -4,7 +4,7 @@ import { FotosController } from './fotos.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Foto } from './entities/foto.entity';
 import { PublicacionesModule } from 'src/publicaciones/publicaciones.module';
-import { Publicacion } from '../publicaciones/entities/publicacion.entity';
+import { Publicacion } from 'src/publicaciones/entities/publicacion.entity';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Foto, Publicacion]), PublicacionesModule],
