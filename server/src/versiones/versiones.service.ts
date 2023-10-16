@@ -37,14 +37,14 @@ export class VersionesService {
 
   findAll() {
     return this.versionesRepository.find({
-      relations: ['modelo','marca'],
+      relations: ['modelo', 'modelo.marca'],
     });
   }
 
   async findOne(id: number) {
     const version = await this.versionesRepository.findOne({
       where: { idVersion: id },
-      relations: ['modelo','marca'],
+      relations: ['modelo', 'modelo.marca'],
     });
     if (version) return version;
     throw new NotFoundException(`No se encontro version con el id ${id}`);
