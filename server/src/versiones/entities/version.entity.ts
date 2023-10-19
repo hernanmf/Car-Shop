@@ -1,10 +1,12 @@
 import { Marca } from 'src/marcas/entities/marca.entity';
 import { Modelo } from 'src/modelos/entities/modelo.entity';
+import { Publicacion } from 'src/publicaciones/entities/publicacion.entity';
 import {
   Column,
   Entity,
   JoinColumn,
   ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
@@ -20,6 +22,10 @@ export class Version {
   modelo: Modelo;
   @JoinColumn({ name: 'IDMarca' })
   marca: Marca;
+
+  @OneToMany(() => Publicacion, (publicacion) => publicacion.version)
+  @JoinColumn()
+  publicaciones: Publicacion[];
 
   constructor(nombre: string, modelo: Modelo, marca: Marca) {
     this.nombre = nombre;

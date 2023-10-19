@@ -1,10 +1,12 @@
 import { Foto } from 'src/fotos/entities/foto.entity';
+import { Version } from 'src/versiones/entities/version.entity';
 import {
   Entity,
   Column,
   PrimaryGeneratedColumn,
   OneToMany,
   JoinColumn,
+  ManyToOne,
 } from 'typeorm';
 
 @Entity('Publicaciones')
@@ -13,8 +15,6 @@ export class Publicacion {
   idpublicacion: number;
   @Column()
   tipo: string;
-  @Column()
-  idVersion: number;
   @Column()
   anio: number;
   @Column()
@@ -44,9 +44,13 @@ export class Publicacion {
   @JoinColumn({ name: 'IDPublicacion' })
   fotos: Foto[];
 
+  @ManyToOne(() => Version, (version) => version.publicaciones)
+  @JoinColumn({ name: 'IDVersion' })
+  version: Version;
+
   constructor(
     tipo: string,
-    idVersion: number,
+    version: Version,
     anio: number,
     kilometros: number,
     transmision: string,
@@ -62,7 +66,7 @@ export class Publicacion {
     fotos: Foto[],
   ) {
     this.tipo = tipo;
-    this.idVersion = idVersion;
+    this.version = version;
     this.anio = anio;
     this.kilometros = kilometros;
     this.transmision = transmision;
