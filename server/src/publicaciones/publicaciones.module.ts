@@ -6,11 +6,14 @@ import { Publicacion } from './entities/publicacion.entity';
 import { Foto } from '../fotos/entities/foto.entity';
 import { Version } from 'src/versiones/entities/version.entity';
 import { VersionesModule } from 'src/versiones/versiones.module';
+import { Usuario } from 'src/usuarios/entities/usuario.entity';
+import { UsuariosModule } from 'src/usuarios/usuarios.module';
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([Publicacion, Foto, Version]),
+    TypeOrmModule.forFeature([Publicacion, Foto, Version, Usuario]),
     VersionesModule,
+    UsuariosModule,
   ],
   controllers: [PublicacionesController],
   providers: [PublicacionesService],

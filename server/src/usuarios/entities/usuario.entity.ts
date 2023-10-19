@@ -1,10 +1,12 @@
 import { Provincia } from 'src/provincias/entities/provincia.entity';
+import { Publicacion } from 'src/publicaciones/entities/publicacion.entity';
 import {
   Entity,
   Column,
   PrimaryGeneratedColumn,
   ManyToOne,
   JoinColumn,
+  OneToMany,
 } from 'typeorm';
 
 @Entity('Usuarios')
@@ -28,6 +30,10 @@ export class Usuario {
   @JoinColumn({ name: 'IDProvincia' })
   provincia: Provincia;
 
+  @OneToMany(() => Publicacion, (publicacion) => publicacion.usuario)
+  @JoinColumn()
+  publicaciones: Publicacion[];
+
   constructor(
     nombre: string,
     apellido: string,
@@ -36,6 +42,7 @@ export class Usuario {
     telefono: string,
     provincia: Provincia,
     administrador: boolean,
+    publicaciones: Publicacion[],
   ) {
     this.nombre = nombre;
     this.apellido = apellido;
@@ -44,5 +51,6 @@ export class Usuario {
     this.telefono = telefono;
     this.provincia = provincia;
     this.administrador = administrador;
+    this.publicaciones = publicaciones;
   }
 }

@@ -1,4 +1,5 @@
 import { Foto } from 'src/fotos/entities/foto.entity';
+import { Usuario } from 'src/usuarios/entities/usuario.entity';
 import { Version } from 'src/versiones/entities/version.entity';
 import {
   Entity,
@@ -37,8 +38,6 @@ export class Publicacion {
   descripcionadicional: string;
   @Column()
   estadopublicacion: boolean;
-  @Column()
-  idusuario: number;
 
   @OneToMany(() => Foto, (foto) => foto.publicacion)
   @JoinColumn({ name: 'IDPublicacion' })
@@ -47,6 +46,10 @@ export class Publicacion {
   @ManyToOne(() => Version, (version) => version.publicaciones)
   @JoinColumn({ name: 'IDVersion' })
   version: Version;
+
+  @ManyToOne(() => Usuario, (usuario) => usuario.publicaciones)
+  @JoinColumn({ name: 'IDUsuario' })
+  usuario: Usuario;
 
   constructor(
     tipo: string,
@@ -62,7 +65,7 @@ export class Publicacion {
     precio: number,
     descripcionadicional: string,
     estadopublicacion: boolean,
-    idusuario: number,
+    usuario: Usuario,
     fotos: Foto[],
   ) {
     this.tipo = tipo;
@@ -78,7 +81,7 @@ export class Publicacion {
     this.precio = precio;
     this.descripcionadicional = descripcionadicional;
     this.estadopublicacion = estadopublicacion;
-    this.idusuario = idusuario;
+    this.usuario = usuario;
     this.fotos = fotos;
   }
 }
