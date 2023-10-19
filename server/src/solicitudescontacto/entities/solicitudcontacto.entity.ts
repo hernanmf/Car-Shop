@@ -1,4 +1,11 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Usuario } from 'src/usuarios/entities/usuario.entity';
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  ManyToOne,
+  JoinColumn,
+} from 'typeorm';
 
 @Entity('SolicitudesDeContacto')
 export class SolicitudContacto {
@@ -10,18 +17,20 @@ export class SolicitudContacto {
   mensaje: string;
   @Column()
   idpublicacion: number;
-  @Column()
-  idusuario: number;
+
+  @ManyToOne(() => Usuario, (usuario) => usuario.solcitudesContacto)
+  @JoinColumn({ name: 'IDUsuario' })
+  usuario: Usuario;
 
   constructor(
     motivo: string,
     mensaje: string,
     idpublicacion: number,
-    idusuario: number,
+    usuario: Usuario,
   ) {
     this.motivo = motivo;
     this.mensaje = mensaje;
     this.idpublicacion = idpublicacion;
-    this.idusuario = idusuario;
+    this.usuario = usuario;
   }
 }

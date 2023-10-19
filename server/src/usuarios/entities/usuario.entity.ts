@@ -1,5 +1,6 @@
 import { Provincia } from 'src/provincias/entities/provincia.entity';
 import { Publicacion } from 'src/publicaciones/entities/publicacion.entity';
+import { SolicitudContacto } from 'src/solicitudescontacto/entities/solicitudcontacto.entity';
 import {
   Entity,
   Column,
@@ -33,6 +34,13 @@ export class Usuario {
   @OneToMany(() => Publicacion, (publicacion) => publicacion.usuario)
   @JoinColumn()
   publicaciones: Publicacion[];
+
+  @OneToMany(
+    () => SolicitudContacto,
+    (solicitudContacto) => solicitudContacto.usuario,
+  )
+  @JoinColumn()
+  solcitudesContacto: SolicitudContacto[];
 
   constructor(
     nombre: string,

@@ -1,5 +1,11 @@
 import { Modelo } from 'src/modelos/entities/modelo.entity';
-import { Column, Entity, JoinColumn, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity('Marcas')
 export class Marca {

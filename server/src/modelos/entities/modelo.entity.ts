@@ -1,6 +1,13 @@
 import { Marca } from 'src/marcas/entities/marca.entity';
 import { Version } from 'src/versiones/entities/version.entity';
-import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity('Modelos')
 export class Modelo {

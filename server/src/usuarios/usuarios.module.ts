@@ -6,10 +6,16 @@ import { Usuario } from './entities/usuario.entity';
 import { Provincia } from '../provincias/entities/provincia.entity';
 import { ProvinciasModule } from 'src/provincias/provincias.module';
 import { Publicacion } from 'src/publicaciones/entities/publicacion.entity';
+import { SolicitudContacto } from 'src/solicitudescontacto/entities/solicitudcontacto.entity';
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([Usuario, Provincia, Publicacion]),
+    TypeOrmModule.forFeature([
+      Usuario,
+      Provincia,
+      Publicacion,
+      SolicitudContacto,
+    ]),
     ProvinciasModule,
   ],
   controllers: [UsuariosController],
