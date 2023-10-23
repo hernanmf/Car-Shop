@@ -1,15 +1,6 @@
-import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Patch,
-  Param,
-  Delete,
-} from '@nestjs/common';
+import { Controller, Get, Post, Body, Param } from '@nestjs/common';
 import { SolicitudescontactoService } from './solicitudescontacto.service';
 import { CreateSolicitudescontactoDto } from './dto/create-solicitudescontacto.dto';
-import { UpdateSolicitudescontactoDto } from './dto/update-solicitudescontacto.dto';
 
 @Controller('solicitudescontacto')
 export class SolicitudescontactoController {
@@ -30,21 +21,5 @@ export class SolicitudescontactoController {
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.solicitudescontactoService.findOne(+id);
-  }
-
-  @Patch(':id')
-  update(
-    @Param('id') id: string,
-    @Body() updateSolicitudescontactoDto: UpdateSolicitudescontactoDto,
-  ) {
-    return this.solicitudescontactoService.update(
-      +id,
-      updateSolicitudescontactoDto,
-    );
-  }
-
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.solicitudescontactoService.remove(+id);
   }
 }
