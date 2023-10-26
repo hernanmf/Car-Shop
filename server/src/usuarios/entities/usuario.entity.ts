@@ -32,7 +32,7 @@ export class Usuario {
   provincia: Provincia;
 
   @OneToMany(() => Publicacion, (publicacion) => publicacion.usuario)
-  @JoinColumn()
+  @JoinColumn({ name: 'IDUsuario' })
   publicaciones: Publicacion[];
 
   @OneToMany(

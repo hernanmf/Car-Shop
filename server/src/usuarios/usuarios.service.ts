@@ -36,8 +36,14 @@ export class UsuariosService {
     return this.usuarioRepository.save(usuario);
   }
 
-  findAll() {
-    return this.usuarioRepository.find({ relations: ['provincia'] });
+  async findAll() {
+    const perfiles = await this.usuarioRepository.find({
+      relations: ['provincia'],
+    });
+    perfiles.map((element) => {
+      delete element.contraseña;
+    });
+    return perfiles;
   }
 
   async findOne(id: number) {
@@ -45,7 +51,6 @@ export class UsuariosService {
       where: { idUsuario: id },
       relations: ['provincia'],
     });
-
     if (usuario) return usuario;
     throw new NotFoundException(`No se encontro usuario con el id ${id}`);
   }

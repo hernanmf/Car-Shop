@@ -29,6 +29,7 @@ export class PublicacionesService {
     const version = await this.versionesService.findOne(
       publicacionDto.idversion,
     );
+
     if (!version || !usuario)
       return new HttpException(
         'No se encontro Usuario o Version de la publicacion',
@@ -43,8 +44,8 @@ export class PublicacionesService {
     return this.publicacionesRepository.save(publicacion);
   }
 
-  findAll() {
-    return this.publicacionesRepository.find({
+  async findAll() {
+    const publicaciones = await this.publicacionesRepository.find({
       relations: [
         'fotos',
         'version',
@@ -54,6 +55,11 @@ export class PublicacionesService {
         'usuario.provincia',
       ],
     });
+    publicaciones.map((element) => {
+      delete element.usuario.contraseña;
+      delete element.usuario.administrador;
+    });
+    return publicaciones;
   }
 
   async findOne(id: number) {
@@ -68,15 +74,20 @@ export class PublicacionesService {
         'usuario.provincia',
       ],
     });
-    if (publicacion) return publicacion;
-    throw new NotFoundException(`No se encontro publicacion con el id ${id}`);
+    if (publicacion) {
+      delete publicacion.usuario.administrador;
+      delete publicacion.usuario.contraseña;
+      return publicacion;
+    } else {
+      throw new NotFoundException(`No se encontro publicacion con el id ${id}`);
+    }
   }
 
   async update(id: number, updatePublicacionDto: UpdatePublicacionDto) {
     try {
       const resultado = await this.publicacionesRepository.update(
         { idpublicacion: id },
-        { idpublicacion: id, ...updatePublicacionDto },
+        { ...updatePublicacionDto },
       );
       console.log(`Update, id: ${id}, result: ${resultado}`);
       return resultado;
