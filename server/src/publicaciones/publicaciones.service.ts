@@ -46,6 +46,7 @@ export class PublicacionesService {
 
   async findAll() {
     const publicaciones = await this.publicacionesRepository.find({
+      where: { estadopublicacion: true },
       relations: [
         'fotos',
         'version',
@@ -98,15 +99,15 @@ export class PublicacionesService {
   }
 
   async remove(id: number) {
-    const remover = await this.publicacionesRepository.delete(id);
-    console.log(
-      `Remove, id: ${id}, result: ${
-        remover.affected ? 'Eliminado' : 'No eliminado'
-      }`,
-    );
-    if (remover.affected) {
-      throw new HttpException(`Remove: id: ${id}`, HttpStatus.OK);
-    } else {
+    try {
+      const resultado = await this.publicacionesRepository.update(
+        { idpublicacion: id },
+        { estadopublicacion: false },
+      );
+      console.log(`Remove, id: ${id}, result: ${resultado}`);
+      return resultado;
+    } catch (error) {
+      console.log(error);
       throw new NotFoundException(`No se encontro publicacion con el id ${id}`);
     }
   }

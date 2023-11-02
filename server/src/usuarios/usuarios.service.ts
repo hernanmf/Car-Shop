@@ -20,10 +20,18 @@ export class UsuariosService {
   ) {}
 
   async create(createUsuarioDto: CreateUsuarioDto) {
+    const usuarioExiste = await this.usuarioRepository.findOne({
+      where: { correoElectronico: createUsuarioDto.correoElectronico },
+    });
+    if (usuarioExiste)
+      return new HttpException(
+        'El Correo Electronico ya está en uso',
+        HttpStatus.CONFLICT,
+      );
+
     const provincia = await this.provinciasService.findOne(
       createUsuarioDto.idprovincia,
     );
-
     if (!provincia)
       return new HttpException(
         'No se encontro Provincia',
