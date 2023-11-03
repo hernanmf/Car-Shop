@@ -22,7 +22,7 @@ export class FotosService {
 
   async create(createFotoDto: CreateFotoDto) {
     const publicacion = await this.publicacionesService.findOne(
-      createFotoDto.idPublicacion,
+      createFotoDto.idpublicacion,
     );
 
     if (!publicacion)

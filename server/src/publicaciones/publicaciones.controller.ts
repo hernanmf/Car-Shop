@@ -30,6 +30,11 @@ export class PublicacionesController {
     return this.publicacionesService.findOne(+id);
   }
 
+  @Get('usuarios/:id')
+  findByUser(@Param('id') id: string) {
+    return this.publicacionesService.findByUser(+id);
+  }
+
   @Patch(':id')
   update(
     @Param('id') id: string,

@@ -65,6 +65,16 @@ export class UsuariosService {
 
   async update(id: number, updateUsuarioDto: UpdateUsuarioDto) {
     try {
+      const usuario = await this.usuarioRepository.findOne({
+        where: {
+          correoElectronico: updateUsuarioDto.correoElectronico,
+        },
+      });
+      if (usuario.idUsuario != id)
+        return new HttpException(
+          'El correo electronico ya existe',
+          HttpStatus.CONFLICT,
+        );
       const resultado = await this.usuarioRepository.update(
         { idUsuario: id },
         { idUsuario: id, ...updateUsuarioDto },

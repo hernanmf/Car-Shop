@@ -1,5 +1,5 @@
 export class CreateSolicitudescontactoDto {
-  idSolicitudesDeDontacto: number;
+  idsolicitudesdecontacto: number;
   motivo: string;
   mensaje: string;
   idpublicacion: number;

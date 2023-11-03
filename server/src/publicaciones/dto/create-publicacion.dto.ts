@@ -13,4 +13,5 @@ export class CreatePublicacionDto {
   descripcionadicional: string;
   estadopublicacion: boolean;
   idusuario: number;
+  fotos: string[];
 }
