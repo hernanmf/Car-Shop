@@ -7,8 +7,9 @@ import { PublicacionesModule } from 'src/publicaciones/publicaciones.module';
 import { Publicacion } from 'src/publicaciones/entities/publicacion.entity';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Foto, Publicacion]), PublicacionesModule],
+  imports: [TypeOrmModule.forFeature([Foto, Publicacion])],
   controllers: [FotosController],
   providers: [FotosService],
+  exports: [FotosService],
 })
 export class FotosModule {}

@@ -10,32 +10,24 @@ import { Repository } from 'typeorm';
 import { Foto } from './entities/foto.entity';
 import { CreateFotoDto } from './dto/create-foto.dto';
 import { UpdateFotoDto } from './dto/update-foto.dto';
-import { PublicacionesService } from '../publicaciones/publicaciones.service';
+import { Publicacion } from 'src/publicaciones/entities/publicacion.entity';
 
 @Injectable()
 export class FotosService {
   constructor(
     @InjectRepository(Foto)
     private readonly fotosRepository: Repository<Foto>,
-    private publicacionesService: PublicacionesService,
   ) {}
 
-  async create(createFotoDto: CreateFotoDto) {
-    const publicacion = await this.publicacionesService.findOne(
-      createFotoDto.idpublicacion,
-    );
-
-    if (!publicacion)
-      return new HttpException(
-        'No se encontro Publicacion',
-        HttpStatus.NOT_FOUND,
-      );
-
+  /* async create(createFotoDto: CreateFotoDto) {
     const foto = this.fotosRepository.create(createFotoDto);
-    foto.publicacion = publicacion;
-    console.log(foto);
-
     return this.fotosRepository.save(foto);
+  }  */
+  async create(fotos: string[], publicacion: Publicacion) {
+    const resultado: Foto[] = fotos.map((elemento) => {
+      return new Foto(elemento);
+    });
+    return resultado;
   }
 
   findAll() {

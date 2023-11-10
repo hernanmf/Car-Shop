@@ -10,6 +10,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Usuario } from './entities/usuario.entity';
 import { ProvinciasService } from 'src/provincias/provincias.service';
+//import bcrypt from 'bcrypt';
 
 @Injectable()
 export class UsuariosService {
@@ -39,6 +40,9 @@ export class UsuariosService {
       );
 
     const usuario = this.usuarioRepository.create(createUsuarioDto);
+    //Hash
+    //const claveEncriptada = await bcrypt.hash(usuario.contraseña, 10);
+    //usuario.contraseña = claveEncriptada;
     usuario.provincia = provincia;
     console.log(usuario);
     return this.usuarioRepository.save(usuario);
@@ -54,6 +58,7 @@ export class UsuariosService {
     return perfiles;
   }
 
+  //usar compare con bcrypt para comparar y loguearse
   async findOne(id: number) {
     const usuario = await this.usuarioRepository.findOne({
       where: { idUsuario: id },

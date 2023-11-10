@@ -15,10 +15,10 @@ import { UpdateFotoDto } from './dto/update-foto.dto';
 export class FotosController {
   constructor(private readonly fotosService: FotosService) {}
 
-  @Post()
+  /* @Post()
   create(@Body() createFotoDto: CreateFotoDto) {
     return this.fotosService.create(createFotoDto);
-  }
+  } */
 
   @Get()
   findAll() {

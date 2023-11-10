@@ -12,6 +12,7 @@ import { CreatePublicacionDto } from './dto/create-publicacion.dto';
 import { UpdatePublicacionDto } from './dto/update-publicacion.dto';
 import { VersionesService } from 'src/versiones/versiones.service';
 import { UsuariosService } from '../usuarios/usuarios.service';
+import { FotosService } from 'src/fotos/fotos.service';
 
 @Injectable()
 export class PublicacionesService {
@@ -20,6 +21,7 @@ export class PublicacionesService {
     private readonly publicacionesRepository: Repository<Publicacion>,
     private versionesService: VersionesService,
     private usuariosService: UsuariosService,
+    private fotosService: FotosService,
   ) {}
 
   async create(publicacionDto: CreatePublicacionDto) {
@@ -39,14 +41,37 @@ export class PublicacionesService {
     const publicacion = this.publicacionesRepository.create();
     //desglosar en publicacion todo lo que trae el dto, luego hacer save y en el resultado voy a tener el id de publicacion para hacer los create de foto
     publicacion.anio = publicacionDto.anio;
+    publicacion.capacidadcarga = publicacionDto.capacidadcarga;
+    publicacion.color = publicacionDto.color;
+    publicacion.descripcionadicional = publicacionDto.descripcionadicional;
+    publicacion.kilometros = publicacionDto.kilometros;
+    publicacion.potencia = publicacionDto.potencia;
+    publicacion.precio = publicacionDto.precio;
+    publicacion.rodado = publicacionDto.rodado;
+    publicacion.tipo = publicacionDto.tipo;
+    publicacion.traccion = publicacionDto.traccion;
+    publicacion.transmision = publicacionDto.transmision;
     publicacion.usuario = usuario;
     publicacion.version = version;
-    console.log(usuario);
-    console.log(version);
-    const resultado = this.publicacionesRepository.save(publicacion);
+    /* const resultado = await this.publicacionesRepository.save(publicacion);
+    console.log(resultado.idpublicacion); */
     //tirar los create de foto. importar el service de foto
-    return resultado;
-
+    /* publicacionDto.fotos.forEach((nuevaFoto) => {
+      if (nuevaFoto != '') {
+        this.fotosService.create({
+          url: nuevaFoto,
+          idpublicacion: resultado.idpublicacion,
+        });
+      }
+    }); */
+    console.log('Antes de hacer create de fotos');
+    const fotos = await this.fotosService.create(
+      publicacionDto.fotos,
+      publicacion,
+    );
+    console.log('Despues de hacer create de fotos');
+    publicacion.fotos = fotos;
+    return this.publicacionesRepository.save(publicacion);
   }
 
   async findAll() {
@@ -91,12 +116,22 @@ export class PublicacionesService {
   //este find me trae todas las publicaciones de un usuario
 
   async findByUser(id: number) {
-    const publicacion = await this.publicacionesRepository.find({
-      where: { idpublicacion: id },
-      relations: ['fotos', 'version', 'version.modelo', 'version.modelo.marca'],
+    const publicaciones = await this.publicacionesRepository.find({
+      where: {
+        usuario: {
+          idUsuario: id,
+        },
+      },
+      relations: [
+        'fotos',
+        'version',
+        'version.modelo',
+        'version.modelo.marca',
+        'usuario',
+      ],
     });
-    if (publicacion) {
-      return publicacion;
+    if (publicaciones) {
+      return publicaciones;
     } else {
       throw new NotFoundException(`No se encontro publicacion con el id ${id}`);
     }
@@ -127,9 +162,32 @@ userRepository.find({
 
   async update(id: number, updatePublicacionDto: UpdatePublicacionDto) {
     try {
+      const version = await this.versionesService.findOne(
+        updatePublicacionDto.idversion,
+      );
+      if (!version)
+        return new HttpException(
+          'No se encontro Version del vehiculo',
+          HttpStatus.NOT_FOUND,
+        );
+
       const resultado = await this.publicacionesRepository.update(
         { idpublicacion: id },
-        { ...updatePublicacionDto },
+        {
+          anio: updatePublicacionDto.anio,
+          capacidadcarga: updatePublicacionDto.capacidadcarga,
+          color: updatePublicacionDto.color,
+          descripcionadicional: updatePublicacionDto.descripcionadicional,
+          estadopublicacion: updatePublicacionDto.estadopublicacion,
+          kilometros: updatePublicacionDto.kilometros,
+          potencia: updatePublicacionDto.potencia,
+          precio: updatePublicacionDto.precio,
+          rodado: updatePublicacionDto.rodado,
+          tipo: updatePublicacionDto.tipo,
+          traccion: updatePublicacionDto.traccion,
+          transmision: updatePublicacionDto.transmision,
+          version: version,
+        },
       );
       console.log(`Update, id: ${id}, result: ${resultado}`);
       return resultado;
