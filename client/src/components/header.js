@@ -77,7 +77,7 @@ const Header = () => {
   return (
     <>
       <Navbar key={'false'} expand={'sm'} className='colorapp' sticky="top">
-        <Container>
+        <Container fluid>
           <Navbar.Brand>
             <Link to="/" style={{textDecoration: 'none'}}>
             <img
@@ -89,6 +89,15 @@ const Header = () => {
               />
             </Link>
           </Navbar.Brand>
+          
+          <Form className="d-flex" onSubmit={handleBuscar}>
+            {/* <InputGroup className="mb-1">
+              <Form.Control placeholder="Marcas, modelos y mas.." id="inputBusqueda" required />
+              <Button type="submit" variant="light" id="button-addon2" onClick={showHideMenu}>Buscar</Button>
+            </InputGroup> */}
+              <Form.Control className='me-3' placeholder="Marcas, modelos y mas.." id="inputBusqueda" required />
+              <Button type="submit" variant="light" id="button-addon2" onClick={showHideMenu}>Buscar</Button>
+            </Form>
 
           <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-sm`} onClick={showHideMenu}/>
             <Navbar.Offcanvas
@@ -106,14 +115,9 @@ const Header = () => {
               </Offcanvas.Header>
             
               <Offcanvas.Body>
-                <Col xs={12} md={8}>
-                <Form className="d-flex" onSubmit={handleBuscar}>
-                  <InputGroup className="mb-1">
-                    <Form.Control placeholder="Buscá marcas, modelos y mas.." id="inputBusqueda" required/>
-                    <Button type="submit" variant="light" id="button-addon2" onClick={showHideMenu}>Buscar</Button>
-                  </InputGroup>
-                </Form>
-                </Col>
+                {/* <Col xs={12} md={8}>
+                
+                </Col> */}
                 
               
               <Nav className="justify-content-end flex-grow-1 pe-3">

@@ -19,16 +19,18 @@ export class FotosService {
     private readonly fotosRepository: Repository<Foto>,
   ) {}
 
-  /* async create(createFotoDto: CreateFotoDto) {
-    const foto = this.fotosRepository.create(createFotoDto);
+  async create(url: string, publicacion: Publicacion) {
+    const foto = await this.fotosRepository.create();
+    foto.publicacion = publicacion;
+    foto.url = url;
     return this.fotosRepository.save(foto);
-  }  */
-  async create(fotos: string[], publicacion: Publicacion) {
+  }
+  /* async create(fotos: string[], publicacion: Publicacion) {
     const resultado: Foto[] = fotos.map((elemento) => {
       return new Foto(elemento);
     });
     return resultado;
-  }
+  } */
 
   findAll() {
     return this.fotosRepository.find({ relations: ['publicacion'] });

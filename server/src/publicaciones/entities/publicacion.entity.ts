@@ -1,7 +1,7 @@
 import { Foto } from 'src/fotos/entities/foto.entity';
 import { Usuario } from 'src/usuarios/entities/usuario.entity';
 import { Version } from 'src/versiones/entities/version.entity';
-import { Transform } from 'stream';
+
 import {
   Entity,
   Column,
