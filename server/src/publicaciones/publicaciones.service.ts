@@ -165,6 +165,12 @@ userRepository.find({
           'No se encontro Version del vehiculo',
           HttpStatus.NOT_FOUND,
         );
+      const publicacion = await this.findOne(id);
+      if (!publicacion)
+        return new HttpException(
+          'No se encontro Publicacion',
+          HttpStatus.NOT_FOUND,
+        );
 
       const resultado = await this.publicacionesRepository.update(
         { idpublicacion: id },
@@ -184,7 +190,18 @@ userRepository.find({
           version: version,
         },
       );
+
       console.log(`Update, id: ${id}, result: ${resultado}`);
+      publicacion.fotos.forEach((element) => {
+        this.fotosService.remove(element.idFoto);
+      });
+      const Fotos = [];
+      updatePublicacionDto.fotos.forEach((nuevaFoto) => {
+        if (nuevaFoto != '') {
+          Fotos.push(this.fotosService.create(nuevaFoto, publicacion));
+        }
+      });
+      /* await Promise.all(Fotos).then((data) => {}); */
       return resultado;
     } catch (error) {
       console.log(error);

@@ -1,14 +1,8 @@
-import {
-  HttpException,
-  HttpStatus,
-  Injectable,
-  NotFoundException,
-} from '@nestjs/common';
+import { HttpStatus, Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
 import { Foto } from './entities/foto.entity';
-import { CreateFotoDto } from './dto/create-foto.dto';
 import { UpdateFotoDto } from './dto/update-foto.dto';
 import { Publicacion } from 'src/publicaciones/entities/publicacion.entity';
 
@@ -23,14 +17,9 @@ export class FotosService {
     const foto = await this.fotosRepository.create();
     foto.publicacion = publicacion;
     foto.url = url;
+    console.log(`Foto id: ${foto.idFoto} cargada`, HttpStatus.OK);
     return this.fotosRepository.save(foto);
   }
-  /* async create(fotos: string[], publicacion: Publicacion) {
-    const resultado: Foto[] = fotos.map((elemento) => {
-      return new Foto(elemento);
-    });
-    return resultado;
-  } */
 
   findAll() {
     return this.fotosRepository.find({ relations: ['publicacion'] });
@@ -67,7 +56,7 @@ export class FotosService {
       }`,
     );
     if (remover.affected) {
-      throw new HttpException(`Remove: id: ${id}`, HttpStatus.OK);
+      console.log(`Remove: id: ${id}`, HttpStatus.OK);
     } else {
       throw new NotFoundException(`No se encontro foto con el id ${id}`);
     }
