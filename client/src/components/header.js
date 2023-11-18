@@ -20,10 +20,18 @@ const Header = () => {
 
   const { activeUser, setactiveUser } = useContext(UsuariosContext);
   const navigate = useNavigate();
+  const { autos, listado, setListado } = useContext(AutosContext);
   const [show, setShow] = useState(false);
-  const { autos, listado, setListado  } = useContext(AutosContext);
-  const showHideMenu = () => { 
-    show ? setShow(false) : setShow(true);
+  const [colorLetra, setColorLetra] = useState('white');
+  
+  const showHideMenu = () => {
+    if (show) {
+      setShow(false);
+      setColorLetra('white');
+    } else {
+      setShow(true);
+      setColorLetra('black');
+    }
   }
 
   const onLogOut = (e) => {
@@ -77,7 +85,7 @@ const Header = () => {
   return (
     <>
       <Navbar key={'false'} expand={'sm'} className='colorapp' sticky="top">
-        <Container>
+        <Container fluid>
           <Navbar.Brand>
             <Link to="/" style={{textDecoration: 'none'}}>
             <img
@@ -89,6 +97,15 @@ const Header = () => {
               />
             </Link>
           </Navbar.Brand>
+          
+          <Form className="d-flex" onSubmit={handleBuscar}>
+            {/* <InputGroup className="mb-1">
+              <Form.Control placeholder="Marcas, modelos y mas.." id="inputBusqueda" required />
+              <Button type="submit" variant="light" id="button-addon2" onClick={showHideMenu}>Buscar</Button>
+            </InputGroup> */}
+              <Form.Control className='me-3' placeholder="Marcas, modelos y mas.." id="inputBusqueda" required />
+              <Button type="submit" variant="light" id="button-addon2" onClick={showHideMenu}>Buscar</Button>
+            </Form>
 
           <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-sm`} onClick={showHideMenu}/>
             <Navbar.Offcanvas
@@ -105,31 +122,22 @@ const Header = () => {
                 </Link>
               </Offcanvas.Header>
             
-              <Offcanvas.Body>
-                <Col xs={12} md={8}>
-                <Form className="d-flex" onSubmit={handleBuscar}>
-                  <InputGroup className="mb-1">
-                    <Form.Control placeholder="Buscá marcas, modelos y mas.." id="inputBusqueda" required/>
-                    <Button type="submit" variant="light" id="button-addon2" onClick={showHideMenu}>Buscar</Button>
-                  </InputGroup>
-                </Form>
-                </Col>
+              <Offcanvas.Body className='colorindex'>
                 
-              
               <Nav className="justify-content-end flex-grow-1 pe-3">
                 <Nav.Link>
-                  <Link to="/" style={{ color: 'black' ,textDecoration: 'none' }} onClick={showHideMenu}>
+                  <Link to="/" style={{ color: colorLetra ,textDecoration: 'none' }} onClick={showHideMenu}>
                   Inicio
                   </Link>
                 </Nav.Link>
                 <Nav.Link>
-                  <Link to="/contacto" style={{ color: 'black' ,textDecoration: 'none' }} onClick={showHideMenu}>
+                  <Link to="/contacto" style={{ color: colorLetra ,textDecoration: 'none' }} onClick={showHideMenu}>
                   Contacto
                   </Link>
                 </Nav.Link>
                   {activeUser ? <></> :
                   <Nav.Link>
-                    <Link to="/login" style={{ color: 'black' ,textDecoration: 'none' }} onClick={showHideMenu}>
+                    <Link to="/login" style={{ color: colorLetra ,textDecoration: 'none' }} onClick={showHideMenu}>
                     Loguearme
                     </Link>
                   </Nav.Link>}
@@ -137,7 +145,7 @@ const Header = () => {
                 {activeUser ?
                   <NavDropdown title="Mi Perfil" align={{ false: "start" }} id={`offcanvasNavbarDropdown-expand-sm`}>
                     <NavDropdown.Item>
-                      <Link to="/misdatos" style={{ color: 'black' ,textDecoration: 'none' }} onClick={showHideMenu}>
+                      <Link to="/misdatos" style={{ color: colorLetra ,textDecoration: 'none' }} onClick={showHideMenu}>
                         {activeUser.nombre_completo}
                       </Link>
                     </NavDropdown.Item>
@@ -145,19 +153,19 @@ const Header = () => {
                     <NavDropdown.Divider />
                     
                     <NavDropdown.Item>
-                      <Link to="/misdatos" style={{ color: 'black' ,textDecoration: 'none' }} onClick={showHideMenu}>
+                      <Link to="/misdatos" style={{ color: colorLetra ,textDecoration: 'none' }} onClick={showHideMenu}>
                       Mis datos
                       </Link>
                     </NavDropdown.Item>
                     
                     <NavDropdown.Item>
-                      <Link to="/editardatos" style={{ color: 'black' ,textDecoration: 'none' }} onClick={showHideMenu}>
+                      <Link to="/editardatos" style={{ color: colorLetra ,textDecoration: 'none' }} onClick={showHideMenu}>
                       Editar mis datos
                       </Link>
                     </NavDropdown.Item>
                     
                     <NavDropdown.Item>
-                      <Link to="/mispublicaciones" style={{ color: 'black' ,textDecoration: 'none' }} onClick={showHideMenu}>
+                      <Link to="/mispublicaciones" style={{ color: colorLetra ,textDecoration: 'none' }} onClick={showHideMenu}>
                         Mis publicaciones
                       </Link>
                     </NavDropdown.Item>

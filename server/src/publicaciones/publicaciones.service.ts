@@ -37,9 +37,7 @@ export class PublicacionesService {
         'No se encontro Usuario o Version de la publicacion',
         HttpStatus.NOT_FOUND,
       );
-
     const publicacion = this.publicacionesRepository.create();
-    //desglosar en publicacion todo lo que trae el dto, luego hacer save y en el resultado voy a tener el id de publicacion para hacer los create de foto
     publicacion.anio = publicacionDto.anio;
     publicacion.capacidadcarga = publicacionDto.capacidadcarga;
     publicacion.color = publicacionDto.color;
@@ -53,25 +51,22 @@ export class PublicacionesService {
     publicacion.transmision = publicacionDto.transmision;
     publicacion.usuario = usuario;
     publicacion.version = version;
-    /* const resultado = await this.publicacionesRepository.save(publicacion);
-    console.log(resultado.idpublicacion); */
-    //tirar los create de foto. importar el service de foto
-    /* publicacionDto.fotos.forEach((nuevaFoto) => {
+    const resultado = await this.publicacionesRepository.save(publicacion);
+    console.log(resultado.idpublicacion);
+    const Fotos = [];
+    publicacionDto.fotos.forEach((nuevaFoto) => {
       if (nuevaFoto != '') {
-        this.fotosService.create({
-          url: nuevaFoto,
-          idpublicacion: resultado.idpublicacion,
-        });
+        Fotos.push(this.fotosService.create(nuevaFoto, resultado));
       }
-    }); */
-    console.log('Antes de hacer create de fotos');
-    const fotos = await this.fotosService.create(
-      publicacionDto.fotos,
-      publicacion,
-    );
-    console.log('Despues de hacer create de fotos');
-    publicacion.fotos = fotos;
-    return this.publicacionesRepository.save(publicacion);
+    });
+    await Promise.all(Fotos).then((data) => {
+      data.map((d) => {
+        delete d.publicacion;
+      });
+      console.log(JSON.stringify(data));
+      resultado.fotos = data;
+    });
+    return resultado;
   }
 
   async findAll() {
@@ -170,6 +165,12 @@ userRepository.find({
           'No se encontro Version del vehiculo',
           HttpStatus.NOT_FOUND,
         );
+      const publicacion = await this.findOne(id);
+      if (!publicacion)
+        return new HttpException(
+          'No se encontro Publicacion',
+          HttpStatus.NOT_FOUND,
+        );
 
       const resultado = await this.publicacionesRepository.update(
         { idpublicacion: id },
@@ -189,7 +190,18 @@ userRepository.find({
           version: version,
         },
       );
+
       console.log(`Update, id: ${id}, result: ${resultado}`);
+      publicacion.fotos.forEach((element) => {
+        this.fotosService.remove(element.idFoto);
+      });
+      const Fotos = [];
+      updatePublicacionDto.fotos.forEach((nuevaFoto) => {
+        if (nuevaFoto != '') {
+          Fotos.push(this.fotosService.create(nuevaFoto, publicacion));
+        }
+      });
+      /* await Promise.all(Fotos).then((data) => {}); */
       return resultado;
     } catch (error) {
       console.log(error);

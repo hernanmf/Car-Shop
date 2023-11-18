@@ -18,8 +18,8 @@ export class Foto {
   @JoinColumn({ name: 'IDPublicacion' })
   publicacion: Publicacion;
 
-  constructor(url: string/* , publicacion: Publicacion */) {
+  constructor(url: string, publicacion: Publicacion) {
     this.url = url;
-    /* this.publicacion = publicacion; */
+    this.publicacion = publicacion;
   }
 }
