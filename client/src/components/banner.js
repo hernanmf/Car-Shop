@@ -1,6 +1,5 @@
 import React from 'react';
 
-import bannerImg from '../assets/images/bannerlogogrande.png';
 import bannerA from '../assets/images/bannerA.jpg';
 import bannerB from '../assets/images/bannerB.jpg';
 import bannerC from '../assets/images/bannerC.jpg';
@@ -12,8 +11,6 @@ import '../css/banner.css'
 const Banner = () => {
   return (
   <>
-   {/* <div className='banner-style' > */}
-      {/* <img src={bannerImg} alt="CAR SHOP" className='banner-image'/> */}
       <Carousel indicators={false} interval={4000} pause={false} fade>
       <Carousel.Item>
         <img
@@ -52,7 +49,6 @@ const Banner = () => {
         <Carousel.Caption> <h1>CAR SHOP</h1> </Carousel.Caption>
       </Carousel.Item>
     </Carousel>
-        {/* </div> */}
     </>
   )
 }
