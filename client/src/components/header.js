@@ -6,10 +6,9 @@ import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import InputGroup from 'react-bootstrap/InputGroup';
-import Col from 'react-bootstrap/Col';
+
 
 import '../css/nav.css';
 import LogoChico from '../assets/images/logochico.png';
@@ -21,9 +20,10 @@ const Header = () => {
   const { activeUser, setactiveUser } = useContext(UsuariosContext);
   const navigate = useNavigate();
   const { autos, listado, setListado } = useContext(AutosContext);
-  const [show, setShow] = useState(false);
   const [colorLetra, setColorLetra] = useState('white');
+  const [show, setShow] = useState(false);
   
+  //showHideMenu colorletra y show hacen cambios cuando se muestra el menu burguer
   const showHideMenu = () => {
     if (show) {
       setShow(false);
@@ -34,13 +34,18 @@ const Header = () => {
     }
   }
 
+  const cerrarBurguerMenu = () => {
+    if (show) { showHideMenu(); }
+  }
+
   const onLogOut = (e) => {
     e.preventDefault();
-    showHideMenu();
+    /* showHideMenu(); */
     let LogOut = window.confirm("Desea cerrar sesión realmente?");
     if (LogOut) {
       alert(`¡CHAU! ${activeUser.nombre_completo} ESPERAMOS QUE VUELVAS PRONTO`);
       setactiveUser(false);
+      cerrarBurguerMenu();
       navigate('/', {
       }); /* con navigate me refresca la pagina y me mata los estados */
     }
@@ -97,15 +102,22 @@ const Header = () => {
               />
             </Link>
           </Navbar.Brand>
+
           
+          {(activeUser && !show)?
+            <Nav.Link>
+              <Link to="/misdatos" style={{ color: colorLetra, textDecoration: 'none' }} onClick={cerrarBurguerMenu}>
+                ¡Hola {activeUser.nombre_completo}!
+              </Link>
+            </Nav.Link>
+            : <></>} 
+
           <Form className="d-flex" onSubmit={handleBuscar}>
-            {/* <InputGroup className="mb-1">
+            <InputGroup className="mb-1">
               <Form.Control placeholder="Marcas, modelos y mas.." id="inputBusqueda" required />
-              <Button type="submit" variant="light" id="button-addon2" onClick={showHideMenu}>Buscar</Button>
-            </InputGroup> */}
-              <Form.Control className='me-3' placeholder="Marcas, modelos y mas.." id="inputBusqueda" required />
-              <Button type="submit" variant="light" id="button-addon2" onClick={showHideMenu}>Buscar</Button>
-            </Form>
+              <Button type="submit" variant="light" id="button-addon2" >Buscar</Button>
+            </InputGroup>
+          </Form>
 
           <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-sm`} onClick={showHideMenu}/>
             <Navbar.Offcanvas
@@ -116,7 +128,7 @@ const Header = () => {
               show={ show }
               >
             
-              <Offcanvas.Header closeButton className='colorapp' onClick={showHideMenu}>
+              <Offcanvas.Header closeButton className='colorapp' onClick={showHideMenu} >
                 <Link to="/" style={{textDecoration: 'none'}}>
                  <img alt="" src={LogoChico} width="120" height="60" className="d-inline-block align-top"/>  
                 </Link>
@@ -124,57 +136,47 @@ const Header = () => {
             
               <Offcanvas.Body className='colorindex'>
                 
-              <Nav className="justify-content-end flex-grow-1 pe-3">
+              <Nav className="justify-content-end flex-grow-1 pe-3" variant="underline">
                 <Nav.Link>
-                  <Link to="/" style={{ color: colorLetra ,textDecoration: 'none' }} onClick={showHideMenu}>
+                  <Link to="/" style={{ color: colorLetra ,textDecoration: 'none' }} onClick={cerrarBurguerMenu}>
                   Inicio
                   </Link>
                 </Nav.Link>
-                <Nav.Link>
-                  <Link to="/contacto" style={{ color: colorLetra ,textDecoration: 'none' }} onClick={showHideMenu}>
-                  Contacto
-                  </Link>
-                </Nav.Link>
-                  {activeUser ? <></> :
-                  <Nav.Link>
-                    <Link to="/login" style={{ color: colorLetra ,textDecoration: 'none' }} onClick={showHideMenu}>
-                    Loguearme
-                    </Link>
-                  </Nav.Link>}
-                  
+                { show? <></> : <Navbar.Text>I</Navbar.Text> }
                 {activeUser ?
-                  <NavDropdown title="Mi Perfil" align={{ false: "start" }} id={`offcanvasNavbarDropdown-expand-sm`}>
-                    <NavDropdown.Item>
-                      <Link to="/misdatos" style={{ color: colorLetra ,textDecoration: 'none' }} onClick={showHideMenu}>
-                        {activeUser.nombre_completo}
+                  <>
+                    <Nav.Link>
+                      <Link to="/mispublicaciones" style={{ color: colorLetra ,textDecoration: 'none' }} onClick={cerrarBurguerMenu}>
+                      Mis Publicaciones
                       </Link>
-                    </NavDropdown.Item>
-                    
-                    <NavDropdown.Divider />
-                    
-                    <NavDropdown.Item>
-                      <Link to="/misdatos" style={{ color: colorLetra ,textDecoration: 'none' }} onClick={showHideMenu}>
-                      Mis datos
+                    </Nav.Link>
+                    { show? <></> : <Navbar.Text>I</Navbar.Text> }
+                    <Nav.Link>
+                      <Link to="/misdatos" style={{ color: colorLetra ,textDecoration: 'none' }} onClick={cerrarBurguerMenu}>
+                      Mi Perfil
                       </Link>
-                    </NavDropdown.Item>
-                    
-                    <NavDropdown.Item>
-                      <Link to="/editardatos" style={{ color: colorLetra ,textDecoration: 'none' }} onClick={showHideMenu}>
-                      Editar mis datos
+                    </Nav.Link>
+                    { show? <></> : <Navbar.Text>I</Navbar.Text> }
+                    <Nav.Link>
+                      <Link to="/" style={{ color: colorLetra ,textDecoration: 'none' }} onClick={onLogOut}>
+                      Cerrar Sesión
                       </Link>
-                    </NavDropdown.Item>
-                    
-                    <NavDropdown.Item>
-                      <Link to="/mispublicaciones" style={{ color: colorLetra ,textDecoration: 'none' }} onClick={showHideMenu}>
-                        Mis publicaciones
+                    </Nav.Link>
+                  </>  
+                    :
+                  <>
+                    <Nav.Link>
+                      <Link to="/login" style={{ color: colorLetra ,textDecoration: 'none' }} onClick={cerrarBurguerMenu}>
+                      Loguearme
                       </Link>
-                    </NavDropdown.Item>
-                   
-                    <NavDropdown.Divider />
-                  
-                    <NavDropdown.Item onClick={onLogOut}>Cerrar sesión</NavDropdown.Item>
-                  </NavDropdown>
-                  : <></>}
+                    </Nav.Link>
+                    { show? <></> : <Navbar.Text>I</Navbar.Text> }
+                    <Nav.Link>
+                      <Link to="/nuevoUsuario" style={{ color: colorLetra ,textDecoration: 'none' }} onClick={cerrarBurguerMenu}>
+                      Registrarme
+                      </Link>
+                    </Nav.Link>
+                  </>}
                 </Nav>
               </Offcanvas.Body>
           </Navbar.Offcanvas>
@@ -185,7 +187,3 @@ const Header = () => {
 }
 
 export default Header;
-
-/* import { useNavigate } from 'react-router-dom';
-const navigate = useNavigate();
-onClick={navigate('/misdatos', {})} */
