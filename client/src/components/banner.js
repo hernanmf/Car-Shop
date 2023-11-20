@@ -11,9 +11,10 @@ import '../css/banner.css'
 
 const Banner = () => {
   return (
-    <div className='banner-style' >
+  <>
+   {/* <div className='banner-style' > */}
       {/* <img src={bannerImg} alt="CAR SHOP" className='banner-image'/> */}
-      <Carousel fade>
+      <Carousel indicators={false} interval={4000} pause={false} fade>
       <Carousel.Item>
         <img
           className='banner-image'
@@ -21,7 +22,7 @@ const Banner = () => {
           alt=""
           fluid
         />
-        <Carousel.Caption> <h3>CAR SHOP</h3> </Carousel.Caption>
+        <Carousel.Caption> <h1>CAR SHOP</h1> </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
         <img
@@ -30,7 +31,7 @@ const Banner = () => {
           alt=""
           fluid
         />
-        <Carousel.Caption> <h3>CAR SHOP</h3> </Carousel.Caption>
+        <Carousel.Caption> <h1>CAR SHOP</h1> </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
         <img
@@ -39,7 +40,7 @@ const Banner = () => {
           alt=""
           fluid
         />
-        <Carousel.Caption> <h3>CAR SHOP</h3> </Carousel.Caption>
+        <Carousel.Caption> <h1>CAR SHOP</h1> </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
         <img
@@ -48,10 +49,11 @@ const Banner = () => {
           alt=""
           fluid
         />
-        <Carousel.Caption> <h3>CAR SHOP</h3> </Carousel.Caption>
+        <Carousel.Caption> <h1>CAR SHOP</h1> </Carousel.Caption>
       </Carousel.Item>
     </Carousel>
-    </div>
+        {/* </div> */}
+    </>
   )
 }
 

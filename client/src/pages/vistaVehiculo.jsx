@@ -27,7 +27,7 @@ const VistaVehiculo = () => {
         <p className="text-muted">{activeCar.anio} - {activeCar.kilometros} km</p>
         <h4>{activeCar.marca} {activeCar.modelo} {activeCar.version? activeCar.version: ''}</h4>
       
-        <Carousel /* className="d-block w-100" */ interval={6000} >
+        <Carousel /* className="d-block w-100" */variant="dark" interval={5000} >
           {activeCar.fotos.map((foto) => (
             <Carousel.Item>
               <img
