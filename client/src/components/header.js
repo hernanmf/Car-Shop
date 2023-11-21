@@ -19,7 +19,7 @@ const Header = () => {
 
   const { activeUser, setactiveUser } = useContext(UsuariosContext);
   const navigate = useNavigate();
-  const { autos, listado, setListado } = useContext(AutosContext);
+  const { listado, setListado, refreshAutosContext } = useContext(AutosContext);
   const [colorLetra, setColorLetra] = useState('white');
   const [show, setShow] = useState(false);
   
@@ -40,10 +40,9 @@ const Header = () => {
 
   const onLogOut = (e) => {
     e.preventDefault();
-    /* showHideMenu(); */
     let LogOut = window.confirm("Desea cerrar sesión realmente?");
     if (LogOut) {
-      alert(`¡CHAU! ${activeUser.nombre_completo} ESPERAMOS QUE VUELVAS PRONTO`);
+      alert(`¡CHAU! ${activeUser.nombre} ESPERAMOS QUE VUELVAS PRONTO`);
       setactiveUser(false);
       cerrarBurguerMenu();
       navigate('/', {
@@ -63,13 +62,12 @@ const Header = () => {
       e.preventDefault();
       e.stopPropagation();
       //si el form valida bien, hay que listar
-      setListado(autos);
-      let nuevoListado = autos; 
-      console.log('Listado sin filtrar', listado);
-      
+      /* setListado(autos); */
+      refreshAutosContext();
+      let nuevoListado = listado; 
+
       const palabrasBuscadas = form.inputBusqueda.value.trim().toLowerCase().split(" ");
-      const camposBuscados = ['tipo','marca','modelo','version','anio','kilometros','transmision','rodado','potencia','capacidad_carga','traccion','color','precio','descripcion_adicional'];
-      console.log(palabrasBuscadas);
+      const camposBuscados = ['tipo','version.modelo.marca.nombre','version.modelo.nombre','version.nombre','anio','kilometros','transmision','rodado','potencia','capacidad_carga','traccion','color','precio','descripcion_adicional'];
       nuevoListado = nuevoListado.filter(auto => {
         return palabrasBuscadas.every(palabra => { 
           return camposBuscados.some(campo => {

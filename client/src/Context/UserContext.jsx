@@ -1,28 +1,24 @@
-import { createContext, useState } from "react";
-
-//importacion de los datos desde otro script
-let scriptUsuarios = require('../datos/usuarios'); 
+import { createContext, useEffect, useState } from "react";
 
 export const UsuariosContext = createContext();
 
 export const UsuariosProvider = ({ children }) => {
   
   const [activeUser, setactiveUser] = useState(false);
+  const [usuarios, setUsuarios] = useState([]);
 
-  /* useEffect(() => {
+  function refreshUsuariosContext() { 
     fetch('http://localhost:3001/usuarios')
-      .then((respuesta) => {
-        setUsuarios(respuesta.json());
-      })
-      .catch((error) => {
-        
-      });
-  }); */
-
-  const [usuarios, setUsuarios] = useState(scriptUsuarios);
+      .then((response) => response.json())
+      .then((data) => setUsuarios(data))
+      .catch((error) => alert('Sitio Offline'));
+  }
+  useEffect(() => {
+    refreshUsuariosContext();
+  },[]);
   
   return (
-    <UsuariosContext.Provider value={{ usuarios , setUsuarios, activeUser, setactiveUser }}>
+    <UsuariosContext.Provider value={{ usuarios , setUsuarios, activeUser, setactiveUser, refreshUsuariosContext }}>
       { children }
     </UsuariosContext.Provider>
   )

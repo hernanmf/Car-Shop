@@ -1,8 +1,5 @@
 import React from 'react';
-/* import { BrowserRouter, Route as Router, Routes } from 'react-router-dom';  */
-
 import '../css/home.css';
-
 import Banner from '../components/banner';
 import ComponentesIndex from '../components/componentesIndex';
 

@@ -21,7 +21,7 @@ const ListaAutos = () => {
   
   const handleActiveCar = (idauto, e) => {
 
-    let newactiveCar = listado.find((auto => auto.id === idauto));
+    let newactiveCar = listado.find((auto => auto.idpublicacion === idauto));
     setactiveCar(newactiveCar);
 
     e.preventDefault();
@@ -48,7 +48,7 @@ const ListaAutos = () => {
             <Row key='' xs={1} md={4} className='justify-content-center'>
               {listado.map((auto) => (
                 <Col className='mb-5' >
-                  <Card style={{ maxWidth: '100%', minHeight: '47vh', maxHeight: '47vh' }} onMouseOver={(event) => handleActiveCar(auto.id, event)} onTouchStart={(event) => handleActiveCar(auto.id, event)}>
+                  <Card style={{ maxWidth: '100%', minHeight: '47vh', maxHeight: '47vh' }} onMouseOver={(event) => handleActiveCar(auto.idpublicacion, event)} onTouchStart={(event) => handleActiveCar(auto.idpublicacion, event)}>
                     <Image
                       alt=""
                       src={auto.fotos[0]}
@@ -56,10 +56,10 @@ const ListaAutos = () => {
                       fluid
                       />
                      <Card.Body>
-                      <h6>{auto.marca} {auto.modelo} {auto.version}</h6>
+                      <h6>{auto.version.modelo.marca.nombre} {auto.version.modelo.nombre} {auto.version.nombre}</h6>
                       <h5>$ {auto.precio}</h5>
                       <p className="text-muted">{auto.anio} - {auto.kilometros} km</p>
-                      <Button variant="danger" id='btnVer' onClick={(event) => handleActiveCar(auto.id, event)}>
+                      <Button variant="danger" id='btnVer' onClick={(event) => handleActiveCar(auto.idpublicacion, event)}>
                         <Link to="/vistavehiculo" style={{ color:'white' ,textDecoration: 'none' }}>
                         Ver mas
                         </Link>
