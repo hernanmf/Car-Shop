@@ -22,6 +22,7 @@ const LogIn = () => {
   console.log('LISTA DE USUARIOS ANTES DE LOGUEARNOS',usuarios);
   
   async function usuarioEncontrado(id) {
+    let usuario;
     await fetch('http://localhost:3001/usuarios/'+id)
           .then((response) => response.json())
           .then((data) => { usuario = data })
