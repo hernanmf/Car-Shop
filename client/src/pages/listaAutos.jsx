@@ -51,7 +51,7 @@ const ListaAutos = () => {
                   <Card style={{ maxWidth: '100%', minHeight: '47vh', maxHeight: '47vh' }} onMouseOver={(event) => handleActiveCar(auto.idpublicacion, event)} onTouchStart={(event) => handleActiveCar(auto.idpublicacion, event)}>
                     <Image
                       alt=""
-                      src={auto.fotos[0]}
+                      src={auto.fotos[0].url}
                       style={{ maxWidth: '100%', minHeight: '25vh', maxHeight: '27vh' }}
                       fluid
                       />

@@ -19,7 +19,7 @@ const Header = () => {
 
   const { activeUser, setactiveUser } = useContext(UsuariosContext);
   const navigate = useNavigate();
-  const { listado, setListado, refreshAutosContext } = useContext(AutosContext);
+  const { autos, listado, setListado, refreshAutosContext } = useContext(AutosContext);
   const [colorLetra, setColorLetra] = useState('white');
   const [show, setShow] = useState(false);
   
@@ -62,16 +62,24 @@ const Header = () => {
       e.preventDefault();
       e.stopPropagation();
       //si el form valida bien, hay que listar
-      /* setListado(autos); */
       refreshAutosContext();
-      let nuevoListado = listado; 
+      let nuevoListado = autos; 
 
       const palabrasBuscadas = form.inputBusqueda.value.trim().toLowerCase().split(" ");
-      const camposBuscados = ['tipo','version.modelo.marca.nombre','version.modelo.nombre','version.nombre','anio','kilometros','transmision','rodado','potencia','capacidad_carga','traccion','color','precio','descripcion_adicional'];
+      const camposBuscados = ['tipo','anio','kilometros','transmision','rodado','potencia','capacidadcarga','traccion','color','precio','descripcionadicional'];
       nuevoListado = nuevoListado.filter(auto => {
         return palabrasBuscadas.every(palabra => { 
           return camposBuscados.some(campo => {
-            return auto[campo].toString().toLowerCase().includes(palabra); 
+            if (auto.version.modelo.marca.nombre.toString().toLowerCase().includes(palabra)) {
+              return auto.version.modelo.marca.nombre.toString().toLowerCase().includes(palabra);
+            }
+            if (auto.version.modelo.nombre.toString().toLowerCase().includes(palabra)) {
+              return auto.version.modelo.nombre.toString().toLowerCase().includes(palabra);
+            }
+            if (auto.version.nombre.toString().toLowerCase().includes(palabra)) {
+              return auto.version.nombre.toString().toLowerCase().includes(palabra);
+            }
+            return auto[campo].toString().toLowerCase().includes(palabra);
           });
         });
       });

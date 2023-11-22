@@ -41,7 +41,7 @@ const Marcas = () => {
     e.stopPropagation();
     console.log('Listado sin filtrar',autos);
     console.log('Marca', marcaBuscada);
-    let nuevoListado = autos.filter(auto => auto.marca.toLowerCase() === marcaBuscada);
+    let nuevoListado = autos.filter(auto => auto.version.modelo.marca.nombre.toLowerCase() === marcaBuscada);
     console.log('Nuevo listado', nuevoListado);
     setListado(nuevoListado);
     console.log('Listado', listado);

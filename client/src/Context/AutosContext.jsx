@@ -5,23 +5,23 @@ export const AutosContext = createContext();
 export const AutosProvider = ({ children }) => {
   
   const [autos, setAutos] = useState([]);
-  const [listado, setListado] = useState([]);
   const [activeCar, setactiveCar] = useState(false);
-
-  function refreshAutosContext() {
-    fetch('http://localhost:3001/publicaciones')
-        .then((response) => response.json())
-        .then((data) => {
-          setAutos(data);
-          setListado(data);
-        })
-        .catch((error) => alert('Sitio Offline'));
+  
+  async function refreshAutosContext() {
+    await fetch('http://localhost:3001/publicaciones')
+    .then((response) => response.json())
+    .then((data) => {
+      setAutos(data);
+    })
+    .catch((error) => alert('Sitio Offline'));
   }
-
-    useEffect(() => {
-      refreshAutosContext();
-    }, []);
-
+  
+  useEffect(() => {
+    refreshAutosContext();
+  }, []);
+  
+  const [listado, setListado] = useState(autos);
+  
   return (
     <AutosContext.Provider value={{ autos ,setAutos , activeCar, setactiveCar, listado, setListado, refreshAutosContext }}>
       { children }

@@ -17,15 +17,14 @@ import '../css/bloques.css';
 const VistaVehiculo = () => {
   
   const { activeCar } = useContext(AutosContext);
-  const { usuarios, activeUser } = useContext(UsuariosContext);
-  const infoVendedor = usuarios.find((usuario => usuario.id === activeCar.idusuario));
+  const { activeUser } = useContext(UsuariosContext);
 
   return (
     <Container>
         <div className='bloques-cerrado'>
         <br />
         <p className="text-muted">{activeCar.anio} - {activeCar.kilometros} km</p>
-        <h4>{activeCar.marca} {activeCar.modelo} {activeCar.version? activeCar.version: ''}</h4>
+        <h4>{activeCar.version.modelo.marca.nombre} {activeCar.version.modelo.nombre} {activeCar.version.nombre? activeCar.version.nombre : ''}</h4>
       
         <Carousel /* className="d-block w-100" */variant="dark" interval={5000} >
           {activeCar.fotos.map((foto) => (
@@ -33,7 +32,7 @@ const VistaVehiculo = () => {
               <img
                 style={{ /* minWidth:'100vw', */ maxWidth: '100vw', minHeight: '33vh', maxHeight: '33vh' }}
                 /* className="d-block w-100"  */
-                src={foto}
+                src={foto.url}
                 alt=""
               />
             </Carousel.Item>
@@ -55,19 +54,19 @@ const VistaVehiculo = () => {
                   {activeCar.marca ? 
                     <tr>
                       <td>Marca</td>
-                      <td>{activeCar.marca}</td>
+                      <td>{activeCar.version.modelo.marca.nombre}</td>
                     </tr>
                     : <></>}
-                  {activeCar.modelo ? 
+                  {activeCar.version.modelo.nombre ? 
                     <tr>
                       <td>Modelo</td>
-                      <td>{activeCar.modelo}</td>
+                      <td>{activeCar.version.modelo.nombre}</td>
                     </tr>
                     : <></>}
-                  {activeCar.version ? 
+                  {activeCar.version.nombre ? 
                     <tr>
                       <td>Version</td>
-                      <td>{activeCar.version}</td>
+                      <td>{activeCar.version.nombre}</td>
                     </tr>
                     : <></>}
                   {activeCar.anio ? 
@@ -106,10 +105,10 @@ const VistaVehiculo = () => {
                       <td>{activeCar.potencia}</td>
                     </tr>
                     : <></>}
-                  {activeCar.capacidad_carga ? 
+                  {activeCar.capacidadcarga ? 
                     <tr>
                       <td>Cap. carga(KG)</td>
-                      <td>{activeCar.capacidad_carga}</td>
+                      <td>{activeCar.capacidadcarga}</td>
                     </tr>
                     : <></>}
                   {activeCar.traccion ? 
@@ -133,8 +132,8 @@ const VistaVehiculo = () => {
           <Accordion.Item eventKey="1">
             <Accordion.Header>Descripcion</Accordion.Header>
             <Accordion.Body>
-            {activeCar.descripcion_adicional ?
-              activeCar.descripcion_adicional
+            {activeCar.descripcionadicional ?
+              activeCar.descripcionadicional
               : `El vendedor no incluyó una ampliacion de los detalles adicionales`}
             </Accordion.Body>
           </Accordion.Item>
@@ -146,19 +145,19 @@ const VistaVehiculo = () => {
         <Card style={{ width: '100%' }}>
           {activeUser ?   
           <Card.Body>
-            <Card.Title>{ infoVendedor.nombre_completo }</Card.Title>
+              <Card.Title>{activeCar.usuario.nombre} {activeCar.usuario.apellido}</Card.Title>
             <Row xs={1} md={3} className='justify-content-center'>
               <Col>
                 <Card.Subtitle>Ubicacion</Card.Subtitle>
-                  <Card.Text className="mb-2 text-muted">{infoVendedor.localidad}, {infoVendedor.provincia}</Card.Text>
+                  <Card.Text className="mb-2 text-muted"> {activeCar.usuario.provincia.nombre_completo}</Card.Text>
               </Col>
               <Col >
                 <Card.Subtitle>Telefono</Card.Subtitle>
-                  <Card.Text className="mb-2 text-muted">{infoVendedor.telefono}</Card.Text>
+                  <Card.Text className="mb-2 text-muted">{activeCar.usuario.telefono}</Card.Text>
               </Col>
               <Col >
                 <Card.Subtitle>Email</Card.Subtitle>
-                  <Card.Text className="mb-2 text-muted">{infoVendedor.correo_electronico}</Card.Text>
+                  <Card.Text className="mb-2 text-muted">{activeCar.usuario.correoElectronico}</Card.Text>
               </Col>
               </Row>
             </Card.Body>
@@ -223,7 +222,7 @@ const VistaVehiculo = () => {
           </Col>
         </Row>
         <p className="text-muted">¿Tuviste algun problema con la publicación? <Link to="/contacto" style={{ textDecoration: 'none' }}>Avisanos</Link></p>
-        <p className="text-muted">id de publicacion: { activeCar.id }</p>
+        <p className="text-muted">id de publicacion: { activeCar.idpublicacion }</p>
         <br />
       </div>
     </Container>
