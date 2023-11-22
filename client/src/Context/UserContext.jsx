@@ -6,19 +6,16 @@ export const UsuariosProvider = ({ children }) => {
   
   const [usuarios, setUsuarios] = useState([]);
   const [activeUser, setactiveUser] = useState(false);
-  
-  function refreshUsuariosContext() { 
+ 
+  useEffect(() => {
     fetch('http://localhost:3001/usuarios')
     .then((response) => response.json())
     .then((data) => setUsuarios(data))
     .catch((error) => alert('Sitio Offline'));
-  }
-  useEffect(() => {
-    refreshUsuariosContext();
   },[]);
 
   return (
-    <UsuariosContext.Provider value={{ usuarios , setUsuarios, activeUser, setactiveUser, refreshUsuariosContext }}>
+    <UsuariosContext.Provider value={{ usuarios , setUsuarios, activeUser, setactiveUser }}>
       { children }
     </UsuariosContext.Provider>
   )

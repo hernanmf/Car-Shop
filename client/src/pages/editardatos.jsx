@@ -56,16 +56,23 @@ const Editardatos = () => {
         <Form validated={validated} onSubmit={handleModificarUsuario}> 
           <ListGroup as="ul">
             <ListGroup.Item as="li">
-              <h6>Nombre Completo</h6>
+              <h6>Nombre/s</h6>
               <Form.Group>  
-                  <Form.Control id='inputnombre_completo' type="text" defaultValue={activeUser.nombre_completo} className="mb-3" size='sm' required />
+                  <Form.Control id='inputnombre' type="text" defaultValue={activeUser.nombre} className="mb-3" size='sm' required />
+              </Form.Group>
+            </ListGroup.Item>
+            
+            <ListGroup.Item as="li">
+              <h6>Apellido/s</h6>
+              <Form.Group>  
+                  <Form.Control id='inputapellido' type="text" defaultValue={activeUser.apellido} className="mb-3" size='sm' required />
               </Form.Group>
             </ListGroup.Item>
               
 
             <ListGroup.Item as="li">
               <h6>Correo electrónico</h6>
-              <Form.Control id='inputcorreo_electronico' type="email" defaultValue={activeUser.correo_electronico} className="mb-3" size='sm' required />
+              <Form.Control id='inputcorreoElectronico' type="email" defaultValue={activeUser.correoElectronico} className="mb-3" size='sm' required />
             </ListGroup.Item>
               
             <ListGroup.Item as="li">
@@ -83,7 +90,7 @@ const Editardatos = () => {
               <Form.Control id='inputlocalidad' type="text" defaultValue={activeUser.localidad} className="mb-3" size='sm' required /> 
             </ListGroup.Item> 
           </ListGroup>
-          <p className='text-muted'>id user: {activeUser.id}</p>
+          <p className='text-muted'>id user: {activeUser.idUsuario}</p>
           <Row>
             <Col>
               <Button variant="success" type="submit" size="lg" className="button" id='btnConfirmar'>Confirmar</Button>

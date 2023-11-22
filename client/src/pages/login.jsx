@@ -12,6 +12,7 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 
+
 const LogIn = () => {
 
   const { usuarios, activeUser, setactiveUser } = useContext(UsuariosContext);
@@ -20,6 +21,13 @@ const LogIn = () => {
   const [validated, setValidated] = useState(true);
   console.log('LISTA DE USUARIOS ANTES DE LOGUEARNOS',usuarios);
   
+  async function usuarioEncontrado(id) {
+    await fetch('http://localhost:3001/usuarios/'+id)
+          .then((response) => response.json())
+          .then((data) => { usuario = data })
+    return usuario;
+  }
+
   const handleSubmit = async(e) => {
     const form = e.currentTarget;
     if (!activeUser) {
@@ -30,11 +38,7 @@ const LogIn = () => {
         //si el form valida bien, hay q ver si el user existe
         let usuario = usuarios.find(usuario => usuario.correoElectronico === e.target.email.value.trim());
         console.log('Usuario encontrado:', usuario);
-        await fetch('http://localhost:3001/usuarios/'+usuario.idUsuario)
-          .then((response) => response.json())
-          .then((data) => { usuario = data })
-          .catch((error) => alert('EL USUARIO NO EXISTE, REVISE LOS DATOS Y REINTENTE'));
-      
+        usuario = usuarioEncontrado(usuario.idUsuario);
         if (usuario.contraseña === e.target.clave.value.trim()) {
           setactiveUser(usuario);
           console.log('Bienvenido', activeUser );
