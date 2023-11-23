@@ -10,6 +10,7 @@ import { ProvinciasModule } from './provincias/provincias.module';
 import { MarcasModule } from './marcas/marcas.module';
 import { ModelosModule } from './modelos/modelos.module';
 import { VersionesModule } from './versiones/versiones.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -31,6 +32,7 @@ import { VersionesModule } from './versiones/versiones.module';
     MarcasModule,
     ModelosModule,
     VersionesModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -3,6 +3,7 @@ import {
   HttpStatus,
   Injectable,
   NotFoundException,
+  UnauthorizedException,
 } from '@nestjs/common';
 import { CreateUsuarioDto } from './dto/create-usuario.dto';
 import { UpdateUsuarioDto } from './dto/update-usuario.dto';
@@ -19,6 +20,17 @@ export class UsuariosService {
     private readonly usuarioRepository: Repository<Usuario>,
     private provinciasService: ProvinciasService,
   ) {}
+
+  async findByEmail(correoElectronico: string) {
+    const usuario = await this.usuarioRepository.findOne({
+      where: { correoElectronico: correoElectronico },
+    });
+    if (!usuario) {
+      throw new UnauthorizedException('Email no registrado');
+    } else {
+      return usuario;
+    }
+  }
 
   async create(createUsuarioDto: CreateUsuarioDto) {
     const usuarioExiste = await this.usuarioRepository.findOne({
