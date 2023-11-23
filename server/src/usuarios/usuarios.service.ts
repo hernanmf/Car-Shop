@@ -10,7 +10,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Usuario } from './entities/usuario.entity';
 import { ProvinciasService } from 'src/provincias/provincias.service';
-//import bcrypt from 'bcrypt';
+import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class UsuariosService {
@@ -41,11 +41,12 @@ export class UsuariosService {
 
     const usuario = this.usuarioRepository.create(createUsuarioDto);
     //Hash
-    //const claveEncriptada = await bcrypt.hash(usuario.contraseña, 10);
-    //usuario.contraseña = claveEncriptada;
+    usuario.contraseña = await bcrypt.hashSync(createUsuarioDto.contraseña, 10);
     usuario.provincia = provincia;
     console.log(usuario);
-    return this.usuarioRepository.save(usuario);
+    const resultado = await this.usuarioRepository.save(usuario);
+    delete resultado.contraseña;
+    return resultado;
   }
 
   async findAll() {
@@ -80,12 +81,35 @@ export class UsuariosService {
           'El correo electronico ya existe',
           HttpStatus.CONFLICT,
         );
-      const resultado = await this.usuarioRepository.update(
-        { idUsuario: id },
-        { idUsuario: id, ...updateUsuarioDto },
-      );
-      console.log(`Update, id: ${id}, result: ${resultado}`);
-      return resultado;
+      if (updateUsuarioDto.contraseña) {
+        if (updateUsuarioDto.contraseña.length < 6) {
+          return new HttpException(
+            'El largo de la contraseña no supera los 6 caracteres de longitud',
+            HttpStatus.CONFLICT,
+          );
+        } else {
+          const resultado = await this.usuarioRepository.update(
+            { idUsuario: id },
+            {
+              idUsuario: id,
+              contraseña: await bcrypt.hashSync(
+                updateUsuarioDto.contraseña,
+                10,
+              ),
+              ...updateUsuarioDto,
+            },
+          );
+          console.log(`Update, id: ${id}, result: ${resultado}`);
+          return resultado;
+        }
+      } else {
+        const resultado = await this.usuarioRepository.update(
+          { idUsuario: id },
+          { idUsuario: id, ...updateUsuarioDto },
+        );
+        console.log(`Update, id: ${id}, result: ${resultado}`);
+        return resultado;
+      }
     } catch (error) {
       console.log(error);
       throw new NotFoundException(`No se encontro usuario con el id ${id}`);
