@@ -1,9 +1,11 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
+import { UsuariosContext } from "./UserContext";
 
 export const AutosContext = createContext();
 
 export const AutosProvider = ({ children }) => {
   
+  const { activeUser } = useContext(UsuariosContext);
   const [autos, setAutos] = useState([]);
   const [activeCar, setactiveCar] = useState(false);
 
@@ -18,7 +20,7 @@ export const AutosProvider = ({ children }) => {
 
   useEffect(() => {
     refreshAutosContext();
-  }, []);
+  }, [activeUser]);
   
   const [listado, setListado] = useState(autos);
 

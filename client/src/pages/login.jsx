@@ -15,11 +15,20 @@ import Col from 'react-bootstrap/Col';
 
 const LogIn = () => {
 
-  const { activeUser, setactiveUser } = useContext(UsuariosContext);
+  const { activeUser, setActiveUser, setUserToken } = useContext(UsuariosContext);
   const navigate = useNavigate();
 
   const [validated, setValidated] = useState(true);
 
+  /* const refreshPublicaciones = async (idUsuario) => {
+     await fetch(`http://localhost:3001/publicaciones/usuarios/${idUsuario}`)
+    .then((response) => response.json())
+    .then((data) => {
+      setMisPublicaciones(data);
+    })
+    .catch((error) => alert('Sitio Offline'));
+  } */
+  
   const handleSubmit = async(e) => {
     e.preventDefault();
     e.stopPropagation();
@@ -32,7 +41,6 @@ const LogIn = () => {
           'correoElectronico': e.target.email.value.trim(),
         }
         console.log(cuentaUsuario);
-
         try {
           const response = await fetch('http://localhost:3001/auth/login', {
             method: 'POST',
@@ -42,19 +50,27 @@ const LogIn = () => {
             },
             body: JSON.stringify(cuentaUsuario)
           });
-          if (response.ok) {
-            setactiveUser(await response.json());
-            alert('BIENVENIDO A CAR SHOP', activeUser);
-            navigate('/', {
-              /* replace: true  replace hace que cuando el user vuelva para atras no siga logueado */ });
-          } else {
-            throw new Error('API ERROR');
+          console.log(response);
+          if (!response.ok) {
+            throw new Error('API ERROR login');
           }
+          const jsonResponse = await response.json();
+          console.log(jsonResponse);
+          setActiveUser(jsonResponse.usuario);
+          setUserToken(jsonResponse.access_token);
+          /* refreshPublicaciones(jsonResponse.usuario.idUsuario); */
+             alert('BIENVENIDO A CAR SHOP');
+            navigate('/', { }); 
         } catch (error) {
           alert('Usuario o clave erroneos, revise los datos y reintente nuevamente');
           setValidated(true);
         }
-      }
+    }
+    }else {
+      alert('NO SE PERMITE INGRESO DE USUARIO SI NO CERRO LA SESION DEL ANTERIOR');
+      navigate('/', {});
+      e.preventDefault();
+      e.stopPropagation();
     }
   };
 
@@ -98,5 +114,4 @@ const LogIn = () => {
   );
 }
 
-  
 export default LogIn;

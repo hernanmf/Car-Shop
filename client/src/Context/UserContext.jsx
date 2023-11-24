@@ -4,10 +4,12 @@ export const UsuariosContext = createContext();
 
 export const UsuariosProvider = ({ children }) => {
   
-  const [activeUser, setactiveUser] = useState(false);
+  const [activeUser, setActiveUser] = useState(false);
+  const [userToken, setUserToken] = useState(false);
+  const [misPublicaciones, setMisPublicaciones] = useState();
 
   return (
-    <UsuariosContext.Provider value={{ activeUser, setactiveUser }}>
+    <UsuariosContext.Provider value={{ activeUser, setActiveUser, userToken, setUserToken, misPublicaciones, setMisPublicaciones}}>
       { children }
     </UsuariosContext.Provider>
   )

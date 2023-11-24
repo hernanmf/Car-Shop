@@ -17,7 +17,7 @@ import { AutosContext } from '../Context/AutosContext';
 
 const Header = () => {
 
-  const { activeUser, setactiveUser } = useContext(UsuariosContext);
+  const { activeUser, setActiveUser } = useContext(UsuariosContext);
   const navigate = useNavigate();
   const { autos, listado, setListado, refreshAutosContext } = useContext(AutosContext);
   const [colorLetra, setColorLetra] = useState('white');
@@ -42,8 +42,8 @@ const Header = () => {
     e.preventDefault();
     let LogOut = window.confirm("Desea cerrar sesión realmente?");
     if (LogOut) {
-      alert(`¡CHAU! ${activeUser.nombre} ESPERAMOS QUE VUELVAS PRONTO`);
-      setactiveUser(false);
+      alert(`¡Chau! ${activeUser.nombre} esperamos que vuelvas pronto!`);
+      setActiveUser(false);
       cerrarBurguerMenu();
       navigate('/', {
       }); /* con navigate me refresca la pagina y me mata los estados */
@@ -113,7 +113,7 @@ const Header = () => {
           {(activeUser && !show)?
             <Nav.Link>
               <Link to="/misdatos" style={{ color: colorLetra, textDecoration: 'none' }} onClick={cerrarBurguerMenu}>
-                ¡Hola {activeUser.nombre_completo}!
+                ¡Hola {activeUser.nombre}!
               </Link>
             </Nav.Link>
             : <></>} 

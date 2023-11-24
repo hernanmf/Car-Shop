@@ -24,6 +24,7 @@ export class UsuariosService {
   async findByEmail(correoElectronico: string) {
     const usuario = await this.usuarioRepository.findOne({
       where: { correoElectronico: correoElectronico },
+      relations: ['provincia'],
     });
     if (!usuario) {
       throw new UnauthorizedException('Email no registrado');
