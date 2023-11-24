@@ -15,50 +15,46 @@ import Col from 'react-bootstrap/Col';
 
 const LogIn = () => {
 
-  const { usuarios, activeUser, setactiveUser } = useContext(UsuariosContext);
+  const { activeUser, setactiveUser } = useContext(UsuariosContext);
   const navigate = useNavigate();
 
   const [validated, setValidated] = useState(true);
-  console.log('LISTA DE USUARIOS ANTES DE LOGUEARNOS',usuarios);
-  
-  async function usuarioEncontrado(id) {
-    let usuario;
-    await fetch('http://localhost:3001/usuarios/'+id)
-          .then((response) => response.json())
-          .then((data) => { usuario = data })
-    return usuario;
-  }
 
   const handleSubmit = async(e) => {
+    e.preventDefault();
+    e.stopPropagation();
     const form = e.currentTarget;
     if (!activeUser) {
-      if (form.checkValidity() === false) {
-        e.preventDefault();
-        e.stopPropagation();
-      } else {
+      if (form.checkValidity() === true) {
         //si el form valida bien, hay q ver si el user existe
-        let usuario = usuarios.find(usuario => usuario.correoElectronico === e.target.email.value.trim());
-        console.log('Usuario encontrado:', usuario);
-        usuario = usuarioEncontrado(usuario.idUsuario);
-        if (usuario.contraseña === e.target.clave.value.trim()) {
-          setactiveUser(usuario);
-          console.log('Bienvenido', activeUser );
-          alert('BIENVENIDO A CAR SHOP', activeUser);
-          navigate('/', {
-            /* replace: true */ //replace hace que cuando el user vuelva para atras no siga logueado
+        const cuentaUsuario = {
+          'contraseña': e.target.clave.value.trim(),
+          'correoElectronico': e.target.email.value.trim(),
+        }
+        console.log(cuentaUsuario);
+
+        try {
+          const response = await fetch('http://localhost:3001/auth/login', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              //Authorization: 'Bearer {token}', 
+            },
+            body: JSON.stringify(cuentaUsuario)
           });
-        } else {
-          alert('EL USUARIO NO EXISTE, REVISE LOS DATOS Y REINTENTE');
+          if (response.ok) {
+            setactiveUser(await response.json());
+            alert('BIENVENIDO A CAR SHOP', activeUser);
+            navigate('/', {
+              /* replace: true  replace hace que cuando el user vuelva para atras no siga logueado */ });
+          } else {
+            throw new Error('API ERROR');
+          }
+        } catch (error) {
+          alert('Usuario o clave erroneos, revise los datos y reintente nuevamente');
           setValidated(true);
         }
-        e.preventDefault();
-        e.stopPropagation();
       }
-    } else {
-      alert('NO SE PERMITE INGRESO DE USUARIO SI NO CERRO LA SESION DEL ANTERIOR');
-      navigate('/', {});
-      e.preventDefault();
-      e.stopPropagation();
     }
   };
 

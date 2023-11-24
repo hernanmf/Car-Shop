@@ -9,9 +9,7 @@ export class AuthController {
   @HttpCode(HttpStatus.OK)
   @Post('login')
   login(@Body() loginDto: LoginDto) {
-    return this.authService.login(
-      loginDto.correoElectronico,
-      loginDto.contraseña,
-    );
+    console.log('llego!');
+    return this.authService.login(loginDto);
   }
 }
