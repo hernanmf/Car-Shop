@@ -13,23 +13,23 @@ import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import nuevoIcon from '../assets/images/icons/nuevoauto.png'
 import '../css/bloques.css';
 
-const MisPublicaciones = async() => {
+const MisPublicaciones = async () => {
 
   const { activeUser } = await useContext(UsuariosContext);
-  const { autos, setAutos, activeCar, setactiveCar } = await useContext(AutosContext);
+  const { autos, setAutos, activeCar, setactiveCar } = useContext(AutosContext);
   
-  const refreshPublicaciones = async (idUsuario) => {
-    let data = [];
-    const url = `http://localhost:3001/publicaciones/usuarios/${idUsuario}`;
-    const res = await fetch(url);
-    data = await res.json();
-    return data
-  }; //Funcion checkeada funciona, devuelve un array de mis publicaciones
+  /* const refreshPublicaciones = async (idUsuario) => {
+      let data = [];
+      const url = `http://localhost:3001/publicaciones/usuarios/${idUsuario}`;
+      const res = await fetch(url);
+      data = await res.json();
+      return data
+  }; */ //Funcion checkeada funciona, devuelve un array de mis publicaciones
   
-  const misPublicaciones = await refreshPublicaciones(activeUser.idUsuario);
-  console.log('Mis publicaciones');
-  /* setMisPublicaciones(autos.filter((auto) => (auto.idUsuario===activeUser.idUsuario)));
-  console.log(misPublicaciones); */
+  /* let misPublicaciones = await refreshPublicaciones(activeUser.idUsuario); */
+  /* console.log(misPublicaciones); */
+  let misPublicaciones = (autos.filter((auto) => (auto.idUsuario === activeUser.idUsuario)));
+  console.log(misPublicaciones);
 
   const handleActiveCar = (idauto, e) => {
 
@@ -42,7 +42,7 @@ const MisPublicaciones = async() => {
 
   const handleDeleteCar = (idauto, e) => { 
     console.log(activeCar);
-    let DeleteCar = window.confirm(`${activeUser.usuario.nombre}, estas seguro que quieres eliminar el siguiente vehiculo? \n ${activeCar.version.modelo.marca.nombre} ${activeCar.version.modelo.nombre} ${activeCar.version.nombre} ${activeCar.anio}`);
+    let DeleteCar = window.confirm(`${activeUser.nombre}, estas seguro que quieres eliminar el siguiente vehiculo? \n ${activeCar.version.modelo.marca.nombre} ${activeCar.version.modelo.nombre} ${activeCar.version.nombre} ${activeCar.anio}`);
     if (DeleteCar) {
       //delete de auto
       let newAutos = autos.filter(auto => auto.id !== activeCar.id);

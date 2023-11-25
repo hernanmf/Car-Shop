@@ -18,8 +18,6 @@ import MisPublicaciones from './pages/misPublicaciones';
 import Contacto from './pages/contacto';
 import NuevoUsuario from './pages/nuevoUsuario';
 
-
-
 function App() {
   const { activeUser } = useContext(UsuariosContext);
 
