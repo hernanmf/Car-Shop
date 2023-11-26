@@ -15,7 +15,7 @@ import Col from 'react-bootstrap/Col';
 
 const LogIn = () => {
 
-  const { activeUser, setActiveUser, setUserToken } = useContext(UsuariosContext);
+  const { activeUser, setActiveUser, setUserToken} = useContext(UsuariosContext);
   const navigate = useNavigate();
 
   const [validated, setValidated] = useState(true);
@@ -58,9 +58,8 @@ const LogIn = () => {
           console.log(jsonResponse);
           setActiveUser(jsonResponse.usuario);
           setUserToken(jsonResponse.access_token);
-          /* refreshPublicaciones(jsonResponse.usuario.idUsuario); */
-             alert('BIENVENIDO A CAR SHOP');
-            navigate('/', { }); 
+          alert('BIENVENIDO A CAR SHOP');
+          navigate('/', { }); 
         } catch (error) {
           alert('Usuario o clave erroneos, revise los datos y reintente nuevamente');
           setValidated(true);

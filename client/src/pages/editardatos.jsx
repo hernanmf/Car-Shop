@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import { UsuariosContext } from '../Context/UserContext';
 
@@ -12,10 +12,35 @@ import Col from 'react-bootstrap/Col';
 import '../css/bloques.css';
 
 const Editardatos = () => {
-
   const { usuarios, activeUser, setactiveUser } = useContext(UsuariosContext);
   const [validated, setValidated] = useState(false);
   const navigate = useNavigate();
+  const [provincias, setProvincias] = useState([]);
+
+  useEffect(() => {
+    fetch('http://localhost:3001/provincias')
+    .then((response) => response.json())
+    .then((data) => {
+      setProvincias(data);
+    })
+      .catch((error) => {
+        alert('No hay provincias elegibles');
+      });
+  }, []);
+  
+  
+  
+  /* const refreshProvincias = async () => {
+    await fetch('http://localhost:3001/provincias')
+      .then((response) => response.json())
+      .then((data) => { return data; })
+      .catch((error) => {
+        alert('Sitio Offline');
+        return [];
+      });
+  } */
+
+  console.log(provincias);
 
   const handleModificarUsuario = (e) => {
     const form = e.currentTarget;
@@ -24,22 +49,30 @@ const Editardatos = () => {
       e.stopPropagation();
     } else {
       //el form valida bien
-      let newUserData = activeUser;
       console.log(`Info vieja: `,activeUser);
-      newUserData.nombre_completo =form.inputnombre_completo.value.trim();
-      newUserData.correo_electronico =form.inputcorreo_electronico.value.trim(); 
+      let newUserData = activeUser;
+      newUserData.nombre =form.inputnombre.value.trim();
+      newUserData.apellido =form.inputapellido.value.trim();
       newUserData.telefono =form.inputtelefono.value; 
       newUserData.provincia =form.inputprovincia.value.trim();
-      newUserData.localidad =form.inputlocalidad.value.trim();
-      console.log(`Info nueva: `,newUserData);
-      
-      setactiveUser(newUserData);
-      console.log(`Nuevo usuario activo `, activeUser);
-      
-      console.log(`Array de usuarios `,usuarios);
+      newUserData.correoElectronico =form.inputcorreoElectronico.value.trim(); 
+      newUserData.contraseña =form.inputcontraseña.value.trim();
+      const contraseñaconfirmada =form.inputcontraseñaconfirmada.value.trim();
+      if (newUserData.contraseña === contraseñaconfirmada) {
+        
+
+        console.log(`Info nueva: `, newUserData);
+        
+        setactiveUser(newUserData);
+        console.log(`Nuevo usuario activo `, activeUser);
+        
+        console.log(`Array de usuarios `,usuarios);
         
         console.log('Usuario modificado', newUserData);
         navigate('/misdatos', {});
+      } else {
+        alert('La contraseña no coincide, reingresalas por favor!');
+        }
       }
       setValidated(true);
       e.preventDefault();
@@ -81,13 +114,20 @@ const Editardatos = () => {
             </ListGroup.Item>
               
             <ListGroup.Item as="li">
-              <h6>Provincia</h6> 
-              <Form.Control id='inputprovincia' type="text" defaultValue={activeUser.provincia} className="mb-3" size='sm' required />  
+              <h6>Provincia</h6>
+              <Form.Select id="selectProvincia" defaultValue={activeUser.provincia.nombre}size='sm' className="mb-3" required>
+                  {
+                    provincias.map((opcion) => (
+                    <option value={opcion.idProvincia}> {opcion.nombre} </option>
+                  ))
+                  }
+              </Form.Select>
             </ListGroup.Item>
             
             <ListGroup.Item as="li">
-              <h6>Localidad</h6> 
-              <Form.Control id='inputlocalidad' type="text" defaultValue={activeUser.localidad} className="mb-3" size='sm' required /> 
+              <h6>Cambiar Contraseña</h6> 
+              <Form.Control id='inputContraseña' type="password" placeholder='Ingresá tu nueva contraseña' className="mb-3" size='sm' required /> 
+              <Form.Control id='inputContraseñaConfirmada' type="password" placeholder='Repeti tu nueva contraseña' className="mb-3" size='sm' required /> 
             </ListGroup.Item> 
           </ListGroup>
           <p className='text-muted'>id user: {activeUser.idUsuario}</p>

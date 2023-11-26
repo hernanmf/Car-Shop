@@ -33,7 +33,7 @@ const Misdatos = () => {
         <br />
         <br />
         </div>
-        <MisPublicaciones />
+        {/* <MisPublicaciones /> */}
       </Container>
     </>
   );

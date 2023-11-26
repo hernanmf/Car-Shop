@@ -62,7 +62,6 @@ const Header = () => {
       e.preventDefault();
       e.stopPropagation();
       //si el form valida bien, hay que listar
-      refreshAutosContext();
       let nuevoListado = autos; 
 
       const palabrasBuscadas = form.inputBusqueda.value.trim().toLowerCase().split(" ");

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { AutosContext } from '../Context/AutosContext';
 import { UsuariosContext } from '../Context/UserContext';
 import { Link } from 'react-router-dom';
@@ -13,23 +13,23 @@ import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import nuevoIcon from '../assets/images/icons/nuevoauto.png'
 import '../css/bloques.css';
 
-const MisPublicaciones = async () => {
+const MisPublicaciones = () => {
 
-  const { activeUser } = await useContext(UsuariosContext);
+  const { activeUser } = useContext(UsuariosContext);
   const { autos, setAutos, activeCar, setactiveCar } = useContext(AutosContext);
-  
-  /* const refreshPublicaciones = async (idUsuario) => {
-      let data = [];
-      const url = `http://localhost:3001/publicaciones/usuarios/${idUsuario}`;
-      const res = await fetch(url);
-      data = await res.json();
-      return data
-  }; */ //Funcion checkeada funciona, devuelve un array de mis publicaciones
-  
-  /* let misPublicaciones = await refreshPublicaciones(activeUser.idUsuario); */
-  /* console.log(misPublicaciones); */
-  let misPublicaciones = (autos.filter((auto) => (auto.idUsuario === activeUser.idUsuario)));
-  console.log(misPublicaciones);
+  const [publicaciones, setPublicaciones] = useState([]);
+
+  useEffect(() => {
+    const url = 'http://localhost:3001/publicaciones/usuarios/'+activeUser.idUsuario;
+    fetch(url)
+      .then((response) => response.json())
+      .then((data) => setPublicaciones(data))
+      .catch((error) => alert('Falla en mis publicaciones'));
+  }, [activeUser.idUsuario]);
+
+  console.log('usuario activo');
+  console.log(activeUser);
+  console.log(publicaciones);
 
   const handleActiveCar = (idauto, e) => {
 
@@ -65,7 +65,7 @@ const MisPublicaciones = async () => {
 
           <Row xs={1} md={4} className='justify-content-center'>
 
-            {misPublicaciones.map((publi) => (
+            {publicaciones.map((publi) => (
               <Col className='mb-5' key={publi.idpublicacion}>
                 <Card style={{ maxWidth: '100%', minHeight: '44vh', maxHeight: '44vh' }} onMouseOver={(event) => handleActiveCar(publi.idpublicacion, event)} onTouchStart={(event) => handleActiveCar(publi.idpublicacion, event)}>
                   <Image alt="" src={publi.fotos[0].url} fluid />
