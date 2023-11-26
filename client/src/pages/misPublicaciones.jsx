@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AutosContext } from '../Context/AutosContext';
 import { UsuariosContext } from '../Context/UserContext';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/esm/Container';
@@ -15,6 +15,7 @@ import '../css/bloques.css';
 
 const MisPublicaciones = () => {
 
+  const navigate = useNavigate();
   const { activeUser } = useContext(UsuariosContext);
   const { autos, setAutos, activeCar, setactiveCar } = useContext(AutosContext);
   const [publicaciones, setPublicaciones] = useState([]);
@@ -25,7 +26,7 @@ const MisPublicaciones = () => {
       .then((response) => response.json())
       .then((data) => setPublicaciones(data))
       .catch((error) => alert('Falla en mis publicaciones'));
-  }, [activeUser.idUsuario]);
+  }, [activeUser.idUsuario,setAutos]);
 
   console.log('usuario activo');
   console.log(activeUser);
@@ -40,17 +41,46 @@ const MisPublicaciones = () => {
     e.stopPropagation();
   };
 
-  const handleDeleteCar = (idauto, e) => { 
+  const handleDeleteCar = async (e) => { 
     console.log(activeCar);
     let DeleteCar = window.confirm(`${activeUser.nombre}, estas seguro que quieres eliminar el siguiente vehiculo? \n ${activeCar.version.modelo.marca.nombre} ${activeCar.version.modelo.nombre} ${activeCar.version.nombre} ${activeCar.anio}`);
     if (DeleteCar) {
       //delete de auto
-      let newAutos = autos.filter(auto => auto.id !== activeCar.id);
-      setAutos(newAutos);
-      alert('Vehiculo eliminado correctamente!');
+      try {
+      const url = 'http://localhost:3001/publicaciones/'+activeCar.idpublicacion;
+      const response = await fetch(url, {
+            method: 'DELETE',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': 'Bearer '+activeUser.access_token, 
+            },
+          });
+        console.log(response);
+        const jsonResponse = await response.json();
+        console.log(jsonResponse);
+        if (response.ok) {
+          alert('Vehiculo eliminado correctamente!');
+          const url = 'http://localhost:3001/publicaciones/usuarios/'+activeUser.idUsuario;
+          await fetch(url)
+            .then((response) => response.json())
+            .then((data) => setPublicaciones(data))
+            .catch((error) => alert('API ERROR no se pudo refrescar mis publicaciones'));
+          await fetch('http://localhost:3001/publicaciones')
+            .then((response) => response.json())
+            .then((data) => { setAutos(data); })
+            .catch((error) => {
+              alert('API ERROR no se pude refrescar publiaciones');
+              setAutos([]);
+            });
+          navigate('/mispublicaciones', { }); 
+        } else {
+          throw new Error('API ERROR no se pudo borrar publicacion'); }
+        } catch (error) {
+          alert('API ERROR no se pudo borrar publicacion');
+        }
+      /* let newAutos = autos.filter(auto => auto.id !== activeCar.id);
+      setAutos(newAutos); */
     }
-    e.preventDefault();
-    e.stopPropagation();
   }
 
 
@@ -84,7 +114,7 @@ const MisPublicaciones = () => {
                           Editar
                         </Link>
                       </Button>
-                      <Button variant="danger" id='btnEliminar' onClick={(event) => handleDeleteCar(publi.idpublicacion, event)}>
+                      <Button variant="danger" id='btnEliminar' onClick={(event) => handleDeleteCar(event)}>
                         <Link to="/misdatos" style={{ color: 'white', textDecoration: 'none' }}>
                           Eliminar
                         </Link>

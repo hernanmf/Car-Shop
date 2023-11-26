@@ -18,6 +18,8 @@ const EditarAuto = () => {
   const [marcas, setMarcas] = useState([]);
   const [modelos, setModelos] = useState([]);
   const [versiones, setVersiones] = useState([]);
+  let listaModelos = modelos;
+  /* let listaVersiones = versiones; */
 
   useEffect(() => {
     fetch('http://localhost:3001/versiones')
@@ -58,13 +60,13 @@ const EditarAuto = () => {
       console.log(`Info vieja: `, activeCar); 
       
       let newCarData = activeCar;
-      newCarData.tipo =form.inputTipo.value.trim(); 
-      newCarData.marca =form.inputMarca.value.trim(); 
-      newCarData.modelo =form.inputModelo.value.trim(); 
+      newCarData.tipo =form.selectTipo.value.trim(); 
+      newCarData.marca =form.selectMarca.value.trim(); 
+      newCarData.modelo =form.selectModelo.value.trim(); 
       newCarData.anio =form.inputAnio.value; 
       newCarData.kilometros =form.inputKilometros.value; 
       newCarData.precio =form.inputPrecio.value; 
-      newCarData.version = form.inputVersion.value.trim(); 
+      newCarData.version = form.selectVersion.value.trim(); 
       newCarData.transmision =form.inputTransmision.value.trim(); 
       newCarData.rodado =form.inputRodado.value; 
       newCarData.potencia =form.inputPotencia.value.trim(); 
@@ -90,13 +92,20 @@ const EditarAuto = () => {
       e.stopPropagation();
   }
 
+  const handleCambiaMarca = (e) => {
+    const form = e.currentTarget;
+    console.log(form);
+    const Marca = form.selectMarca.value;
+    listaModelos = modelos.filter((modelo) => modelo.marca.nombre === Marca);
+   }
+
   return (
     <>
       <Container>
       <br />
       <div className='bloques-cerrado'>
         <br />
-        <h5>EDTIAR AUTO</h5>
+        <h5>EDITAR AUTO</h5>
         <br />
         <Form validated={validated} onSubmit={handleModificarVehiculo}>
         <Row xs={1} md={2} className='justify-content-center'>
@@ -104,44 +113,44 @@ const EditarAuto = () => {
           <Col className='mb-3'>  
           <ListGroup as="ul">
 
-            <ListGroup.Item as="li">
+            <ListGroup.Item as="li" key={'selMarca'}>
               <h6>Marca</h6>
-              <Form.Select id="selectMarca" defaultValue={activeCar.version.modelo.marca.nombre}size='sm' className="mb-3" required>
+                <Form.Select id="selectMarca" onChange={handleCambiaMarca} defaultValue={activeCar.version.modelo.marca.nombre} size='sm' className="mb-3" required>
                 {marcas.map((opcion) => (
-                  <option value={opcion.idMarca}> {opcion.nombre} </option>))
+                  <option value={opcion.nombre}> {opcion.nombre} </option>))
                 }
               </Form.Select>
             </ListGroup.Item>
 
-            <ListGroup.Item as="li">
+            <ListGroup.Item as="li" key={'selModelo'}>
               <h6>Modelo</h6>
-              <Form.Select id="selectMarca" defaultValue={activeCar.version.modelo.nombre}size='sm' className="mb-3" required>
-                {modelos.map((opcion) => (
+              <Form.Select id="selectModelo" defaultValue={activeCar.version.modelo.nombre}size='sm' className="mb-3" required>
+                {listaModelos.map((opcion) => (
                   <option value={opcion.idModelo}> {opcion.nombre} </option>))
                 }
               </Form.Select>
             </ListGroup.Item>
 
-            <ListGroup.Item as="li">
-              <h6>Versión*</h6> 
-              <Form.Select id="selectMarca" defaultValue={activeCar.version.nombre} size='sm' className="mb-3" required>
+            <ListGroup.Item as="li" key={'selVersion'}>
+              <h6>Versión</h6> 
+              <Form.Select id="selectVersion" defaultValue={activeCar.version.nombre} size='sm' className="mb-3" required>
                 {versiones.map((opcion) => (
                   <option value={opcion.idVersion}> {opcion.nombre} </option>))
                 }
               </Form.Select>
             </ListGroup.Item>
 
-            <ListGroup.Item as="li">
+            <ListGroup.Item as="li" key={'inAnio'}>
               <h6>Año</h6> 
               <Form.Control type="number" id="inputAnio" defaultValue={activeCar.anio} size='sm' className="mb-3" required/>
             </ListGroup.Item> 
 
-            <ListGroup.Item as="li">
+            <ListGroup.Item as="li" key={'inKilometros'}>
               <h6>Kilómetros</h6> 
               <Form.Control type="number" id="inputKilometros" defaultValue={activeCar.kilometros} size='sm' className="mb-3"/>
             </ListGroup.Item> 
 
-            <ListGroup.Item as="li">
+            <ListGroup.Item as="li" key={'inPrecio'}>
               <h6>Precio</h6> 
               <Form.Control type="number" id="inputPrecio" defaultValue={activeCar.precio} size='sm' className="mb-3" required/>
               </ListGroup.Item>
@@ -151,9 +160,9 @@ const EditarAuto = () => {
           <Col className='mb-3'>  
             <ListGroup as="ul">
 
-            <ListGroup.Item as="li">
+            <ListGroup.Item as="li" key={'selTipo'}>
               <h6>Tipo de Vehículo</h6>
-              <Form.Select id="inputTipo" defaultValue={activeCar.tipo} size='sm' className="mb-3" required>
+              <Form.Select id="selectTipo" defaultValue={activeCar.tipo} size='sm' className="mb-3" required>
                   <option value="Auto"> Auto </option>
                   <option value="Camioneta"> Camioneta </option>
                   <option value="Camiones"> Camión </option>
@@ -164,7 +173,7 @@ const EditarAuto = () => {
                 </Form.Select>
                 </ListGroup.Item>
                 
-            <ListGroup.Item as="li">
+            <ListGroup.Item as="li" key={'selTransmision'}>
             <h6>Transmisión*</h6>
             <Form.Select id="inputTransmision" defaultValue={activeCar.transmision} size='sm' className="mb-3">
                 <option value="Manual"> Manual </option>
@@ -172,22 +181,22 @@ const EditarAuto = () => {
             </Form.Select>
             </ListGroup.Item>
 
-            <ListGroup.Item as="li">
+            <ListGroup.Item as="li" key={'inRodado'}>
               <h6>Rodado*</h6> 
               <Form.Control type="number" id="inputRodado" defaultValue={activeCar.rodado} size='sm' className="mb-3"/>
             </ListGroup.Item>
 
-            <ListGroup.Item as="li">
+            <ListGroup.Item as="li" key={'inPotencia'}>
               <h6>Potencia(CV)*</h6> 
               <Form.Control type="number" id="inputPotencia" defaultValue={activeCar.potencia} size='sm' className="mb-3"/>
             </ListGroup.Item>
 
-            <ListGroup.Item as="li">
+            <ListGroup.Item as="li" key={'inCapacidadCarga'}>
               <h6>Capacidad de Carga*</h6> 
               <Form.Control type="number" id="inputCapacidadCarga" defaultValue={activeCar.capacidad_carga} size='sm' className="mb-3"/>
             </ListGroup.Item>
 
-            <ListGroup.Item as="li">
+            <ListGroup.Item as="li" key={'selTraccion'}>
               <h6>Tracción*</h6> 
               <Form.Select defaultValue={activeCar.traccion} id="inputTraccion" size='sm' className="mb-3">
                 <option value="Delantera">Delantera</option>
@@ -199,18 +208,18 @@ const EditarAuto = () => {
           </Col>
               
           <Col className='mb-3' style={ {width: "100%"} }>  
-          <ListGroup as="ul">
+          <ListGroup as="ul" key={'inColor'}>
             <ListGroup.Item as="li">
               <h6>Color*</h6> 
               <Form.Control type="text" id="inputColor" defaultValue={activeCar.color} size='sm' className="mb-3"/>
             </ListGroup.Item>
 
-            <ListGroup.Item as="li">
+            <ListGroup.Item as="li" key={'inDescripcioAdicional'}>
               <h6>Descripcion adicional*</h6> 
-              <Form.Control as="textarea" id="inputDescripcion" defaultValue={activeCar.descripcion_adicional} rows={3} className="mb-3"/>
+              <Form.Control as="textarea" id="inputDescripcionAdicional" defaultValue={activeCar.descripcion_adicional} rows={3} className="mb-3"/>
             </ListGroup.Item>
 
-            <ListGroup.Item as="li">
+            <ListGroup.Item as="li" key={'inFotos'}>
               <h6>Fotos del vehículo</h6>
                 {activeCar.fotos[0]?       
                     <Form.Control type="text" multiple id="inputFoto1" defaultValue={activeCar.fotos[0].url} size='sm' className="mb-3" required />

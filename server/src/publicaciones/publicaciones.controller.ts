@@ -17,7 +17,7 @@ import { AuthGuard } from '@nestjs/passport';
 export class PublicacionesController {
   constructor(private readonly publicacionesService: PublicacionesService) {}
 
-  @UseGuards(AuthGuard())
+  /* @UseGuards(AuthGuard()) */
   @Post()
   create(@Body() createPublicacionDto: CreatePublicacionDto) {
     return this.publicacionesService.create(createPublicacionDto);
@@ -38,7 +38,7 @@ export class PublicacionesController {
     return this.publicacionesService.findByUser(+id);
   }
 
-  @UseGuards(AuthGuard())
+  /* @UseGuards(AuthGuard()) */
   @Patch(':id')
   update(
     @Param('id') id: string,
@@ -47,7 +47,7 @@ export class PublicacionesController {
     return this.publicacionesService.update(+id, updatePublicacionDto);
   }
 
-  @UseGuards(AuthGuard())
+  /* @UseGuards(AuthGuard()) */
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.publicacionesService.remove(+id);

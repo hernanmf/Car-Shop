@@ -116,6 +116,7 @@ export class PublicacionesService {
         usuario: {
           idUsuario: id,
         },
+        estadopublicacion: true,
       },
       relations: [
         'fotos',

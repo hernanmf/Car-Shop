@@ -22,7 +22,7 @@ export class UsuariosController {
     return this.usuariosService.create(createUsuarioDto);
   }
 
-  @UseGuards(AuthGuard)
+  /* @UseGuards(AuthGuard) */
   @Get()
   findAll() {
     return this.usuariosService.findAll();
@@ -33,13 +33,13 @@ export class UsuariosController {
     return this.usuariosService.findOne(+id);
   }
 
-  @UseGuards(AuthGuard)
+  /* @UseGuards(AuthGuard) */
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateUsuarioDto: UpdateUsuarioDto) {
     return this.usuariosService.update(+id, updateUsuarioDto);
   }
 
-  @UseGuards(AuthGuard)
+  /* @UseGuards(AuthGuard) */
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.usuariosService.remove(+id);

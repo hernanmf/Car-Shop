@@ -48,8 +48,8 @@ const Editardatos = () => {
       const contraseñaconfirmada =form.inputcontraseñaconfirmada.value.trim();
       if (newUserData.contraseña === contraseñaconfirmada) {
         
-
-        console.log(`Info nueva: `, newUserData);
+        alert ('claves coinciden');
+    /*     console.log(`Info nueva: `, newUserData);
         
         setactiveUser(newUserData);
         console.log(`Nuevo usuario activo `, activeUser);
@@ -57,7 +57,7 @@ const Editardatos = () => {
         console.log(`Array de usuarios `,usuarios);
         
         console.log('Usuario modificado', newUserData);
-        navigate('/misdatos', {});
+        navigate('/misdatos', {}); */
       } else {
         alert('La contraseña no coincide, reingresalas por favor!');
         }
