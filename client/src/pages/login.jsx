@@ -19,15 +19,6 @@ const LogIn = () => {
   const navigate = useNavigate();
 
   const [validated, setValidated] = useState(true);
-
-  /* const refreshPublicaciones = async (idUsuario) => {
-     await fetch(`http://localhost:3001/publicaciones/usuarios/${idUsuario}`)
-    .then((response) => response.json())
-    .then((data) => {
-      setMisPublicaciones(data);
-    })
-    .catch((error) => alert('Sitio Offline'));
-  } */
   
   const handleSubmit = async(e) => {
     e.preventDefault();

@@ -27,18 +27,6 @@ const Editardatos = () => {
         alert('No hay provincias elegibles');
       });
   }, []);
-  
-  
-  
-  /* const refreshProvincias = async () => {
-    await fetch('http://localhost:3001/provincias')
-      .then((response) => response.json())
-      .then((data) => { return data; })
-      .catch((error) => {
-        alert('Sitio Offline');
-        return [];
-      });
-  } */
 
   console.log(provincias);
 

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import { AutosContext } from '../Context/AutosContext';
 
@@ -15,6 +15,36 @@ const EditarAuto = () => {
   const { autos , activeCar , setactiveCar } = useContext(AutosContext);
   const [validated, setValidated] = useState(false);
   const navigate = useNavigate();
+  const [marcas, setMarcas] = useState([]);
+  const [modelos, setModelos] = useState([]);
+  const [versiones, setVersiones] = useState([]);
+
+  useEffect(() => {
+    fetch('http://localhost:3001/versiones')
+    .then((response) => response.json())
+    .then((data) => {
+      setVersiones(data);
+    })
+      .catch((error) => {
+        alert('No hay provincias elegibles');
+      });
+    fetch('http://localhost:3001/modelos')
+    .then((response) => response.json())
+    .then((data) => {
+      setModelos(data);
+    })
+      .catch((error) => {
+        alert('No hay provincias elegibles');
+      });
+    fetch('http://localhost:3001/marcas')
+    .then((response) => response.json())
+    .then((data) => {
+      setMarcas(data);
+    })
+      .catch((error) => {
+        alert('No hay provincias elegibles');
+      });
+  }, []);
 
   const handleModificarVehiculo = (e) => {
     const form = e.currentTarget;
@@ -76,17 +106,29 @@ const EditarAuto = () => {
 
             <ListGroup.Item as="li">
               <h6>Marca</h6>
-              <Form.Control type="text" id="inputMarca" defaultValue={activeCar.marca} size='sm' className="mb-3" required/>
+              <Form.Select id="selectMarca" defaultValue={activeCar.version.modelo.marca.nombre}size='sm' className="mb-3" required>
+                {marcas.map((opcion) => (
+                  <option value={opcion.idMarca}> {opcion.nombre} </option>))
+                }
+              </Form.Select>
             </ListGroup.Item>
 
             <ListGroup.Item as="li">
               <h6>Modelo</h6>
-              <Form.Control type="text" id="inputModelo" defaultValue={activeCar.modelo} size='sm' className="mb-3" required/>
+              <Form.Select id="selectMarca" defaultValue={activeCar.version.modelo.nombre}size='sm' className="mb-3" required>
+                {modelos.map((opcion) => (
+                  <option value={opcion.idModelo}> {opcion.nombre} </option>))
+                }
+              </Form.Select>
             </ListGroup.Item>
 
             <ListGroup.Item as="li">
               <h6>Versión*</h6> 
-              <Form.Control type="text" id="inputVersion" defaultValue={activeCar.version}size='sm' className="mb-3"/>
+              <Form.Select id="selectMarca" defaultValue={activeCar.version.nombre} size='sm' className="mb-3" required>
+                {versiones.map((opcion) => (
+                  <option value={opcion.idVersion}> {opcion.nombre} </option>))
+                }
+              </Form.Select>
             </ListGroup.Item>
 
             <ListGroup.Item as="li">
@@ -169,10 +211,19 @@ const EditarAuto = () => {
             </ListGroup.Item>
 
             <ListGroup.Item as="li">
-              <h6>Fotos del vehículo</h6> 
-              <Form.Control type="text" multiple id="inputFoto1" defaultValue={activeCar.fotos[0]} size='sm'  className="mb-3" required/>
-              <Form.Control type="text" multiple id="inputFoto2" defaultValue={activeCar.fotos[1]} size='sm'  className="mb-3"/>
-              <Form.Control type="text" multiple id="inputFoto3" defaultValue={activeCar.fotos[2]} size='sm'  className="mb-3"/>
+              <h6>Fotos del vehículo</h6>
+                {activeCar.fotos[0]?       
+                    <Form.Control type="text" multiple id="inputFoto1" defaultValue={activeCar.fotos[0].url} size='sm' className="mb-3" required />
+                    :
+                    <Form.Control type="text" multiple id="inputFoto1" size='sm' className="mb-3" required />}
+                {activeCar.fotos[1]?       
+                    <Form.Control type="text" multiple id="inputFoto2" defaultValue={activeCar.fotos[1].url} size='sm' className="mb-3" required />
+                    :
+                    <Form.Control type="text" multiple id="inputFoto2" size='sm' className="mb-3" required />}
+                {activeCar.fotos[2]?       
+                    <Form.Control type="text" multiple id="inputFoto3" defaultValue={activeCar.fotos[2].url} size='sm' className="mb-3" required />
+                    :
+                    <Form.Control type="text" multiple id="inputFoto3" size='sm' className="mb-3" required />}
             </ListGroup.Item>
           </ListGroup>
           </Col>
