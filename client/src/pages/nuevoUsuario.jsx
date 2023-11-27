@@ -29,20 +29,20 @@ const NuevoUsuario = () => {
       if (!usuarioExiste) {
         let newUserData = {
           id: newListadoUsuarios.length + 1,
-          nombre_completo: form.inputnombre_completo.value.trim(),
+          nombre: form.inputnombre.value.trim(),
+          apellido: form.inputapellido.value.trim(),
           correo_electronico: form.inputcorreo_electronico.value.trim(),
           password: form.inputpassword.value.trim(),
           telefono: form.inputtelefono.value,
           provincia: form.inputprovincia.value.trim(),
-          localidad: form.inputlocalidad.value.trim()
         };
         console.log(`Nuevo usuario: `, newUserData);
         newListadoUsuarios.push(newUserData);
         console.log(`Nuevo listado de usuarios`, newListadoUsuarios);
         setUsuarios(newListadoUsuarios);
         
-        console.log(`${newUserData.nombre_completo} te has registrado exitosamente! \n Logueate y busca ese vehículo que tanto estas buscando!`);
-        window.alert(`${newUserData.nombre_completo} te has registrado exitosamente! \n Logueate y busca ese vehículo que tanto estas buscando!`);
+        console.log(`${newUserData.nombre} te has registrado exitosamente! \n Logueate y busca ese vehículo que tanto estas buscando!`);
+        window.alert(`${newUserData.nombre} te has registrado exitosamente! \n Logueate y busca ese vehículo que tanto estas buscando!`);
         navigate('/login', {});
         e.preventDefault();
         e.stopPropagation();
@@ -64,9 +64,16 @@ const NuevoUsuario = () => {
         <Form validated={validated} onSubmit={handleAgregarUsuario}> 
           <ListGroup as="ul">
             <ListGroup.Item as="li">
-              <h6>Nombre Completo</h6>
+              <h6>Nombre</h6>
               <Form.Group>  
-                  <Form.Control id='inputnombre_completo' type="text"  className="mb-3" size='sm' required />
+                  <Form.Control id='inputnombre' type="text"  className="mb-3" size='sm' required />
+              </Form.Group>
+              </ListGroup.Item>
+              
+            <ListGroup.Item as="li">
+              <h6>Apellido</h6>
+              <Form.Group>  
+                  <Form.Control id='inputapellido' type="text"  className="mb-3" size='sm' required />
               </Form.Group>
             </ListGroup.Item>
 
@@ -90,10 +97,6 @@ const NuevoUsuario = () => {
               <Form.Control id='inputprovincia' type="text" className="mb-3" size='sm' required />  
             </ListGroup.Item>
             
-            <ListGroup.Item as="li">
-              <h6>Localidad</h6> 
-              <Form.Control id='inputlocalidad' type="text" className="mb-3" size='sm' required /> 
-            </ListGroup.Item> 
           </ListGroup>
           <p className="text-muted">Deberas completar todos los datos, luego para acceder a tu cuenta te pediremos tu correo electrónico y la contraseña</p>
           <br />

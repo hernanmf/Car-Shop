@@ -146,7 +146,7 @@ const VistaVehiculo = () => {
         <Card style={{ width: '100%' }}>
           {activeUser ?   
           <Card.Body>
-            <Card.Title>{ infoVendedor.nombre_completo }</Card.Title>
+            <Card.Title>{ infoVendedor.nombre + infoVendedor.apellido }</Card.Title>
             <Row xs={1} md={3} className='justify-content-center'>
               <Col>
                 <Card.Subtitle>Ubicacion</Card.Subtitle>

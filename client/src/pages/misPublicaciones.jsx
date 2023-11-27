@@ -30,7 +30,7 @@ const MisPublicaciones = () => {
 
   const handleDeleteCar = (idauto, e) => { 
     console.log(activeCar);
-    let DeleteCar = window.confirm(`${activeUser.nombre_completo}, estas seguro que quieres eliminar el siguiente vehiculo? \n ${activeCar.marca} ${activeCar.modelo} ${activeCar.version} ${activeCar.anio}`);
+    let DeleteCar = window.confirm(`${activeUser.nombre}, estas seguro que quieres eliminar el siguiente vehiculo? \n ${activeCar.marca} ${activeCar.modelo} ${activeCar.version} ${activeCar.anio}`);
     if (DeleteCar) {
       let newAutos = autos.filter(auto => auto.id !== activeCar.id);
       setAutos(newAutos);

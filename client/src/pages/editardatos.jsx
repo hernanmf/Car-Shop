@@ -29,7 +29,8 @@ const Editardatos = () => {
       //el form valida bien
       let newUserData = activeUser;
       console.log(`Info vieja: `, activeUser);
-      newUserData.nombre_completo = form.inputnombre_completo.value.trim();
+      newUserData.nombre = form.inputnombre.value.trim();
+      newUserData.apellido = form.inputapellido.value.trim();
       newUserData.correo_electronico = form.inputcorreo_electronico.value.trim();
       newUserData.telefono = form.inputtelefono.value;
       newUserData.provincia = form.inputprovincia.value.trim();
@@ -66,7 +67,14 @@ const Editardatos = () => {
             <ListGroup.Item as="li">
               <h6>Nombre Completo</h6>
               <Form.Group>  
-                  <Form.Control id='inputnombre_completo' type="text" defaultValue={activeUser.nombre_completo} className="mb-3" size='sm' required />
+                  <Form.Control id='inputnombre' type="text" defaultValue={activeUser.nombre} className="mb-3" size='sm' required />
+              </Form.Group>
+              </ListGroup.Item>
+              
+            <ListGroup.Item as="li">
+              <h6>Nombre Completo</h6>
+              <Form.Group>  
+                  <Form.Control id='inputapellido' type="text" defaultValue={activeUser.apellido} className="mb-3" size='sm' required />
               </Form.Group>
             </ListGroup.Item>
               

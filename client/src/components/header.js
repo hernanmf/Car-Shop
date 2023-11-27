@@ -43,7 +43,7 @@ const Header = () => {
     /* showHideMenu(); */
     let LogOut = window.confirm("Desea cerrar sesión realmente?");
     if (LogOut) {
-      alert(`¡CHAU! ${activeUser.nombre_completo} ESPERAMOS QUE VUELVAS PRONTO`);
+      alert(`¡CHAU! ${activeUser.nombre} ESPERAMOS QUE VUELVAS PRONTO`);
       setactiveUser(false);
       cerrarBurguerMenu();
       navigate('/', {
@@ -107,7 +107,7 @@ const Header = () => {
           {(activeUser && !show)?
             <Nav.Link>
               <Link to="/misdatos" style={{ color: colorLetra, textDecoration: 'none' }} onClick={cerrarBurguerMenu}>
-                ¡Hola {activeUser.nombre_completo}!
+                ¡Hola {activeUser.nombre}!
               </Link>
             </Nav.Link>
             : <></>} 
