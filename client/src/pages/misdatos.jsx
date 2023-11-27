@@ -24,7 +24,6 @@ const Misdatos = () => {
             <ListGroup.Item as="li"><h6>Correo electrónico</h6> <p>{activeUser.correo_electronico}</p></ListGroup.Item>
             <ListGroup.Item as="li"><h6>Teléfono</h6> <p>{activeUser.telefono}</p></ListGroup.Item>
             <ListGroup.Item as="li"><h6>Provincia</h6> <p>{activeUser.provincia}</p></ListGroup.Item>
-            <ListGroup.Item as="li"><h6>Localidad</h6> <p>{activeUser.localidad}</p></ListGroup.Item>  
           </ListGroup>
           <p>id user: {activeUser.id}</p> 
           <Link to="/editardatos" style={{textDecoration: 'none'}}>

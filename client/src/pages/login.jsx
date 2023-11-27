@@ -33,7 +33,6 @@ const LogIn = () => {
         if (usuarioEncontrado) {
           setactiveUser(usuarioEncontrado);
           /* console.log('Bienvenido', activeUser ); */
-          alert('BIENVENIDO A CAR SHOP');
           navigate('/', {
             /* replace: true */ //replace hace que cuando el user vuelva para atras no siga logueado
           });

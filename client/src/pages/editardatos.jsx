@@ -18,32 +18,40 @@ const Editardatos = () => {
   const navigate = useNavigate();
 
   const handleModificarUsuario = (e) => {
+    e.preventDefault();
+      e.stopPropagation();
     const form = e.currentTarget;
     if (form.checkValidity() === false) {
       e.preventDefault();
       e.stopPropagation();
+      alert('Alguno de los datos no fue ingresado correctamente, revise y vuelva a intentar');
     } else {
       //el form valida bien
       let newUserData = activeUser;
-      console.log(`Info vieja: `,activeUser);
-      newUserData.nombre_completo =form.inputnombre_completo.value.trim();
-      newUserData.correo_electronico =form.inputcorreo_electronico.value.trim(); 
-      newUserData.telefono =form.inputtelefono.value; 
-      newUserData.provincia =form.inputprovincia.value.trim();
-      newUserData.localidad =form.inputlocalidad.value.trim();
-      console.log(`Info nueva: `,newUserData);
-      
-      setactiveUser(newUserData);
-      console.log(`Nuevo usuario activo `, activeUser);
-      
-      console.log(`Array de usuarios `,usuarios);
-        
+      console.log(`Info vieja: `, activeUser);
+      newUserData.nombre_completo = form.inputnombre_completo.value.trim();
+      newUserData.correo_electronico = form.inputcorreo_electronico.value.trim();
+      newUserData.telefono = form.inputtelefono.value;
+      newUserData.provincia = form.inputprovincia.value.trim();
+      newUserData.password = form.inputContrasenia.value.trim();
+      console.log(`Info nueva: `, newUserData);
+      let contraseniaconfirmada = form.inputContraseniaConfirmada.value.trim();
+      console.log(contraseniaconfirmada);
+      console.log(newUserData.password);
+      if (newUserData.password === contraseniaconfirmada) {
+        setactiveUser(newUserData);
+        console.log(`Nuevo usuario activo `, activeUser);
+        console.log(`Array de usuarios `, usuarios);
         console.log('Usuario modificado', newUserData);
+        alert('Los cambios se han realizado!');
         navigate('/misdatos', {});
+      }else{
+        alert('La contraseña no coincide, reingresalas por favor');
       }
-      setValidated(true);
-      e.preventDefault();
-      e.stopPropagation();
+    }
+    setValidated(true);
+    e.preventDefault();
+    e.stopPropagation();
   }
   
   return (
@@ -79,8 +87,9 @@ const Editardatos = () => {
             </ListGroup.Item>
             
             <ListGroup.Item as="li">
-              <h6>Localidad</h6> 
-              <Form.Control id='inputlocalidad' type="text" defaultValue={activeUser.localidad} className="mb-3" size='sm' required /> 
+              <h6>Cambiar Contraseña</h6> 
+              <Form.Control id='inputContrasenia' type="password" placeholder='Ingresá tu nueva contraseña' className="mb-3" size='sm' required /> 
+              <Form.Control id='inputContraseniaConfirmada' type="password" placeholder='Repeti tu nueva contraseña' className="mb-3" size='sm' required /> 
             </ListGroup.Item> 
           </ListGroup>
           <p className='text-muted'>id user: {activeUser.id}</p>
