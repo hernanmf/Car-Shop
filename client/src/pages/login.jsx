@@ -3,7 +3,7 @@ import { UsuariosContext } from '../Context/UserContext';
 import { Link, useNavigate } from 'react-router-dom';
 
 import '../css/login.css';
-import LogoGrande from '../assets/images/logogrande.png';
+import LogoGrande from '../assets/images/logograndeblanco.png';
 
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
