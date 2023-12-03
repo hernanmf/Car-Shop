@@ -15,7 +15,7 @@ import Col from 'react-bootstrap/Col';
 
 const LogIn = () => {
 
-  const { activeUser, setActiveUser, setUserToken} = useContext(UsuariosContext);
+  const { activeUser, setActiveUser, setUserToken, userToken} = useContext(UsuariosContext);
   const navigate = useNavigate();
 
   const [validated, setValidated] = useState(true);
@@ -41,14 +41,18 @@ const LogIn = () => {
             },
             body: JSON.stringify(cuentaUsuario)
           });
-          console.log(response);
           if (!response.ok) {
             throw new Error('API ERROR login');
           }
           const jsonResponse = await response.json();
+          console.log('response');
           console.log(jsonResponse);
           setActiveUser(jsonResponse.usuario);
           setUserToken(jsonResponse.access_token);
+          console.log('usuario');
+          console.log(jsonResponse.usuario);
+          console.log('token');
+          console.log(jsonResponse.access_token);
           alert('BIENVENIDO A CAR SHOP');
           navigate('/', { }); 
         } catch (error) {

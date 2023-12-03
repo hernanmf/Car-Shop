@@ -16,7 +16,7 @@ import '../css/bloques.css';
 const MisPublicaciones = () => {
 
   const navigate = useNavigate();
-  const { activeUser } = useContext(UsuariosContext);
+  const { activeUser, userToken } = useContext(UsuariosContext);
   const { autos, setAutos, activeCar, setactiveCar } = useContext(AutosContext);
   const [publicaciones, setPublicaciones] = useState([]);
 
@@ -47,12 +47,14 @@ const MisPublicaciones = () => {
     if (DeleteCar) {
       //delete de auto
       try {
+        console.log('Token del usuario');
+        console.log(userToken);
       const url = 'http://localhost:3001/publicaciones/'+activeCar.idpublicacion;
       const response = await fetch(url, {
             method: 'DELETE',
             headers: {
               'Content-Type': 'application/json',
-              'Authorization': 'Bearer '+activeUser.access_token, 
+              'Authorization': 'Bearer '+userToken, 
             },
           });
         console.log(response);
@@ -78,11 +80,8 @@ const MisPublicaciones = () => {
         } catch (error) {
           alert('API ERROR no se pudo borrar publicacion');
         }
-      /* let newAutos = autos.filter(auto => auto.id !== activeCar.id);
-      setAutos(newAutos); */
     }
   }
-
 
   return (
     <>

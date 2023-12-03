@@ -9,6 +9,7 @@ import { VersionesModule } from 'src/versiones/versiones.module';
 import { Usuario } from 'src/usuarios/entities/usuario.entity';
 import { UsuariosModule } from 'src/usuarios/usuarios.module';
 import { FotosModule } from 'src/fotos/fotos.module';
+import { PassportModule } from '@nestjs/passport';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { FotosModule } from 'src/fotos/fotos.module';
     VersionesModule,
     UsuariosModule,
     FotosModule,
+    PassportModule.register({ defaultStrategy: 'jwt' }),
   ],
   controllers: [PublicacionesController],
   providers: [PublicacionesService],

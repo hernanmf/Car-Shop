@@ -8,7 +8,7 @@ export const UsuariosProvider = ({ children }) => {
   const [userToken, setUserToken] = useState(false);
 
   return (
-    <UsuariosContext.Provider value={{ activeUser, setActiveUser, userToken, setUserToken}}>
+    <UsuariosContext.Provider value={{ activeUser, setActiveUser, userToken, setUserToken }}>
       { children }
     </UsuariosContext.Provider>
   )
