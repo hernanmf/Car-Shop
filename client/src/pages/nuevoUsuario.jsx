@@ -1,6 +1,5 @@
-import React, { useContext, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
-import { UsuariosContext } from '../Context/UserContext';
 
 import ListGroup from 'react-bootstrap/ListGroup';
 import Container from 'react-bootstrap/esm/Container';
@@ -11,44 +10,67 @@ import Col from 'react-bootstrap/Col';
 
 const NuevoUsuario = () => {
 
-  const { usuarios, setUsuarios } = useContext(UsuariosContext);
   const [validated, setValidated] = useState(false);
   const navigate = useNavigate();
+  const [provincias, setProvincias] = useState([]);
 
-  const handleAgregarUsuario = (e) => {
+  useEffect(() => {
+    fetch('http://localhost:3001/provincias')
+    .then((response) => response.json())
+    .then((data) => {
+      setProvincias(data);
+    })
+      .catch((error) => {
+        alert('No hay provincias elegibles');
+      });
+  }, []);
+
+  const handleAgregarUsuario = async (e) => {
+    e.preventDefault();
+    e.stopPropagation();
     const form = e.currentTarget;
-    if (form.checkValidity() === false) {
-      e.preventDefault();
-      e.stopPropagation();
-    } else {
+    if (form.checkValidity() === true) {
       //el form valida bien
-      let newListadoUsuarios = usuarios;
-      console.log('Listado de usuarios', newListadoUsuarios);
-      let usuarioExiste = usuarios.find(usuario => usuario.correo_electronico === form.inputcorreo_electronico.value.trim() || usuario.telefono === form.inputtelefono.value);
-      console.log('Usuario existe? ',usuarioExiste);
-      if (!usuarioExiste) {
-        let newUserData = {
-          id: newListadoUsuarios.length + 1,
-          nombre_completo: form.inputnombre_completo.value.trim(),
-          correo_electronico: form.inputcorreo_electronico.value.trim(),
-          password: form.inputpassword.value.trim(),
-          telefono: form.inputtelefono.value,
-          provincia: form.inputprovincia.value.trim(),
-          localidad: form.inputlocalidad.value.trim()
-        };
-        console.log(`Nuevo usuario: `, newUserData);
-        newListadoUsuarios.push(newUserData);
-        console.log(`Nuevo listado de usuarios`, newListadoUsuarios);
-        setUsuarios(newListadoUsuarios);
-        
-        console.log(`${newUserData.nombre_completo} te has registrado exitosamente! \n Logueate y busca ese vehículo que tanto estas buscando!`);
-        window.alert(`${newUserData.nombre_completo} te has registrado exitosamente! \n Logueate y busca ese vehículo que tanto estas buscando!`);
-        navigate('/login', {});
-        e.preventDefault();
-        e.stopPropagation();
+      const contrasenia = form.inputContrasenia.value.trim();
+      const contraseniaConfirmada = form.inputContraseniaConfirmada.value.trim();
+      if (contrasenia === contraseniaConfirmada) {
+          let newUserData = {
+            nombre: form.inputNombre.value.trim(),
+            apellido: form.inputApellido.value.trim(),
+            correoElectronico: form.inputCorreoElectronico.value.trim(),
+            contraseña: contrasenia,
+            telefono: form.inputTelefono.value,
+            idprovincia: Number(form.selectProvincia.value),
+          };
+          console.log(`Nuevo usuario: `, newUserData);
+          try {
+          const response = await fetch('http://localhost:3001/usuarios', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              //Authorization: 'Bearer {token}', 
+            },
+            body: JSON.stringify(newUserData)
+          });
+          const jsonResponse = await response.json();
+          console.log('response');
+          console.log(jsonResponse)
+            if (!response.ok) {
+              jsonResponse.message.forEach((mensaje) => {
+                window.alert(mensaje);
+              });
+            throw new Error('API ERROR login');
+          }
+          console.log(`${newUserData.nombre} te has registrado exitosamente! \nLogueate y busca ese vehículo que tanto estas buscando!`);
+          window.alert(`${newUserData.nombre} te has registrado exitosamente! \nLogueate y busca ese vehículo que tanto estas buscando!`);
+          navigate('/login', {}); 
+          } catch (error) {
+            alert('Revisa los datos e intenta nuevamente');
+            setValidated(true);
+          }
       } else {
-        console.log('Ya hay alguien listado con ese correo electronico o telefono, revise los datos y vuelva a intentar');
-        window.alert('Ya hay alguien listado con ese correo electronico o telefono, revise los datos y vuelva a intentar');
+        console.log('Las contraseñas no coinciden, revise los datos y vuelva a intentar');
+        window.alert('Las contraseñas no coinciden, revise los datos y vuelva a intentar');
       }
     }
     setValidated(true);
@@ -64,36 +86,46 @@ const NuevoUsuario = () => {
         <Form validated={validated} onSubmit={handleAgregarUsuario}> 
           <ListGroup as="ul">
             <ListGroup.Item as="li">
-              <h6>Nombre Completo</h6>
+              <h6>Nombre</h6>
               <Form.Group>  
-                  <Form.Control id='inputnombre_completo' type="text"  className="mb-3" size='sm' required />
+                  <Form.Control id='inputNombre' type="text"  className="mb-3" size='sm' required />
+              </Form.Group>
+            </ListGroup.Item>
+            
+              <ListGroup.Item as="li">
+              <h6>Apellido</h6>
+              <Form.Group>  
+                  <Form.Control id='inputApellido' type="text"  className="mb-3" size='sm' required />
               </Form.Group>
             </ListGroup.Item>
 
             <ListGroup.Item as="li">
               <h6>Correo electrónico</h6>
-              <Form.Control id='inputcorreo_electronico' type="email"  className="mb-3" size='sm' required />
+              <Form.Control id='inputCorreoElectronico' type="email"  className="mb-3" size='sm' required />
             </ListGroup.Item>
               
             <ListGroup.Item as="li">
-              <h6>Contraseña</h6>
-              <Form.Control id='inputpassword' type="password" className="mb-3" size='sm' required />
-              </ListGroup.Item>
-              
-            <ListGroup.Item as="li">
               <h6>Teléfono</h6>
-              <Form.Control id='inputtelefono' type="number" className="mb-3" size='sm' required />
+              <Form.Control id='inputTelefono' type="number" className="mb-3" size='sm' required />
             </ListGroup.Item>
               
             <ListGroup.Item as="li">
               <h6>Provincia</h6> 
-              <Form.Control id='inputprovincia' type="text" className="mb-3" size='sm' required />  
+              <Form.Select id="selectProvincia" size='sm' className="mb-3" required>
+                  {
+                    provincias.map((opcion) => (
+                    <option value={opcion.idProvincia}> {opcion.nombre} </option>
+                  ))
+                  }
+              </Form.Select>
             </ListGroup.Item>
-            
+              
             <ListGroup.Item as="li">
-              <h6>Localidad</h6> 
-              <Form.Control id='inputlocalidad' type="text" className="mb-3" size='sm' required /> 
-            </ListGroup.Item> 
+              <h6>Contraseña</h6>
+              <Form.Control id='inputContrasenia' type="password" placeholder='Ingresá tu contraseña' className="mb-3" size='sm' required /> 
+              <Form.Control id='inputContraseniaConfirmada' type="password" placeholder='Repeti tu contraseña' className="mb-3" size='sm' required />
+            </ListGroup.Item>
+
           </ListGroup>
           <p className="text-muted">Deberas completar todos los datos, luego para acceder a tu cuenta te pediremos tu correo electrónico y la contraseña</p>
           <br />
